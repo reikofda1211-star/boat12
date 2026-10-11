@@ -60,7 +60,7 @@ for line in text.splitlines():
     if not match:
         continue
 
-    race, result12, payout = match.groups()
+    race, result3, result12, payout = match.groups()
     payout = int(payout.replace(",", ""))
 
     total += 1
