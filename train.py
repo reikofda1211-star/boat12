@@ -1,36 +1,38 @@
 
 import requests
 
-BASE = "https://boatracecsv.github.io/data"
-
 dates = [
-    "2021/10/10",
-    "2022/10/10",
-    "2023/10/10",
-    "2024/10/10",
-    "2025/10/10",
-    "2026/05/06",
-    "2026/10/10",
+    "20211010",
+    "20231010",
+    "20251010",
+    "20261010",
 ]
 
 for date in dates:
+    folder = date[:6]
+    short = date[2:]
+
     print(f"\n【{date}】")
 
-    for name, path in [
-        ("出走表", "programs/race_cards"),
-        ("結果", "results/realtime"),
+    for label, code in [
+        ("公式番組表", "B"),
+        ("公式競走成績", "K"),
     ]:
-        url = f"{BASE}/{path}/{date}.csv"
+        url = (
+            f"https://www1.mbrace.or.jp/od2/"
+            f"{code}/{folder}/{code.lower()}{short}.lzh"
+        )
 
         try:
-            response = requests.get(url, timeout=20)
-            if response.status_code == 200:
-                print(f"{name}: 取得成功")
-            elif response.status_code == 404:
-                print(f"{name}: データなし")
-            else:
-                print(f"{name}: HTTP {response.status_code}")
+            with requests.get(
+                url, timeout=30, stream=True
+            ) as response:
+                print(
+                    label,
+                    "取得可能" if response.status_code == 200
+                    else f"HTTP {response.status_code}"
+                )
         except requests.RequestException as e:
-            print(f"{name}: 通信エラー {e}")
+            print(label, "通信エラー:", str(e)[:120])
 
-print("\n調査終了")
+print("\n確認終了")
