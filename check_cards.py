@@ -1,24 +1,20 @@
 
+import re
 import requests
 import subprocess
 import tempfile
 from pathlib import Path
 
-# 2023年10月10日の公式番組表
-url = (
+URL = (
     "https://www1.mbrace.or.jp/od2/"
     "B/202310/b231010.lzh"
 )
 
-print("公式番組表を取得中", flush=True)
+print("2023年の公式番組表を取得中", flush=True)
 
-response = requests.get(url, timeout=60)
+response = requests.get(URL, timeout=60)
 response.raise_for_status()
 
-print("ダウンロード成功")
-print("容量:", len(response.content), "バイト")
-
-# LZH解凍ツールを準備
 subprocess.run(
     ["sudo", "apt-get", "update", "-qq"],
     check=True,
@@ -31,7 +27,7 @@ subprocess.run(
 )
 
 with tempfile.TemporaryDirectory() as folder:
-    archive = Path(folder) / "program.lzh"
+    archive = Path(folder) / "cards.lzh"
     archive.write_bytes(response.content)
 
     result = subprocess.run(
@@ -40,17 +36,61 @@ with tempfile.TemporaryDirectory() as folder:
         check=True
     )
 
-    text = result.stdout.decode(
-        "cp932", errors="replace"
+text = result.stdout.decode("cp932", errors="replace")
+
+# 艇番・選手登録番号・名前・年齢・支部・体重・級別
+pattern = re.compile(
+    r"^\s*([1-6])\s+"
+    r"(\d{4})(.+?)(\d{2})"
+    r"([^\d\s]+)(\d{2})"
+    r"(A1|A2|B1|B2)\s+"
+    r"(.*)$"
+)
+
+players = []
+
+for line in text.splitlines():
+    match = pattern.match(line)
+    if not match:
+        continue
+
+    boat, reg, name, age, branch, weight, grade, stats = (
+        match.groups()
     )
 
-lines = text.splitlines()
+    # 勝率などの数値を抽出
+    numbers = re.findall(r"\d+\.\d+|\d+", stats)
 
-print("解凍成功！")
-print("総行数:", len(lines))
-print("===== 番組表の先頭80行 =====")
+    players.append({
+        "boat": boat,
+        "reg": reg,
+        "name": name.strip(),
+        "age": age,
+        "branch": branch,
+        "weight": weight,
+        "grade": grade,
+        "numbers": numbers,
+        "raw": line.strip()
+    })
 
-for i, line in enumerate(lines[:80], 1):
-    print(f"{i:03d}: {line}")
+    if len(players) == 6:
+        break
 
-print("===== 確認完了 =====")
+print("\n===== 最初の6選手 =====")
+print("抽出人数:", len(players))
+
+for p in players:
+    print("\n--------------------")
+    print("艇番:", p["boat"])
+    print("登録番号:", p["reg"])
+    print("選手名:", p["name"])
+    print("級別:", p["grade"])
+    print("年齢:", p["age"])
+    print("支部:", p["branch"])
+    print("数値データ:", p["numbers"])
+    print("元の行:", p["raw"])
+
+if len(players) != 6:
+    print("注意: 6選手を抽出できませんでした")
+
+print("\n抽出テスト完了")
