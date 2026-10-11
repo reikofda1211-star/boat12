@@ -4,7 +4,7 @@ name: Tokuyama Boat Analysis
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 22 * * *'
+  - cron: '0 0,8,16 * * *'
 
 permissions:
   contents: write
