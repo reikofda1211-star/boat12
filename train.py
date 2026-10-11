@@ -1,16 +1,7 @@
 
-import io
-import sys
-import subprocess
 import requests
-
-# LZHを読み取るライブラリを準備
-subprocess.check_call([
-    sys.executable, "-m", "pip",
-    "install", "pylzh"
-])
-
-from pylzh import LzhFile
+import subprocess
+from pathlib import Path
 
 # 2021年10月10日の公式競走成績
 url = (
@@ -18,33 +9,38 @@ url = (
     "K/202110/k211010.lzh"
 )
 
-print("公式データをダウンロード中")
+print("LZH解凍ツールを準備中", flush=True)
+
+subprocess.run(
+    ["sudo", "apt-get", "update", "-qq"],
+    check=True
+)
+subprocess.run(
+    ["sudo", "apt-get", "install", "-y", "lhasa"],
+    check=True
+)
+
+print("公式データをダウンロード中", flush=True)
 
 response = requests.get(url, timeout=60)
 response.raise_for_status()
 
-print("ダウンロード成功")
-print("ファイル容量:", len(response.content), "バイト")
+file = Path("/tmp/boat_result.lzh")
+file.write_bytes(response.content)
 
-# 圧縮ファイルの中身を確認
-with LzhFile(io.BytesIO(response.content), encoding="cp932") as archive:
-    names = archive.namelist()
+print("取得成功:", len(response.content), "バイト")
+print("ファイル内の一覧:")
 
-    print("内部ファイル:", names)
+subprocess.run(
+    ["lha", "-l", str(file)],
+    check=True
+)
 
-    for name in names:
-        data = archive.read(name)
+print("圧縮ファイルの検査:")
 
-        print("ファイル名:", name)
-        print("展開後の容量:", len(data), "バイト")
-
-        try:
-            text = data.decode("cp932")
-        except UnicodeDecodeError:
-            text = data.decode("utf-8", errors="replace")
-
-        print("内容の先頭20行:")
-        for line in text.splitlines()[:20]:
-            print(line)
+subprocess.run(
+    ["lha", "-t", str(file)],
+    check=True
+)
 
 print("テスト完了")
