@@ -9,13 +9,13 @@ from datetime import date, timedelta, datetime
 from zoneinfo import ZoneInfo
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-START = date(2021, 10, 12)
+START = date(2023, 10, 12)
 END = datetime.now(
     ZoneInfo("Asia/Tokyo")
 ).date() - timedelta(days=1)
 
 # 1回の取得日数と同時処理数
-BATCH_DAYS = 30
+BATCH_DAYS = 60
 WORKERS = 3
 
 DATA_FILE = Path("history/races.csv")
