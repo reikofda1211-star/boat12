@@ -28,6 +28,9 @@ jobs:
       - name: Run analysis
         run: python main.py
 
+      - name: Check training data
+        run: python train.py
+
         
       - name: Save ranking page
         run: |
