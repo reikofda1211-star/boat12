@@ -1,38 +1,50 @@
 
+import io
+import sys
+import subprocess
 import requests
 
-dates = [
-    "20211010",
-    "20231010",
-    "20251010",
-    "20261010",
-]
+# LZHを読み取るライブラリを準備
+subprocess.check_call([
+    sys.executable, "-m", "pip",
+    "install", "pylzh"
+])
 
-for date in dates:
-    folder = date[:6]
-    short = date[2:]
+from pylzh import LzhFile
 
-    print(f"\n【{date}】")
+# 2021年10月10日の公式競走成績
+url = (
+    "https://www1.mbrace.or.jp/od2/"
+    "K/202110/k211010.lzh"
+)
 
-    for label, code in [
-        ("公式番組表", "B"),
-        ("公式競走成績", "K"),
-    ]:
-        url = (
-            f"https://www1.mbrace.or.jp/od2/"
-            f"{code}/{folder}/{code.lower()}{short}.lzh"
-        )
+print("公式データをダウンロード中")
+
+response = requests.get(url, timeout=60)
+response.raise_for_status()
+
+print("ダウンロード成功")
+print("ファイル容量:", len(response.content), "バイト")
+
+# 圧縮ファイルの中身を確認
+with LzhFile(io.BytesIO(response.content), encoding="cp932") as archive:
+    names = archive.namelist()
+
+    print("内部ファイル:", names)
+
+    for name in names:
+        data = archive.read(name)
+
+        print("ファイル名:", name)
+        print("展開後の容量:", len(data), "バイト")
 
         try:
-            with requests.get(
-                url, timeout=30, stream=True
-            ) as response:
-                print(
-                    label,
-                    "取得可能" if response.status_code == 200
-                    else f"HTTP {response.status_code}"
-                )
-        except requests.RequestException as e:
-            print(label, "通信エラー:", str(e)[:120])
+            text = data.decode("cp932")
+        except UnicodeDecodeError:
+            text = data.decode("utf-8", errors="replace")
 
-print("\n確認終了")
+        print("内容の先頭20行:")
+        for line in text.splitlines()[:20]:
+            print(line)
+
+print("テスト完了")
