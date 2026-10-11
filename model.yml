@@ -1,0 +1,52 @@
+
+name: Boat 1-2 Model Training
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 18 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: boat-model-training
+  cancel-in-progress: false
+
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install libraries
+        run: |
+          pip install -r requirements.txt
+          pip install joblib
+          sudo apt-get update -qq
+          sudo apt-get install -y lhasa
+
+      - name: Build training data and model
+        run: python model_pipeline.py --days 30
+
+      - name: Save model and training data
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in history/training.csv history/model.joblib history/model_report.json model-preview.html; do
+            if [ -f "$f" ]; then git add -f "$f"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "Update model training data"
+            git pull --rebase origin main
+            git push origin main
+          fi
