@@ -3,15 +3,19 @@ import re
 import requests
 import subprocess
 from pathlib import Path
+from collections import defaultdict
 
-# 2021年10月10日の公式競走成績
-date = "20211010"
-url = (
-    "https://www1.mbrace.or.jp/od2/"
-    "K/202110/k211010.lzh"
-)
+DATES = ["20211010", "20231010", "20251010"]
 
-# LZH解凍ツールをインストール
+VENUES = [
+    "桐生", "戸田", "江戸川", "平和島", "多摩川",
+    "浜名湖", "蒲郡", "常滑", "津", "三国",
+    "びわこ", "住之江", "尼崎", "鳴門", "丸亀",
+    "児島", "宮島", "徳山", "下関", "若松",
+    "芦屋", "福岡", "唐津", "大村"
+]
+
+# 解凍ツールを用意
 subprocess.run(
     ["sudo", "apt-get", "update", "-qq"],
     check=True,
@@ -23,79 +27,108 @@ subprocess.run(
     stdout=subprocess.DEVNULL
 )
 
-# 公式データを取得
-print("公式競走成績を取得中", flush=True)
-response = requests.get(url, timeout=60)
-response.raise_for_status()
-
-archive = Path("/tmp/boat_result.lzh")
-archive.write_bytes(response.content)
-
-# 解凍して日本語テキストにする
-result = subprocess.run(
-    ["lha", "-pq2", str(archive)],
-    capture_output=True,
-    check=True
-)
-
-text = result.stdout.decode("cp932", errors="replace")
-
-# 2連単の払戻表から結果を抽出
-# 3連単→3連複→2連単の順に並んでいる
-pattern = re.compile(
+# 以前成功した払戻表の抽出式
+PATTERN = re.compile(
     r"^\s*(\d{1,2})R\s+"
     r"([1-6]-[1-6]-[1-6])\s+[\d,]+\s+"
     r"[1-6]-[1-6]-[1-6]\s+[\d,]+\s+"
     r"([1-6]-[1-6])\s+([\d,]+)"
 )
 
-total = 0
-hits = 0
-payouts = []
+stats_venue = defaultdict(lambda: [0, 0])
+stats_race = defaultdict(lambda: [0, 0])
 
-print("\n取得したレースの一部:")
+for date in DATES:
+    url = (
+        "https://www1.mbrace.or.jp/od2/"
+        f"K/{date[:6]}/k{date[2:]}.lzh"
+    )
 
-for line in text.splitlines():
-    match = pattern.search(line)
-    if not match:
-        continue
+    print(f"\n【{date}】", flush=True)
 
-    race, result3, result12, payout = match.groups()
-    payout = int(payout.replace(",", ""))
+    response = requests.get(url, timeout=60)
+    response.raise_for_status()
 
-    total += 1
+    archive = Path("/tmp/boat_result.lzh")
+    archive.write_bytes(response.content)
 
-    if result12 == "1-2":
-        hits += 1
-        payouts.append(payout)
+    result = subprocess.run(
+        ["lha", "-pq2", str(archive)],
+        capture_output=True,
+        check=True
+    )
 
-    if total <= 15:
-        print(
-            f"{race}R / 2連単 {result12} / "
-            f"{payout}円"
-        )
+    text = result.stdout.decode("cp932", errors="replace")
 
-print("\n===== 集計結果 =====")
-print("対象日:", date)
-print("集計できたレース:", total)
-print("1-2決着:", hits)
+    venue = None
+    counted = 0
+    unknown = 0
+
+    for line in text.splitlines():
+        # 空白を除いて競艇場を判定
+        compact = re.sub(r"\s+", "", line)
+
+        if "ボートレース" in compact:
+            after = compact.split("ボートレース", 1)[1]
+            matched_venues = [
+                v for v in VENUES if after.startswith(v)
+            ]
+            if matched_venues:
+                venue = matched_venues[0]
+
+        match = PATTERN.search(line)
+        if not match:
+            continue
+
+        race, result3, result12, payout = match.groups()
+        race = int(race)
+
+        # 競艇場が不明なレースは場別集計から除外
+        if venue is None:
+            unknown += 1
+            continue
+
+        hit = int(result12 == "1-2")
+
+        stats_venue[venue][0] += 1
+        stats_venue[venue][1] += hit
+
+        stats_race[race][0] += 1
+        stats_race[race][1] += hit
+
+        counted += 1
+
+    print("集計できたレース:", counted)
+    print("競艇場不明:", unknown)
+
+print("\n===== 競艇場別 =====")
+
+for venue, (total, hits) in sorted(
+    stats_venue.items(),
+    key=lambda item: item[1][1] / item[1][0],
+    reverse=True
+):
+    print(
+        f"{venue}: {hits}/{total} "
+        f"({hits / total * 100:.2f}%)"
+    )
+
+print("\n===== レース番号別 =====")
+
+for race, (total, hits) in sorted(stats_race.items()):
+    print(
+        f"{race}R: {hits}/{total} "
+        f"({hits / total * 100:.2f}%)"
+    )
+
+total = sum(v[0] for v in stats_venue.values())
+hits = sum(v[1] for v in stats_venue.values())
+
+print("\n===== 全体 =====")
+print("集計レース数:", total)
+print("1-2決着数:", hits)
 
 if total:
-    print(
-        "1-2出現率:",
-        f"{hits / total * 100:.2f}%"
-    )
+    print("1-2出現率:", f"{hits / total * 100:.2f}%")
 
-if payouts:
-    print(
-        "1-2平均払戻金:",
-        f"{sum(payouts) / len(payouts):.0f}円"
-    )
-
-if total < 50:
-    print(
-        "注意: 抽出数が少ないため、"
-        "払戻表の形式を再確認してください"
-    )
-
-print("集計テスト完了")
+print("分析テスト完了")
