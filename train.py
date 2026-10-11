@@ -9,8 +9,7 @@ url = (
     "K/202110/k211010.lzh"
 )
 
-print("LZH解凍ツールを準備中", flush=True)
-
+# 解凍ツールを準備
 subprocess.run(
     ["sudo", "apt-get", "update", "-qq"],
     check=True
@@ -20,27 +19,30 @@ subprocess.run(
     check=True
 )
 
-print("公式データをダウンロード中", flush=True)
-
+# ダウンロード
+print("公式データを取得中", flush=True)
 response = requests.get(url, timeout=60)
 response.raise_for_status()
 
-file = Path("/tmp/boat_result.lzh")
-file.write_bytes(response.content)
+archive = Path("/tmp/boat_result.lzh")
+archive.write_bytes(response.content)
 
-print("取得成功:", len(response.content), "バイト")
-print("ファイル内の一覧:")
-
-subprocess.run(
-    ["lha", "-l", str(file)],
+# LZHの中にあるテキストを取り出す
+result = subprocess.run(
+    ["lha", "-pq2", str(archive)],
+    capture_output=True,
     check=True
 )
 
-print("圧縮ファイルの検査:")
+text = result.stdout.decode("cp932", errors="replace")
+lines = text.splitlines()
 
-subprocess.run(
-    ["lha", "-t", str(file)],
-    check=True
-)
+print("解凍成功！")
+print("テキストの行数:", len(lines))
+print("----- 内容の先頭60行 -----")
 
+for i, line in enumerate(lines[:60], 1):
+    print(f"{i:03d}: {line}")
+
+print("----- 表示終了 -----")
 print("テスト完了")
