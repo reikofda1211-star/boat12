@@ -45,7 +45,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for f in history/training.csv history/model.joblib history/model_report.json model-preview.html; do
+          for f in history/training.csv history/model.joblib history/model_report.json history/model_v2.joblib history/model_v2_report.json model-preview.html; do
+
             if [ -f "$f" ]; then git add -f "$f"; fi
           done
           if ! git diff --cached --quiet; then
