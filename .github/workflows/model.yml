@@ -42,6 +42,10 @@ jobs:
       - name: Validate improved model
         run: python model_v2.py
 
+      - name: Generate v2 ranking
+        run: python predict_v2.py
+
+
       - name: Save model and training data
         if: always()
         run: |
@@ -49,7 +53,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
             
-          for f in history/training.csv history/model.joblib history/model_report.json history/model_v2.joblib history/model_v2_report.json model-preview.html; do
+          
+          for f in history/training.csv history/model.joblib history/model_report.json history/model_v2.joblib history/model_v2_report.json model-preview.html v2-preview.html; do
+
             if [ -f "$f" ]; then
               git add -f "$f"
             fi
