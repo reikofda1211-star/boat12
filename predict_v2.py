@@ -49,7 +49,9 @@ def main():
     if not report.get('improved_over_baseline') or not MODEL.exists():
         publish(day, report, 'モデルの精度検証が完了していないため、予測を表示していません。', [])
         return
-    url = 'https://boatracecsv.github.io/data/programs/race_cards/'+day.replace('-','/')+'.csv'
+    
+    url = 'https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/programs/race_cards/'+day.replace('-','/')+'.csv'
+
     try:
         response = requests.get(url, timeout=30)
         response.raise_for_status()
