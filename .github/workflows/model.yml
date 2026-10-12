@@ -37,6 +37,9 @@ jobs:
       - name: Build training data and model
         run: python model_pipeline.py --days 30
 
+      - name: Validate improved model
+        run: python model_v2.py
+
       - name: Save model and training data
         if: always()
         run: |
