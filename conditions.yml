@@ -1,0 +1,85 @@
+# Save as .github/workflows/conditions.yml, not at repository root.
+# Upload conditions.py and conditions.html to the repository root first.
+# Initial manual run: history_days=90. Display-only refresh: history_days=0.
+# Existing main/model/refresh_v2 workflows and stored data are not modified.
+
+name: Conditions Update
+
+on:
+  workflow_dispatch:
+    inputs:
+      history_days:
+        description: '初回は90。通常更新だけなら0（日次学習は自動）'
+        type: number
+        default: 90
+        required: true
+  schedule:
+    # JST 08:02-22:57, about every 5 minutes. Timing is NOT guaranteed.
+    - cron: '2-57/5 0-13,23 * * *'
+    # JST 06:17: collect up to 30 new historical days and train.
+    - cron: '17 21 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: boat12-conditions
+  cancel-in-progress: false
+
+jobs:
+  conditions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: .github/workflows/conditions.yml
+      - name: Install tested dependencies
+        run: >-
+          python -m pip install
+          requests==2.32.5 pandas==2.2.3 numpy==2.3.5
+          scikit-learn==1.8.0 joblib==1.5.3
+      - name: Offline safety tests
+        run: python conditions.py --self-test
+      - name: Collect, validate and update
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
+          HISTORY_DAYS: ${{ inputs.history_days }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            if [ "$HISTORY_DAYS" = "0" ]; then
+              python -u conditions.py
+            else
+              python -u conditions.py --history-days "$HISTORY_DAYS" --train
+            fi
+          elif [ "$EVENT_SCHEDULE" = "17 21 * * *" ]; then
+            python -u conditions.py --history-days 30 --train
+          else
+            python -u conditions.py
+          fi
+      - name: Save only conditions data
+        if: ${{ always() && !cancelled() }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d history/conditions ]; then git add -f history/conditions; fi
+          if [ -f conditions.json ]; then git add -f conditions.json; fi
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Update weather and exhibition research data"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main || exit 1
+            if git push origin HEAD:main; then exit 0; fi
+            sleep 5
+          done
+          exit 1
