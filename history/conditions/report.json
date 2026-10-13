@@ -1,0 +1,144 @@
+{
+  "version": "conditions-1.0",
+  "generated_at": "2026-10-13T22:53:03.913188+09:00",
+  "labelled_records": 13660,
+  "data_sha256": "a24e7980009e3a93cbed8a3460c3143e5e831d5eff0fdd946ac2d414b1c7f13d",
+  "source": "BoatraceCSV per-source pre-deadline timestamps",
+  "scopes": {
+    "normal": {
+      "status": "held_back",
+      "rows": 11451,
+      "days": 90,
+      "probabilities_enabled": false,
+      "period_start": "2026-07-15",
+      "period_end": "2026-10-12",
+      "train_rows": 6990,
+      "calibration_rows": 2177,
+      "test_rows": 2284,
+      "train_end": "2026-09-06",
+      "calibration_start": "2026-09-07",
+      "test_start": "2026-09-25",
+      "brier_base": 0.14399668566797272,
+      "brier_conditions": 0.14293933872603048,
+      "brier_constant": 0.14868504820892697,
+      "logloss_base": 0.45871028071953945,
+      "logloss_conditions": 0.45686946882162205,
+      "auc": 0.6459765224622407,
+      "brier_gain_day_bootstrap_95ci": [
+        -0.00016032620953014125,
+        0.0022975240175405736
+      ],
+      "calibration_ece": 0.01945915267468869,
+      "calibration_bins": [
+        {
+          "lower": 0.0,
+          "n": 618,
+          "predicted": 0.06686569136921557,
+          "observed": 0.10194174757281553
+        },
+        {
+          "lower": 0.1,
+          "n": 915,
+          "predicted": 0.14744009212394943,
+          "observed": 0.15737704918032788
+        },
+        {
+          "lower": 0.2,
+          "n": 479,
+          "predicted": 0.24455950092634512,
+          "observed": 0.24425887265135698
+        },
+        {
+          "lower": 0.3,
+          "n": 192,
+          "predicted": 0.34212653772687723,
+          "observed": 0.3020833333333333
+        },
+        {
+          "lower": 0.4,
+          "n": 67,
+          "predicted": 0.43916133330020757,
+          "observed": 0.40298507462686567
+        },
+        {
+          "lower": 0.5,
+          "n": 10,
+          "predicted": 0.5278053166739777,
+          "observed": 0.3
+        },
+        {
+          "lower": 0.6,
+          "n": 3,
+          "predicted": 0.6195908055185118,
+          "observed": 1.0
+        }
+      ],
+      "gate": "same test races; improvement over base + constant, day-block CI lower>0, ECE<=0.05"
+    },
+    "original": {
+      "status": "held_back",
+      "rows": 10676,
+      "days": 90,
+      "probabilities_enabled": false,
+      "period_start": "2026-07-15",
+      "period_end": "2026-10-12",
+      "train_rows": 6517,
+      "calibration_rows": 2028,
+      "test_rows": 2131,
+      "train_end": "2026-09-06",
+      "calibration_start": "2026-09-07",
+      "test_start": "2026-09-25",
+      "brier_base": 0.14173002674233906,
+      "brier_conditions": 0.1403329794535058,
+      "brier_constant": 0.14715339962125107,
+      "logloss_base": 0.4525406455874436,
+      "logloss_conditions": 0.4481707358212386,
+      "auc": 0.6594972744335581,
+      "brier_gain_day_bootstrap_95ci": [
+        -0.00013885901305623805,
+        0.0029739675073057097
+      ],
+      "calibration_ece": 0.025626124999762093,
+      "calibration_bins": [
+        {
+          "lower": 0.0,
+          "n": 531,
+          "predicted": 0.06806835099087546,
+          "observed": 0.09792843691148775
+        },
+        {
+          "lower": 0.1,
+          "n": 875,
+          "predicted": 0.1465854834822141,
+          "observed": 0.13714285714285715
+        },
+        {
+          "lower": 0.2,
+          "n": 458,
+          "predicted": 0.2419387449381768,
+          "observed": 0.27510917030567683
+        },
+        {
+          "lower": 0.3,
+          "n": 199,
+          "predicted": 0.33706864174537093,
+          "observed": 0.2964824120603015
+        },
+        {
+          "lower": 0.4,
+          "n": 58,
+          "predicted": 0.4411275023351518,
+          "observed": 0.3275862068965517
+        },
+        {
+          "lower": 0.5,
+          "n": 10,
+          "predicted": 0.5362840957372074,
+          "observed": 0.6
+        }
+      ],
+      "gate": "same test races; improvement over base + constant, day-block CI lower>0, ECE<=0.05"
+    }
+  },
+  "warning": "提供元の取得日時に基づく過去検証。ファイルの公開時刻・実際の締切前到達を保証せず、的中率や利益も保証しません。"
+}
