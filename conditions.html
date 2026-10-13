@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>風・展示データ｜boat12 実験版</title>
+<style>
+:root{color-scheme:dark;--bg:#0d1422;--panel:#162235;--border:#2e3c50;--text:#edf3fb;--muted:#a7b8cf;--accent:#8dded0;--warn:#ffdc93}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 system-ui,-apple-system,sans-serif}main{max-width:940px;margin:auto;padding:28px 18px 60px}a{color:var(--accent)}.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent)}h1{font-size:clamp(25px,5vw,34px);line-height:1.3;margin:10px 0 12px}h2{font-size:18px;margin:0}.sub,.muted{color:var(--muted)}.sub{max-width:720px;margin:0 0 20px}.banner{padding:15px 17px;border:1px solid var(--border);border-radius:12px;background:var(--panel);margin:14px 0}.warn{border-color:#77633f;color:var(--warn)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metrics>div{padding:14px;background:var(--panel);border-radius:10px}.metrics small{display:block;color:var(--muted)}.metrics strong{font-size:21px}.toolbar{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:20px 0}select,button{font:inherit;border:1px solid var(--border);background:var(--panel);color:var(--text);padding:9px 12px;border-radius:8px}button{cursor:pointer}.toolbar label{display:flex;align-items:center;gap:6px}.race{border:1px solid var(--border);background:var(--panel);border-radius:14px;margin:16px 0;padding:18px}.head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.pill{display:inline-block;font-size:12px;padding:3px 8px;background:#29354a;border-radius:5px;color:var(--muted);margin:6px 0}.live{background:#1c493f;color:#a3edda}.prob{font-size:30px;line-height:1.2;color:var(--accent);font-weight:700;text-align:right}.prob small{font-size:12px;display:block;max-width:230px;line-height:1.5;color:var(--muted);font-weight:400;margin-top:6px}.conditions{display:flex;flex-wrap:wrap;gap:8px 20px;margin:14px 0 6px}.conditions b{font-size:17px}.source{font-size:12px;color:var(--muted);margin:8px 0}.scroll{overflow-x:auto;margin:14px 0 6px}table{width:100%;border-collapse:collapse;font-size:13px;white-space:nowrap}th,td{border-bottom:1px solid var(--border);padding:8px 10px;text-align:right}th{font-weight:500;color:var(--muted)}th:nth-child(2),td:nth-child(2){text-align:left}td:first-child{text-align:center;font-weight:600}summary{cursor:pointer;color:var(--muted)}details{margin-top:12px}pre{white-space:pre-wrap;font:12px/1.7 ui-monospace,monospace;color:var(--muted)}.footer{margin-top:28px;font-size:13px;color:var(--muted)}.empty{padding:32px 16px;text-align:center;border:1px dashed var(--border);border-radius:12px}.hide{display:none}@media(max-width:480px){main{padding-top:20px}.metrics{gap:6px}.metrics>div{padding:10px}.metrics strong{font-size:17px}.race{padding:14px}.prob{font-size:25px}.head{gap:8px}th,td{padding:8px 7px}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">BOAT12 / CONDITIONS LAB</div>
+<h1>風・展示を確認する直前版</h1>
+<p class="sub">出走表だけの事前モデルと、風・展示を加えたモデルを別期間で比較。検証を通過していない場合、数値は表示しても確率には反映しません。</p>
+<div id="status" class="banner">データを読み込んでいます。</div>
+<div class="metrics"><div><small>対象日</small><strong id="day">—</strong></div><div><small>掲載レース</small><strong id="count">—</strong></div><div><small>有効な直前推定</small><strong id="predicted">—</strong></div></div>
+<div class="source" id="updated"></div>
+<div class="banner warn">提供元の直前データは基本的に締切約5分前の記録です。配信・GitHubの実行・キャッシュの遅れにより、締切前に届かないことがあります。確率は実験値です。</div>
+<div class="toolbar"><select id="venue" aria-label="競艇場で絞り込む"><option value="">全場</option></select><label><input type="checkbox" id="closed">締切済みも確認</label><button id="reload" type="button">再読込</button></div>
+<div id="races"></div>
+<details class="banner"><summary>モデルの検証結果・データの状態</summary><div id="report"></div></details>
+<p class="footer">「オリジナルなし」は、風・通常展示・展示STを使うモデルです。一周と半周ラップは別項目にし、オリジナル展示は同じレース内の差で比較しています。風向コードを根拠なく向かい風・追い風とは読み替えていません。参考データの表示は因果的な予測理由ではありません。</p>
+<p class="footer">締切予定・展示の最終確認は公式情報で行ってください。的中・利益・更新時刻を保証するものではありません。</p>
+<p><a href="v2-preview.html">出走表ベースの事前版に戻る</a></p>
+</main>
+<script>
+'use strict';
+// This public JSON contains no credentials. Its updates do not require a Pages rebuild.
+const REPOSITORY = 'reikofda1211-star/boat12';
+const JSON_URL = 'https://raw.githubusercontent.com/'+REPOSITORY+'/main/conditions.json';
+const el = id => document.getElementById(id);
+const esc = value => String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const value = (v,d=2) => v === null || v === undefined || !Number.isFinite(Number(v)) ? '—' : Number(v).toFixed(d);
+const ms = t => t ? Date.parse(t) : NaN;
+const jstDay = () => new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+const hhmm = t => Number.isFinite(ms(t)) ? new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit'}).format(new Date(t)) : '不明';
+const stamp = t => Number.isFinite(ms(t)) ? new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(t)) : '不明';
+let data = null;
+function live(r){return data && data.date===jstDay() && Date.now()<ms(r.expires_at) && Date.now()<ms(r.cutoff)-30000 && typeof r.probability==='number' && Number.isFinite(r.probability) && r.probability>=0 && r.probability<=1;}
+function render(){
+ if(!data)return;
+ const staleDay = data.date!==jstDay();
+ const staleRun = !Number.isFinite(ms(data.generated_at)) || Date.now()-ms(data.generated_at)>12*60*1000;
+ const all = Array.isArray(data.races)?data.races:[];
+ el('day').textContent=data.date||'不明'; el('count').textContent=all.length+'件';el('predicted').textContent=all.filter(live).length+'件';
+ el('updated').textContent='最終生成：'+stamp(data.generated_at)+' JST。画面は60秒ごとに再取得します（配信の最新性は保証しません）。';
+ el('status').className='banner'+((staleDay||staleRun||data.status!=='ok')?' warn':'');
+ el('status').textContent=staleDay?'今日のデータではありません。確率を非表示にしています。':staleRun?'最終生成から12分以上経過しています。古い確率は表示しません。':data.message||'風・展示データを表示中。締切や有効期限を過ぎた確率は自動で非表示になります。';
+ let selected=el('venue').value;
+ let rows=all.filter(r=>(!selected||r.venue===selected)&&(el('closed').checked||(!r.cancelled&&r.state!=='締切済み'&&(!Number.isFinite(ms(r.cutoff))||Date.now()<ms(r.cutoff)))));
+ rows.sort((a,b)=>(Number(live(b))-Number(live(a)))||(live(a)&&live(b)?b.probability-a.probability:0)||((ms(a.cutoff)||Infinity)-(ms(b.cutoff)||Infinity))||a.code.localeCompare(b.code));
+ el('races').innerHTML=rows.length?rows.map(r=>{
+   const ok=live(r)&&!staleRun;const w=r.weather||{};const labels={lap:'一周',half_lap:'半周ラップ',turn:'まわり足',straight:'直線'};
+   const kinds=(r.original_kinds||[]).filter(k=>Object.hasOwn(labels,k));
+   const state = ok?'直前推定・実験値':(r.probability!==null&&r.probability!==undefined?'有効期限外・確率非表示':r.state);
+   const subtitle=ok?(r.probability_scope==='original'?'風・通常展示・オリジナル反映':'風・通常展示反映／オリジナルは未反映'):'条件の検証・取得がそろうまで非表示';
+   const tbody=(r.players||[]).map(p=>'<tr><td>'+esc(p.boat)+'</td><td>'+esc(p.name)+'</td><td>'+value(p.exhibition)+'</td><td>'+value(p.exhibition_st)+'</td><td>'+value(p.course,0)+'</td>'+kinds.map(k=>'<td>'+value((p.original||{})[k])+'</td>').join('')+'</tr>').join('');
+   return '<article class="race"><div class="head"><div><h2>'+esc(r.venue)+' '+esc(r.race)+'R</h2><span class="pill'+(ok?' live':'')+'">'+esc(state)+'</span><div class="source">締切予定 '+hhmm(r.cutoff)+'</div></div><div class="prob">'+(ok?value(r.probability*100,1)+'%':'—')+'<small>'+esc(subtitle)+'</small></div></div>'+
+   '<div class="conditions"><span>風速 <b>'+value(w.wind_speed,1)+'</b> m/s</span><span>波高 <b>'+value(w.wave_cm,0)+'</b> cm</span><span>風向コード '+esc(w.wind_direction_code??'—')+'</span></div>'+
+   '<div class="source">気象観測 '+hhmm(w.observed_at)+'／提供元の直前記録 '+hhmm(r.basic_available)+(r.original_available?'／オリジナル '+hhmm(r.original_available):'')+'</div>'+
+   (ok?'<div class="source">同じ条件で検証した出走表のみのモデル：'+value(r.base_probability*100,1)+'%。従来v2と同一モデルではありません。</div>':'')+
+   '<div class="scroll"><table><thead><tr><th>艇</th><th>選手</th><th>通常展示(秒)</th><th>展示ST(秒)</th><th>展示進入</th>'+kinds.map(k=>'<th>'+labels[k]+'(秒)</th>').join('')+'</tr></thead><tbody>'+tbody+'</tbody></table></div>'+
+   (!r.original_ready?'<div class="source">オリジナル展示：'+(r.venue_code==='03'?'江戸川は提供なし':'未取得・未公表・照合不一致のいずれか。0秒では扱いません。')+'</div>':'')+
+   '<details><summary>データ確認情報</summary><pre>'+esc((r.issues||[]).join('\n')||'締切前のタイムスタンプ・6艇の対応を確認')+'</pre></details></article>';
+ }).join(''):'<div class="empty">この条件に合うレースがありません。公開前・締切後の場合もあります。</div>';
+ const scopes=(data.report||{}).scopes||{};
+ el('report').innerHTML=['normal','original'].map(k=>{
+  const s=scopes[k]||{};return '<h3>'+(k==='normal'?'風・通常展示モデル':'風・通常展示＋オリジナルモデル')+'</h3><p class="muted">'+esc(s.status||'未学習')+'／'+esc(s.days||0)+'日・'+esc(s.rows||0)+'レース<br>期間 '+esc(s.period_start||'—')+'〜'+esc(s.period_end||'—')+'</p>'+(s.brier_conditions!==undefined?'<p class="muted">未使用期間のBrier（小さいほど誤差が小さい）<br>出走表のみ '+value(s.brier_base,5)+' → 条件追加 '+value(s.brier_conditions,5)+'<br>検証開始 '+esc(s.test_start)+'／検証 '+esc(s.test_rows)+'レース</p>':'');
+ }).join('')+'<p class="muted">過去検証が良くても、将来の確率の正確さや利益を保証しません。サイトで締切前に生成できた予測は別に記録します。</p><details><summary>取得元とエラー</summary><pre>'+esc(JSON.stringify(data.sources||{},null,2))+'</pre></details>';
+}
+async function refresh(){
+ el('reload').disabled=true;
+ try{
+  const response=await fetch(JSON_URL+'?minute='+Math.floor(Date.now()/60000),{cache:'no-store'});
+  if(!response.ok)throw new Error('HTTP '+response.status);
+  const next=await response.json();
+  if(next.version!=='conditions-1.0'||!Array.isArray(next.races))throw new Error('未対応のデータ形式');
+  data=next;const old=el('venue').value;const names=[...new Set(data.races.map(r=>r.venue))].sort();
+  el('venue').innerHTML='<option value="">全場</option>'+names.map(n=>'<option value="'+esc(n)+'">'+esc(n)+'</option>').join('');el('venue').value=names.includes(old)?old:'';
+  render();
+ }catch(error){
+  // Never leave a stale numeric forecast visible after a download failure.
+  if(data){data.status='download_failed';data.message='最新データを取得できません。確率を非表示にしています。';data.races=data.races.map(r=>({...r,probability:null,base_probability:null}));render();}
+  el('status').className='banner warn';el('status').textContent='最新データを取得できません（'+error.message+'）。初回はActionsで Conditions Update を実行してください。確率は非表示です。';
+ }finally{el('reload').disabled=false;}
+}
+el('reload').addEventListener('click',refresh);el('venue').addEventListener('change',render);el('closed').addEventListener('change',render);
+refresh();setInterval(refresh,60000);setInterval(render,15000);
+</script>
+</body></html>
