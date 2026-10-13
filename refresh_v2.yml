@@ -1,0 +1,47 @@
+
+name: Refresh V2 Ranking
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 1,2,3 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: boat-v2-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install libraries
+        run: pip install -r requirements.txt joblib
+
+      - name: Generate latest ranking
+        run: python predict_v2.py
+
+      - name: Save ranking
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add v2-preview.html
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh v2 ranking"
+            git pull --rebase origin main
+            git push origin main
+          fi
