@@ -1,36 +1,56 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="BOAT12が締切前に保存した1-2予測と、確定レース結果を照合する当日集計。結果待ちを分母から除外し、更新時刻を表示します。"><title>本日の1-2候補成績 | BOAT12</title>
-<style>:root{color-scheme:dark;--bg:#0b1320;--panel:#152132;--line:#30435c;--ink:#eef3fb;--muted:#b4c3d5;--mint:#98dfd4;--warm:#e9d3a0}*{box-sizing:border-box}body{background:var(--bg);color:var(--ink);margin:0;font:15px/1.6 system-ui,-apple-system,sans-serif}main{max-width:850px;margin:auto;padding:22px 16px 70px}a{color:var(--mint)}h1{font-size:28px;line-height:1.3;margin:7px 0}h2{font-size:18px;margin:0 0 9px}.muted{color:var(--muted)}.small{font-size:12px}.eyebrow{color:var(--mint);font-size:12px;letter-spacing:.13em}nav{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 25px}.panel{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:13px;margin:14px 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{background:var(--panel);padding:14px 11px;border-radius:10px;border:1px solid var(--line)}.stat b{display:block;font-size:25px;line-height:1.4}.stat small{color:var(--muted);font-size:11px}.controls{display:flex;gap:13px;align-items:end;flex-wrap:wrap}label{font-size:12px;color:var(--muted);display:block}select,button{background:#101c2c;color:var(--ink);border:1px solid var(--line);font:inherit;padding:10px;border-radius:8px;min-height:44px}button{cursor:pointer}.controls label{flex:1;min-width:170px}.controls select{display:block;width:100%}.card{border:1px solid var(--line);padding:12px 14px;border-radius:11px;margin:10px 0}.top{display:flex;justify-content:space-between;gap:9px;align-items:center}.prob{font-size:23px;font-weight:700;color:var(--warm)}.chip{font-size:12px;border:1px solid var(--line);padding:3px 8px;border-radius:7px}.good{color:var(--mint)}.bad{color:var(--warm)}#status{min-height:25px}.alert{color:var(--warm)}@media(max-width:440px){main{padding:16px 12px 52px}.stats{gap:6px}.stat b{font-size:22px}.stat{padding:12px 8px}.top{align-items:flex-start}}
-</style></head><body><main><div class="eyebrow">BOAT12 / PERFORMANCE LOG</div><h1>本日の1-2候補成績</h1><p class="muted">締切前に保存した予測だけを、結果確定後に照合。未検証の推定確率であり、収益や的中を保証するものではありません。</p><nav><a href="dashboard.html">リアルタイム予測</a><a href="history.html">過去の予測履歴</a></nav>
-<div class="panel"><div class="controls"><label>1-2候補とする最低推定確率<select id="threshold"><option value="0.2">20%以上</option><option value="0.3" selected>30%以上</option><option value="0.4">40%以上</option><option value="0.5">50%以上</option></select></label><button id="refresh">最新の集計を確認</button></div><p class="small muted">閾値を変えると候補の定義・的中率も変わります。候補数が少ない場合の割合は特に不安定です。結果未確定は的中にも不的中にも数えません。</p></div>
-<div class="stats"><div class="stat"><small>候補の確定結果</small><b id="confirmed">—</b></div><div class="stat"><small>1-2決着</small><b id="hits">—</b></div><div class="stat"><small>候補の1-2決着率</small><b id="rate">—</b></div></div>
-<div id="status" class="panel" role="status" aria-live="polite">保存データを読み込んでいます。</div><div class="panel"><h2>レース別の照合結果</h2><p class="small muted">この一覧は候補となったレースのみ。予測値は、そのレースの締切前に保存された最新値です。</p><div id="rows"></div></div><p class="small muted">出典：BOAT12の保存予測ログ、BoatraceCSVの準リアルタイム結果（通常、締切後数分〜数十分で掲載）。実績は予測モデルの優位性の証明ではありません。確定結果の到着が遅れる場合があります。約30秒ごとに最新の保存集計を確認します。</p></main>
-<script>
+<html lang="ja"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="BOAT12の締切前保存予測を、実際の1-2決着と照合する透明性の高い成績公開。7日・30日・累計・推定確率帯別に、件数と結果待ちを分けて検証。">
+<title>1-2予測の検証｜7日・30日・累計｜BOAT12</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1320;--panel:#172437;--sub:#101c2d;--line:#30435b;--text:#f2f6fb;--muted:#b7c8d9;--mint:#99dfd4;--amber:#e9d3a0}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--text);margin:0;font:15px/1.6 system-ui,-apple-system,sans-serif}main{max-width:930px;margin:auto;padding:22px 15px 70px}a{color:var(--mint)}h1{font-size:clamp(24px,5vw,32px);line-height:1.3;margin:6px 0 9px}h2{font-size:19px;margin:0 0 9px}.muted{color:var(--muted)}.small{font-size:12px}.eyebrow{color:var(--mint);letter-spacing:.12em;font-size:12px}nav{display:flex;gap:16px;flex-wrap:wrap;margin:15px 0 22px}.panel{padding:15px;border:1px solid var(--line);border-radius:13px;background:var(--panel);margin:13px 0}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.tabs button{flex:1;min-width:75px}button,select{border:1px solid var(--line);background:var(--sub);color:var(--text);padding:9px 11px;border-radius:9px;min-height:44px;font:inherit}button{cursor:pointer}button.active{border-color:var(--mint);color:var(--mint);background:#193b43}.controls{display:flex;align-items:end;gap:12px;flex-wrap:wrap}.controls label{flex:1;min-width:145px;font-size:12px;color:var(--muted)}.controls select{display:block;width:100%}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:13px 0}.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 9px}.stat small{font-size:11px;color:var(--muted);display:block}.stat strong{font-size:clamp(19px,5vw,27px);font-variant-numeric:tabular-nums}.warning{color:var(--amber)}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:570px;font-size:13px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}th:first-child,td:first-child{text-align:left}th{color:var(--muted);font-weight:600}tbody tr:last-child td{border-bottom:none}.bar{width:105px;height:6px;background:#304255;border-radius:7px;display:inline-block;margin-left:8px;vertical-align:middle;overflow:hidden}.bar i{display:block;background:var(--mint);height:100%}.cards{display:grid;gap:9px}.card{background:var(--sub);border:1px solid var(--line);border-radius:10px;padding:12px}.card-head{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}.chip{font-size:11px;border:1px solid var(--line);border-radius:7px;padding:3px 8px}.good{color:var(--mint)}.bad{color:var(--amber)}.dim{color:var(--muted)}#status{min-height:48px} .explain{font-size:13px;line-height:1.8} @media(max-width:480px){main{padding:16px 12px 60px}.stat{padding:10px 7px}.tabs{gap:5px}}
+</style></head><body><main>
+<div class="eyebrow">BOAT12 / FORECAST AUDIT</div>
+<h1>1-2予測の成績・精度検証</h1>
+<p class="muted">レース締切<strong>前</strong>に保存された実験的な1-2予測を、公開結果と照合しています。予測の変更や、未確定レースを不的中に数えることはありません。</p>
+<nav><a href="dashboard.html">直前予測へ</a><a href="history.html">予測履歴へ</a></nav>
+<section class="panel"><h2>集計期間</h2><div class="tabs" role="group" aria-label="集計期間">
+<button type="button" data-period="1" class="active" aria-pressed="true">今日</button>
+<button type="button" data-period="7" aria-pressed="false">7日</button>
+<button type="button" data-period="30" aria-pressed="false">30日</button>
+<button type="button" data-period="all" aria-pressed="false">累計</button>
+</div><div class="controls"><label>1-2候補とする最低推定確率<select id="threshold"><option value="0">すべての予測</option><option value="0.2">20%以上</option><option value="0.3" selected>30%以上</option><option value="0.4">40%以上</option><option value="0.5">50%以上</option></select></label><button type="button" id="refresh">最新データを確認</button></div><p class="small muted">期間は日本時間・当日を含む暦日で集計。「累計」はBOAT12が実際に保存した予測ログが存在する範囲です。</p></section>
+<div id="status" class="panel" role="status" aria-live="polite">集計データを確認しています…</div>
+<section aria-label="候補の決着成績"><div class="stats">
+<div class="stat"><small>結果確定 / 候補数</small><strong id="confirmed">—</strong></div>
+<div class="stat"><small>1-2決着数</small><strong id="hits">—</strong></div>
+<div class="stat"><small>1-2決着率</small><strong id="rate">—</strong></div>
+</div><p id="detail" class="small muted"></p></section>
+<section class="panel"><h2>推定確率帯別の実績</h2><p class="small muted">下表は候補閾値に関係なく、期間内の<strong>すべての保存予測</strong>を10％刻みで集計。平均推定％と実際の1-2決着率を比べます。「—」は結果が未確定、または確定数0件です。</p><div class="table-wrap"><table><thead><tr><th>予測確率</th><th>確定/全件</th><th>平均予測</th><th>実際の1-2率</th><th>差（実績−予測）</th></tr></thead><tbody id="bands"></tbody></table></div><p class="small muted">少数件では差が大きく出ます。予測％の信頼性を見るには、確定数が十分増えるまで継続検証が必要です。</p></section>
+<section class="panel"><h2>レース別の結果</h2><p class="small muted">選択した期間・閾値の候補を新しい予測から順に表示（最大100件）。履歴が少ない場合も隠さず表示します。</p><div id="rows" class="cards"></div></section>
+<section class="panel explain"><h2>集計方法と注意点</h2><p>1レースにつき締切前に保存した<strong>最新の1-2予測</strong>を1件として扱います。締切後の再計算値、ログのないレース、結果未確定のレースは的中数の分母に入りません。推定確率帯別の平均値も結果確定済み予測から計算します。</p><p>本サイトの数値は検証基準を満たしていない実験的な推定値です。1-2決着率は舟券の回収率や利益ではありません。結果反映には取得元とGitHub自動実行による遅延があり得ます。出典：BOAT12保存予測ログ／BoatraceCSV公開結果。</p></section>
+</main><script>
 'use strict';
-const $=id=>document.getElementById(id);let DATA=null;let busy=false;
-const text=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
-const jstDay=()=>new Date(Date.now()+9*3600000).toISOString().slice(0,10);
-const dateTime=s=>{let d=new Date(s);return Number.isNaN(d.valueOf())?'不明':new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).format(d)};
-function render(){
- if(!DATA)return;
- let cut=Number($('threshold').value);
- const all=Array.isArray(DATA.records)?DATA.records:[];
- const list=all.filter(r=>typeof r.probability==='number'&&r.probability>=cut).sort((a,b)=>b.probability-a.probability);
- const done=list.filter(r=>r.result_status==='confirmed'&&typeof r.hit==='boolean');
- const wins=done.filter(r=>r.hit).length;
- $('confirmed').textContent=`${done.length} / ${list.length}`;
- $('hits').textContent=String(wins);
- $('rate').textContent=done.length?`${(100*wins/done.length).toFixed(1)}%`:'—';
- $('status').innerHTML=`<b>${text(DATA.date||'日付不明')}｜集計更新 ${text(dateTime(DATA.generated_at))}</b><div class="small muted">候補 ${list.length}件 / 確定 ${done.length}件 / 結果待ち ${list.length-done.length}件</div>${DATA.status!=='ok'?`<div class="small alert">結果データの照合に遅延・取得制限があります（${text(DATA.status)}）。確定済みの保存結果は維持しています。</div>`:''}`;
- $('rows').innerHTML=list.length?list.map(r=>{
- const outcome=r.result_status==='confirmed' ? (r.hit?'<span class="chip good">1-2 的中</span>':'<span class="chip bad">1-2 以外</span>'):'<span class="chip">結果待ち</span>';
- return `<article class="card"><div class="top"><strong>${text(r.venue)} ${text(r.race)}R</strong>${outcome}</div><div class="top"><span class="prob">${(r.probability*100).toFixed(1)}%</span><span class="small muted">${r.result_status==='confirmed'?`確定: ${text(r.first)}-${text(r.second)}`:'未確定'}</span></div><div class="small muted">予測 ${text(dateTime(r.generated_at))} / 締切 ${text(dateTime(r.cutoff))}${r.result_recorded_at?` / 結果取得 ${text(dateTime(r.result_recorded_at))}`:''}</div></article>`}).join(''):'<p class="muted">この条件に該当する締切前の保存予測はありません。</p>';
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pct=p=>Number.isFinite(p)?(100*p).toFixed(1)+'%':'—';
+const jstDay=()=>new Date(Date.now()+32400000).toISOString().slice(0,10);
+const stamp=t=>{const d=new Date(t);return Number.isNaN(d.valueOf())?'不明':new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(d)};
+let DATA=null,period='1',loading=false;
+function since(n){const d=new Date(jstDay()+'T00:00:00+09:00');d.setUTCDate(d.getUTCDate()-n+1);return new Date(d.getTime()+32400000).toISOString().slice(0,10)}
+function filtered(){const all=DATA?.records??[],from=period==='all'?null:since(Number(period)),today=jstDay();return all.filter(r=>r&&typeof r.date==='string'&&r.date<=today&&(!from||r.date>=from)&&typeof r.probability==='number'&&r.probability>=0&&r.probability<=1)}
+function score(records){let confirmed=records.filter(r=>r.result_status==='confirmed'&&typeof r.hit==='boolean');let hits=confirmed.filter(r=>r.hit).length;return {n:records.length,done:confirmed.length,hits,rate:confirmed.length?hits/confirmed.length:null,confirmed};}
+function render(){if(!DATA)return;
+ const all=filtered(),cut=Number($('threshold').value),candidate=all.filter(r=>r.probability>=cut),s=score(candidate);
+ $('confirmed').textContent=`${s.done} / ${s.n}`;$('hits').textContent=String(s.hits);$('rate').textContent=pct(s.rate);
+ $('detail').textContent=`候補の結果待ち ${s.n-s.done}件 / 期間内の保存予測 ${all.length}件（未保存レースは対象外）`;
+ const first=DATA.first_recorded_date||'不明';$('status').innerHTML=`<strong>${period==='all'?'累計':period==='1'?'今日':period+'日間'}｜集計更新 ${esc(stamp(DATA.generated_at))}</strong><div class="small muted">記録開始日 ${esc(first)} / 保存記録がある日 ${esc(DATA.days_with_predictions??'不明')}日（全期間）</div><div class="small warning">実験的な推定値。確認済みの結果のみ集計。値の更新には時間差があります。</div>`;
+ const bands=[];
+ for(let i=0;i<10;i++){const lo=i/10,hi=(i+1)/10;const items=all.filter(r=>r.probability>=lo&&(i===9?r.probability<=1:r.probability<hi));const x=score(items);const avg=x.done?x.confirmed.reduce((a,r)=>a+r.probability,0)/x.done:null;const diff=x.rate===null?null:x.rate-avg;
+ bands.push(`<tr><td>${i*10}〜${(i+1)*10}%</td><td>${x.done}/${x.n}</td><td>${pct(avg)}</td><td>${pct(x.rate)}${x.rate!==null?`<span class="bar" aria-hidden="true"><i style="width:${Math.max(0,Math.min(100,x.rate*100))}%"></i></span>`:''}</td><td>${diff===null?'—':(diff>=0?'+':'')+(100*diff).toFixed(1)+'pt'}</td></tr>`)}
+ $('bands').innerHTML=bands.join('');
+ const items=candidate.slice().sort((a,b)=>String(b.generated_at).localeCompare(String(a.generated_at))).slice(0,100);
+ $('rows').innerHTML=items.length?items.map(r=>{const done=r.result_status==='confirmed';const outcome=done?(r.hit?'<span class="chip good">1-2決着</span>':'<span class="chip bad">1-2以外</span>'):'<span class="chip dim">結果待ち</span>';
+ return `<article class="card"><div class="card-head"><strong>${esc(r.date)}｜${esc(r.venue)} ${esc(r.race)}R</strong>${outcome}</div><div class="card-head"><span style="color:var(--amber);font-size:21px;font-weight:700">${pct(r.probability)}</span><span class="small muted">${done?`結果 ${esc(r.first)}-${esc(r.second)}`:'未確定'}</span></div><div class="small muted">予測 ${esc(stamp(r.generated_at))} ／ 締切 ${esc(stamp(r.cutoff))}</div></article>`}).join(''):'<p class="muted">選択期間にこの条件の保存予測はありません。</p>';
 }
-async function load(){if(busy)return;busy=true;$('refresh').disabled=true;try{
- const response=await fetch('accuracy.json?t='+Date.now(),{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);
- const json=await response.json();if(json.schema!=='boat12-accuracy-v1'||json.date!==jstDay()||!Array.isArray(json.records))throw Error('本日分の集計がまだ作成されていません');
- DATA=json;render();
- }catch(e){$('status').textContent=`集計を取得できません：${e.message}。自動更新の保存を待って、再確認してください。`;
- }finally{busy=false;$('refresh').disabled=false}}
-$('threshold').addEventListener('change',render);$('refresh').addEventListener('click',load);document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});setInterval(()=>{if(!document.hidden)load()},30000);load();
+async function load(){if(loading)return;loading=true;$('refresh').disabled=true;try{const response=await fetch('accuracy_history.json?cache='+Date.now(),{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);const value=await response.json();if(value.schema!=='boat12-accuracy-history-v2'||!Array.isArray(value.records))throw Error('集計形式を確認できません');DATA=value;render()}catch(e){$('status').textContent=`集計データの読込に失敗：${e.message}。GitHub Actionsの保存完了後に確認してください。`}finally{loading=false;$('refresh').disabled=false}}
+for(const btn of document.querySelectorAll('[data-period]'))btn.addEventListener('click',()=>{period=btn.dataset.period;for(const b of document.querySelectorAll('[data-period]')){const active=b===btn;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))}render()});
+$('threshold').addEventListener('change',render);$('refresh').addEventListener('click',load);document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});setInterval(()=>{if(!document.hidden)load()},60000);load();
 </script></body></html>
