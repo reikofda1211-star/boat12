@@ -23,7 +23,7 @@
 <div id="status" class="notice" role="status" aria-live="polite">データを確認しています。</div>
 <div class="metrics"><div class="metric"><small>今日の掲載レース</small><strong id="total">—</strong></div><div class="metric"><small>表示可能な事前値</small><strong id="bases">—</strong></div><div class="metric"><small>表示中の直前値</small><strong id="lives">—</strong></div></div>
 <div id="sources" class="source"></div>
-<div id="today-record" class="notice"><b>本日の1-2候補成績（予測30%以上）</b><p class="small" id="today-accuracy">保存済みの照合結果を確認しています。</p><a href="accuracy.html">レース別の成績を見る →</a></div>
+<div id="today-record" class="notice"><b>BOAT12の予測検証｜今日・7日・30日</b><p class="small" id="today-accuracy">保存済みの照合結果を確認しています。</p><div id="weekly-accuracy" class="small" style="margin-top:8px">7日間の成績を確認中…</div><div id="weekly-spark" style="margin:8px 0" aria-label="過去7日間の1-2決着率の推移"></div><p class="small muted">締切前の保存予測・30%以上の候補のみ。結果待ち除外。グラフは結果が確定した日だけを表示します。</p><a href="accuracy.html">日別グラフ・確率帯別の検証を見る →</a></div>
 <div id="live-health" class="notice" aria-live="polite">最新の保存データを確認しています。</div>
 <div class="tools">
  <div><label class="tools-label" for="venue">競艇場</label><select id="venue"><option value="">全国の開催場</option></select></div>
@@ -348,6 +348,27 @@ async function refreshAccuracySummary(){
  }catch(e){$('today-accuracy').textContent='当日成績の保存データを待っています。';}
 }
 
+// Read-only 7-day accuracy mini chart. Independently timestamped predictions;
+// only confirmed outcomes appear in the denominator.
+async function refreshWeeklySummary(){
+ const area=$('weekly-accuracy'),spark=$('weekly-spark');
+ try{
+  const res=await fetch('accuracy_history.json?ts='+Date.now(),{cache:'no-store'});
+  if(!res.ok)throw Error('まだ集計中');const obj=await res.json();
+  if(obj.schema!=='boat12-accuracy-history-v2'||!Array.isArray(obj.records))throw Error('履歴集計待ち');
+  const now=new Date(today()+'T00:00:00+09:00'),start=new Date(now.getTime()-6*86400000);
+  const from=new Date(start.getTime()+9*3600000).toISOString().slice(0,10);
+  const valid=obj.records.filter(r=>typeof r.date==='string'&&r.date>=from&&r.date<=today()&&typeof r.probability==='number'&&r.probability>=.3&&r.result_status==='confirmed'&&typeof r.hit==='boolean');
+  const hits=valid.filter(r=>r.hit).length;
+  area.textContent=valid.length?`直近7日：1-2決着 ${hits}/${valid.length}件 · ${(100*hits/valid.length).toFixed(1)}%（結果確定分のみ）`:'直近7日：条件に合う結果確定済み予測はありません';
+  const map=new Map();for(const r of valid){const a=map.get(r.date)||{n:0,h:0};a.n++;if(r.hit)a.h++;map.set(r.date,a)}
+  const points=[...map].sort((a,b)=>a[0].localeCompare(b[0]));
+  if(!points.length){spark.textContent='記録が増えると日別グラフが表示されます。';return}
+  const W=500,H=92,pad=15,step=(W-2*pad)/points.length;
+  const rects=points.map(([day,x],i)=>{const rate=x.h/x.n,bw=Math.min(42,step*.57),xc=pad+step*(i+.5),y=8+(H-34)*(1-rate);return `<rect x="${(xc-bw/2).toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${(H-25-y).toFixed(1)}" rx="3" fill="var(--accent)"><title>${escapeText(day)} ${x.h}/${x.n}件 ${(rate*100).toFixed(1)}%</title></rect><text x="${xc.toFixed(1)}" y="${H-7}" fill="var(--muted)" font-size="10" text-anchor="middle">${day.slice(5).replace('-','/')}</text>`}).join('');
+  spark.innerHTML=`<svg width="100%" viewBox="0 0 ${W} ${H}" role="img" aria-label="確定結果のある日の決着率。${points.length}日分">${rects}</svg>`;
+ }catch(e){area.textContent='7日間の集計データを待っています。';spark.textContent=''}
+}
 initExperimentalSwitch($('unverified'),render);
 async function refresh(){
  if(STATE.busy)return;STATE.busy=true;$('reload').disabled=true;$('reload').textContent='確認中…';
@@ -367,7 +388,8 @@ setInterval(()=>{if(!document.hidden)refresh();},CHECK_EVERY);
 setInterval(()=>{if(!document.hidden&&STATE.checkedAt)render();},15000);
 refresh();
 refreshAccuracySummary();
-setInterval(()=>{if(!document.hidden)refreshAccuracySummary()},30000);
+refreshWeeklySummary();
+setInterval(()=>{if(!document.hidden){refreshAccuracySummary();refreshWeeklySummary()}},60000);
 </script>
 </body>
 </html>
