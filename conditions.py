@@ -39,6 +39,8 @@ from zoneinfo import ZoneInfo
 import requests
 
 VERSION = "conditions-1.0"
+# Additive display schema; model validation verdicts stay unchanged.
+DISPLAY_SCHEMA = "conditions-experimental-1"
 JST = ZoneInfo("Asia/Tokyo")
 ROOT = Path("history/conditions")
 MANIFEST = ROOT / "manifest.json"
@@ -587,7 +589,7 @@ def load_models() -> tuple[dict | None, str | None]:
     if package.get("version") != VERSION or package.get("sklearn_version") != sklearn.__version__:
         return None, "モデルと実行環境の版が違います。再学習するまで確率を表示しません。"
     generated = timestamp(package.get("report", {}).get("generated_at"))
-    if not generated or clock() - generated > timedelta(days=8):
+    if not generated or generated > clock() + timedelta(seconds=90) or clock() - generated > timedelta(days=8):
         return None, "学習の更新が8日以上確認できません。確率表示を保留しています。"
     return package, None
 
@@ -596,15 +598,86 @@ def active_until(record: dict, scope: str, now: datetime) -> datetime | None:
     cutoff = timestamp(record.get("cutoff"))
     observed = timestamp(record["weather"].get("observed_at"))
     available = timestamp(record.get("original_available" if scope == "original" else "basic_available"))
-    if not cutoff or not observed or not available or available > now:
+    if not cutoff or not observed or not available or available > now or observed > now:
         return None
     kinds = ["sui", "tkz", "stt"] + (["original"] if scope == "original" else [])
     source_stamps = [timestamp(record["source_times"].get(k)) for k in kinds]
-    if not all(source_stamps):
+    if not all(source_stamps) or any(t > now or t >= cutoff for t in source_stamps if t):
         return None
     oldest = min(source_stamps)
     expiry = min(cutoff - timedelta(seconds=30), oldest + timedelta(minutes=20), observed + timedelta(minutes=MAX_WEATHER_AGE_MIN), now + timedelta(minutes=12))
     return expiry if now < expiry else None
+
+
+def condition_estimates(record: dict, package: dict | None, now: datetime) -> tuple[dict | None, dict | None, str]:
+    """Return release-rule-passing and held-back estimates in SEPARATE fields.
+
+    Experimental mode relaxes only the statistical display gate. Data quality,
+    sample coverage, timestamp, missing-data and deadline checks still apply.
+    It never modifies report.json or its probabilities_enabled verdict.
+    """
+    if record.get("cancelled"):
+        return None, None, "中止・順延"
+    if record.get("date") != now.date().isoformat():
+        return None, None, "別の日付・確率非表示"
+    cutoff = timestamp(record.get("cutoff"))
+    if cutoff and now >= cutoff - timedelta(seconds=30):
+        return None, None, "締切済み" if now >= cutoff else "締切直前・確率非表示"
+    if not record.get("basic_ready"):
+        return None, None, "風・展示データ待ち"
+    if not package:
+        return None, None, "モデル未作成・読込保留"
+    if package.get("version") != VERSION:
+        return None, None, "モデルの版が不一致"
+    generated = timestamp(package.get("report", {}).get("generated_at"))
+    if not generated or generated > now + timedelta(seconds=90) or now - generated > timedelta(days=8):
+        return None, None, "モデル更新時刻の確認待ち"
+    passed_value, experimental_value = None, None
+    reason = "対応モデルの学習・検証待ち"
+    options = ["original", "normal"] if record.get("original_ready") else ["normal"]
+    for scope in options:
+        model = package.get("scopes", {}).get(scope)
+        if not model or not model.get("conditions") or not model.get("base"):
+            continue
+        report = model.get("report", {})
+        verdict = report.get("probabilities_enabled") is True
+        # Insufficient-data and failed models are NOT enabled in experimental mode.
+        if not verdict and report.get("status") != "held_back":
+            continue
+        if model.get("venue_counts", {}).get(record["venue"], 0) < MIN_VENUE_TRAIN:
+            reason = "この競艇場の学習データ不足"
+            continue
+        layout = record["venue"] + ":" + "+".join(record["original_kinds"])
+        if scope == "original" and model.get("layout_counts", {}).get(layout, 0) < MIN_VENUE_TRAIN:
+            reason = "この場のオリジナル展示の学習データ不足"
+            continue
+        expiry = active_until(record, scope, now)
+        if expiry is None:
+            reason = "古い観測・締切直前のため確率非表示"
+            continue
+        try:
+            p = float(predict(model["conditions"], [record])[0])
+            pb = float(predict(model["base"], [record])[0])
+        except Exception as exc:
+            reason = "モデル計算エラー・表示保留"
+            print(f"{record['code']} {scope}: {type(exc).__name__}; prediction withheld", file=sys.stderr, flush=True)
+            continue
+        if not all(math.isfinite(x) and 0 <= x <= 1 for x in (p, pb)):
+            reason = "計算値が不正・表示保留"
+            continue
+        value = {"schema": DISPLAY_SCHEMA, "probability": p, "base_probability": pb,
+                 "scope": scope, "expires_at": expiry.isoformat(),
+                 "validation_status": report.get("status"), "release_rule_passed": verdict}
+        if verdict and passed_value is None:
+            passed_value = value
+        elif not verdict and experimental_value is None:
+            experimental_value = value
+        # Prefer original data within each class, keeping the two classes distinct.
+    if passed_value:
+        reason = "直前推定（表示基準通過・実験値）"
+    elif experimental_value:
+        reason = "未検証の実験値あり（表示スイッチで確認）"
+    return passed_value, experimental_value, reason
 
 
 def update_today() -> dict:
@@ -622,57 +695,49 @@ def update_today() -> dict:
     except Exception as exc:
         message = f"モデル読込失敗（{type(exc).__name__}）。データだけ表示しています。"
     now = clock()
-    output = {"version": VERSION, "date": day.isoformat(), "generated_at": now.isoformat(), "status": "ok" if records else "waiting",
+    output = {"version": VERSION, "display_schema": DISPLAY_SCHEMA,
+              "date": day.isoformat(), "generated_at": now.isoformat(), "status": "ok" if records else "waiting",
               "message": message, "sources": info["sources"], "counts": info["audit"], "races": [],
-              "report": package["report"] if package else json_load(REPORT, {})}
+              "report": package["report"] if package else json_load(REPORT, {}),
+              "experimental_notice": "未検証の実験値は改善の表示基準に未達です。確率の正確さ・的中・利益を保証せず、利用者の表示選択でのみ表示します。"}
     prospective = []
+    passed_count = experimental_count = 0
     for record in records:
         item = dict(record)
         item.pop("label", None)
         item.pop("result_recorded_at", None)
-        item.update({"probability": None, "base_probability": None, "probability_scope": None, "expires_at": None})
-        cutoff = timestamp(record.get("cutoff"))
-        if record["cancelled"]:
-            item["state"] = "中止・順延"
-        elif cutoff and cutoff <= now:
-            item["state"] = "締切済み"
-        elif not record["basic_ready"]:
-            item["state"] = "風・展示データ待ち"
-        else:
-            item["state"] = "検証待ち（データ表示のみ）"
-            if package:
-                options = ["original", "normal"] if record["original_ready"] else ["normal"]
-                for scope in options:
-                    model = package["scopes"].get(scope)
-                    if not model or not model["report"]["probabilities_enabled"] or model["venue_counts"].get(record["venue"], 0) < MIN_VENUE_TRAIN:
-                        continue
-                    layout = record["venue"] + ":" + "+".join(record["original_kinds"])
-                    if scope == "original" and model["layout_counts"].get(layout, 0) < MIN_VENUE_TRAIN:
-                        continue
-                    expiry = active_until(record, scope, now)
-                    if expiry is None:
-                        item["state"] = "古い観測・締切直前のため確率非表示"
-                        break
-                    p, pb = float(predict(model["conditions"], [record])[0]), float(predict(model["base"], [record])[0])
-                    if not all(math.isfinite(x) and 0 <= x <= 1 for x in (p, pb)):
-                        continue
-                    item.update({"probability": p, "base_probability": pb, "probability_scope": scope,
-                                 "expires_at": expiry.isoformat(), "state": "直前推定（実験）"})
-                    prospective.append({"code": record["code"], "date": day.isoformat(), "generated_at": now.isoformat(),
-                                        "cutoff": record["cutoff"], "input_available": record["original_available" if scope == "original" else "basic_available"],
-                                        "probability": p, "base_probability": pb, "scope": scope,
-                                        "data_sha256": package["report"]["data_sha256"]})
-                    break
+        item.update({"probability": None, "base_probability": None, "probability_scope": None,
+                     "expires_at": None, "experimental_prediction": None})
+        passed, experimental, state = condition_estimates(record, package, now)
+        item["state"] = state
+        if passed:
+            item.update({"probability": passed["probability"], "base_probability": passed["base_probability"],
+                         "probability_scope": passed["scope"], "expires_at": passed["expires_at"]})
+            passed_count += 1
+        if experimental:
+            item["experimental_prediction"] = experimental
+            experimental_count += 1
+        for value, display_class in ((passed, "release_rule_passed"), (experimental, "unverified_experimental")):
+            if value is None:
+                continue
+            scope = value["scope"]
+            prospective.append({"code": record["code"], "date": day.isoformat(), "generated_at": now.isoformat(),
+                                "cutoff": record["cutoff"], "input_available": record["original_available" if scope == "original" else "basic_available"],
+                                "probability": value["probability"], "base_probability": value["base_probability"], "scope": scope,
+                                "display_class": display_class, "release_rule_passed": value["release_rule_passed"],
+                                "validation_status": value["validation_status"],
+                                "data_sha256": package["report"]["data_sha256"]})
         output["races"].append(item)
     output["races"].sort(key=lambda r: (r["probability"] is None, -(r["probability"] or 0), r["code"]))
-    output["predicted_races"] = len(prospective)
+    output["predicted_races"] = passed_count
+    output["experimental_races"] = experimental_count
     atomic_json(TODAY_OUTPUT, output)
-    # Record only site-generated predictions made before the known cutoff.
-    # Historical reconstructed predictions are never put in this prospective log.
+    # Generated pre-deadline candidates, NOT evidence that a user saw or acted on them.
+    # Unverified candidates remain distinct from release-rule-passing candidates.
     if prospective:
         folder = ROOT / "predictions" / day.isoformat()
         atomic_json(folder / (now.strftime("%H%M%S") + ".json"), prospective)
-    print(f"当日表示: {day} / 出走表 {len(records)} / 直前確率 {len(prospective)}", flush=True)
+    print(f"当日表示: {day} / 出走表 {len(records)} / 表示基準通過 {passed_count} / 未検証実験値 {experimental_count}", flush=True)
     return output
 
 
