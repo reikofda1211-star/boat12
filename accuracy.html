@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="BOAT12が締切前に保存した1-2予測と、確定レース結果を照合する当日集計。結果待ちを分母から除外し、更新時刻を表示します。"><title>本日の1-2候補成績 | BOAT12</title>
+<style>:root{color-scheme:dark;--bg:#0b1320;--panel:#152132;--line:#30435c;--ink:#eef3fb;--muted:#b4c3d5;--mint:#98dfd4;--warm:#e9d3a0}*{box-sizing:border-box}body{background:var(--bg);color:var(--ink);margin:0;font:15px/1.6 system-ui,-apple-system,sans-serif}main{max-width:850px;margin:auto;padding:22px 16px 70px}a{color:var(--mint)}h1{font-size:28px;line-height:1.3;margin:7px 0}h2{font-size:18px;margin:0 0 9px}.muted{color:var(--muted)}.small{font-size:12px}.eyebrow{color:var(--mint);font-size:12px;letter-spacing:.13em}nav{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 25px}.panel{background:var(--panel);border:1px solid var(--line);padding:16px;border-radius:13px;margin:14px 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{background:var(--panel);padding:14px 11px;border-radius:10px;border:1px solid var(--line)}.stat b{display:block;font-size:25px;line-height:1.4}.stat small{color:var(--muted);font-size:11px}.controls{display:flex;gap:13px;align-items:end;flex-wrap:wrap}label{font-size:12px;color:var(--muted);display:block}select,button{background:#101c2c;color:var(--ink);border:1px solid var(--line);font:inherit;padding:10px;border-radius:8px;min-height:44px}button{cursor:pointer}.controls label{flex:1;min-width:170px}.controls select{display:block;width:100%}.card{border:1px solid var(--line);padding:12px 14px;border-radius:11px;margin:10px 0}.top{display:flex;justify-content:space-between;gap:9px;align-items:center}.prob{font-size:23px;font-weight:700;color:var(--warm)}.chip{font-size:12px;border:1px solid var(--line);padding:3px 8px;border-radius:7px}.good{color:var(--mint)}.bad{color:var(--warm)}#status{min-height:25px}.alert{color:var(--warm)}@media(max-width:440px){main{padding:16px 12px 52px}.stats{gap:6px}.stat b{font-size:22px}.stat{padding:12px 8px}.top{align-items:flex-start}}
+</style></head><body><main><div class="eyebrow">BOAT12 / PERFORMANCE LOG</div><h1>本日の1-2候補成績</h1><p class="muted">締切前に保存した予測だけを、結果確定後に照合。未検証の推定確率であり、収益や的中を保証するものではありません。</p><nav><a href="dashboard.html">リアルタイム予測</a><a href="history.html">過去の予測履歴</a></nav>
+<div class="panel"><div class="controls"><label>1-2候補とする最低推定確率<select id="threshold"><option value="0.2">20%以上</option><option value="0.3" selected>30%以上</option><option value="0.4">40%以上</option><option value="0.5">50%以上</option></select></label><button id="refresh">最新の集計を確認</button></div><p class="small muted">閾値を変えると候補の定義・的中率も変わります。候補数が少ない場合の割合は特に不安定です。結果未確定は的中にも不的中にも数えません。</p></div>
+<div class="stats"><div class="stat"><small>候補の確定結果</small><b id="confirmed">—</b></div><div class="stat"><small>1-2決着</small><b id="hits">—</b></div><div class="stat"><small>候補の1-2決着率</small><b id="rate">—</b></div></div>
+<div id="status" class="panel" role="status" aria-live="polite">保存データを読み込んでいます。</div><div class="panel"><h2>レース別の照合結果</h2><p class="small muted">この一覧は候補となったレースのみ。予測値は、そのレースの締切前に保存された最新値です。</p><div id="rows"></div></div><p class="small muted">出典：BOAT12の保存予測ログ、BoatraceCSVの準リアルタイム結果（通常、締切後数分〜数十分で掲載）。実績は予測モデルの優位性の証明ではありません。確定結果の到着が遅れる場合があります。約30秒ごとに最新の保存集計を確認します。</p></main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);let DATA=null;let busy=false;
+const text=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+const jstDay=()=>new Date(Date.now()+9*3600000).toISOString().slice(0,10);
+const dateTime=s=>{let d=new Date(s);return Number.isNaN(d.valueOf())?'不明':new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).format(d)};
+function render(){
+ if(!DATA)return;
+ let cut=Number($('threshold').value);
+ const all=Array.isArray(DATA.records)?DATA.records:[];
+ const list=all.filter(r=>typeof r.probability==='number'&&r.probability>=cut).sort((a,b)=>b.probability-a.probability);
+ const done=list.filter(r=>r.result_status==='confirmed'&&typeof r.hit==='boolean');
+ const wins=done.filter(r=>r.hit).length;
+ $('confirmed').textContent=`${done.length} / ${list.length}`;
+ $('hits').textContent=String(wins);
+ $('rate').textContent=done.length?`${(100*wins/done.length).toFixed(1)}%`:'—';
+ $('status').innerHTML=`<b>${text(DATA.date||'日付不明')}｜集計更新 ${text(dateTime(DATA.generated_at))}</b><div class="small muted">候補 ${list.length}件 / 確定 ${done.length}件 / 結果待ち ${list.length-done.length}件</div>${DATA.status!=='ok'?`<div class="small alert">結果データの照合に遅延・取得制限があります（${text(DATA.status)}）。確定済みの保存結果は維持しています。</div>`:''}`;
+ $('rows').innerHTML=list.length?list.map(r=>{
+ const outcome=r.result_status==='confirmed' ? (r.hit?'<span class="chip good">1-2 的中</span>':'<span class="chip bad">1-2 以外</span>'):'<span class="chip">結果待ち</span>';
+ return `<article class="card"><div class="top"><strong>${text(r.venue)} ${text(r.race)}R</strong>${outcome}</div><div class="top"><span class="prob">${(r.probability*100).toFixed(1)}%</span><span class="small muted">${r.result_status==='confirmed'?`確定: ${text(r.first)}-${text(r.second)}`:'未確定'}</span></div><div class="small muted">予測 ${text(dateTime(r.generated_at))} / 締切 ${text(dateTime(r.cutoff))}${r.result_recorded_at?` / 結果取得 ${text(dateTime(r.result_recorded_at))}`:''}</div></article>`}).join(''):'<p class="muted">この条件に該当する締切前の保存予測はありません。</p>';
+}
+async function load(){if(busy)return;busy=true;$('refresh').disabled=true;try{
+ const response=await fetch('accuracy.json?t='+Date.now(),{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);
+ const json=await response.json();if(json.schema!=='boat12-accuracy-v1'||json.date!==jstDay()||!Array.isArray(json.records))throw Error('本日分の集計がまだ作成されていません');
+ DATA=json;render();
+ }catch(e){$('status').textContent=`集計を取得できません：${e.message}。自動更新の保存を待って、再確認してください。`;
+ }finally{busy=false;$('refresh').disabled=false}}
+$('threshold').addEventListener('change',render);$('refresh').addEventListener('click',load);document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});setInterval(()=>{if(!document.hidden)load()},30000);load();
+</script></body></html>

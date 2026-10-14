@@ -23,6 +23,7 @@
 <div id="status" class="notice" role="status" aria-live="polite">データを確認しています。</div>
 <div class="metrics"><div class="metric"><small>今日の掲載レース</small><strong id="total">—</strong></div><div class="metric"><small>表示可能な事前値</small><strong id="bases">—</strong></div><div class="metric"><small>表示中の直前値</small><strong id="lives">—</strong></div></div>
 <div id="sources" class="source"></div>
+<div id="today-record" class="notice"><b>本日の1-2候補成績（予測30%以上）</b><p class="small" id="today-accuracy">保存済みの照合結果を確認しています。</p><a href="accuracy.html">レース別の成績を見る →</a></div>
 <div id="live-health" class="notice" aria-live="polite">最新の保存データを確認しています。</div>
 <div class="tools">
  <div><label class="tools-label" for="venue">競艇場</label><select id="venue"><option value="">全国の開催場</option></select></div>
@@ -330,6 +331,23 @@ async function freshConditions(){
  return chosen;
 }
 
+
+// Separately scored, pre-cutoff forecasts; never treat unseen results as misses.
+async function refreshAccuracySummary(){
+ try{
+  const response=await fetch('accuracy.json?ts='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw Error('まだ生成されていません');
+  const payload=await response.json();
+  if(payload?.schema!=='boat12-accuracy-v1'||payload.date!==today()||!Array.isArray(payload.records))throw Error('本日分の照合待ち');
+  const candidates=payload.records.filter(r=>typeof r.probability==='number'&&r.probability>=0.3);
+  const settled=candidates.filter(r=>r.result_status==='confirmed'&&typeof r.hit==='boolean');
+  const wins=settled.filter(r=>r.hit).length;
+  $('today-accuracy').textContent=settled.length?
+   `結果確定 ${settled.length}/${candidates.length}件 · 1-2決着 ${wins}件 · 決着率 ${(100*wins/settled.length).toFixed(1)}%（結果待ち除外）`:
+   `候補 ${candidates.length}件 · 結果確定待ち（割合はまだ算出しません）`;
+ }catch(e){$('today-accuracy').textContent='当日成績の保存データを待っています。';}
+}
+
 initExperimentalSwitch($('unverified'),render);
 async function refresh(){
  if(STATE.busy)return;STATE.busy=true;$('reload').disabled=true;$('reload').textContent='確認中…';
@@ -348,6 +366,8 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden){render();
 setInterval(()=>{if(!document.hidden)refresh();},CHECK_EVERY);
 setInterval(()=>{if(!document.hidden&&STATE.checkedAt)render();},15000);
 refresh();
+refreshAccuracySummary();
+setInterval(()=>{if(!document.hidden)refreshAccuracySummary()},30000);
 </script>
 </body>
 </html>
