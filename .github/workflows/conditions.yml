@@ -93,7 +93,7 @@ jobs:
 
 
           def save_conditions():
-              paths = [p for p in ("conditions.json", "accuracy.json", "history/conditions") if Path(p).exists()]
+              paths = [p for p in ("conditions.json", "accuracy.json", "accuracy_history.json", "history/accuracy_results", "history/conditions") if Path(p).exists()]
               if not paths:
                   return False
               checked(["git", "add", "-f", "--", *paths, ":(exclude)**/*.tmp"])
