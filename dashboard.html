@@ -16,13 +16,14 @@
 <body>
 <main>
 <div class="eyebrow">BOAT12 / ALL IN ONE</div>
-<div class="title"><h1>事前予測と、風・展示を<br>ひとつの画面で。</h1><span class="tag">実験版 1.2</span></div>
+<div class="title"><h1>事前予測と、風・展示を<br>ひとつの画面で。</h1><span class="tag">実験版 1.3</span></div>
 <p class="lead">同じレースの事前確率・風・6艇の展示をまとめて確認。</p>
 <div class="notice"><p><b>事前確率は風・展示を含みません。</b> 直前確率は別のモデルです。2つの確率を足したり平均したりせず、そのまま区別して表示します。</p></div>
 <div class="notice warn" id="experimental-control"><label class="check"><input type="checkbox" id="unverified">未検証の実験値を表示する</label><p class="small">ONにすると、風・展示を加えたモデルの改善が十分に確認できていない数値も表示します。数値は検証基準未達の参考値で、実際の的中率ではありません。締切後・古いデータ・データ不足はONでも非表示です。</p></div>
 <div id="status" class="notice" role="status" aria-live="polite">データを確認しています。</div>
 <div class="metrics"><div class="metric"><small>今日の掲載レース</small><strong id="total">—</strong></div><div class="metric"><small>表示可能な事前値</small><strong id="bases">—</strong></div><div class="metric"><small>表示中の直前値</small><strong id="lives">—</strong></div></div>
 <div id="sources" class="source"></div>
+<div id="live-health" class="notice" aria-live="polite">最新の保存データを確認しています。</div>
 <div class="tools">
  <div><label class="tools-label" for="venue">競艇場</label><select id="venue"><option value="">全国の開催場</option></select></div>
  <div><label class="tools-label" for="sort">並び順</label><select id="sort"><option value="base">事前確率が高い順</option><option value="time">締切予定が近い順</option><option value="live">直前値順（未検証値はON時のみ）</option></select></div>
@@ -32,8 +33,8 @@
 <div id="races"></div>
 <details class="notice"><summary>検証結果・更新の状態</summary><div id="report" class="report-grid"></div></details>
 <p class="footer">確率は実験的な推定値で、的中率や利益の保証ではありません。未検証値は専用スイッチで区別して表示します。直前値の欠損・期限切れ・取得失敗を事前確率で埋めません。展示の数値が見えることと、その数値が確率に反映されていることは別です。</p>
-<p class="footer">この画面は既存の生成済みデータを約60秒おきに確認します。再読み込みは学習やデータ生成を実行するボタンではありません。配信・生成の遅延や出走変更があり得るため、締切と最新の展示は公式情報で確認してください。時刻は日本時間です。</p>
-<p class="footer"><a href="v2-preview.html">事前版だけ開く</a> ／ <a href="conditions.html">風・展示版だけ開く</a></p>
+<p class="footer">この画面は既存の生成済みデータを約20秒おきに確認します。サーバー側の生成は別処理で、約2分間隔を目標に実行していますが、GitHubの開始遅延・配信遅延があります。再読み込みは学習やデータ生成を実行するボタンではありません。配信・生成の遅延や出走変更があり得るため、締切と最新の展示は公式情報で確認してください。時刻は日本時間です。</p>
+<p class="footer"><a href="v2-preview.html">事前版だけ開く</a> ／ <a href="conditions.html">風・展示版だけ開く</a> ／ <a href="history.html">締切前の予測履歴を開く</a></p>
 <noscript><div class="notice">この統合画面にはJavaScriptが必要です。上のリンクから元のページを開いてください。</div></noscript>
 </main>
 <script>
@@ -45,6 +46,8 @@
  * Fetched HTML is parsed into a separate document; only validated text is rendered.
  */
 const ROOT='https://raw.githubusercontent.com/reikofda1211-star/boat12/main/';
+const CHECK_EVERY=20000; // UI checks only; does not trigger server-side predictions
+
 const VENUES=['桐生','戸田','江戸川','平和島','多摩川','浜名湖','蒲郡','常滑','津','三国','びわこ','住之江','尼崎','鳴門','丸亀','児島','宮島','徳山','下関','若松','芦屋','福岡','唐津','大村'];
 const ORIGINAL={lap:'一周',half_lap:'半周ラップ',turn:'まわり足',straight:'直線'};
 const STATE={base:null,conditions:null,deliveryNote:'',baseError:'',conditionsError:'',checkedAt:null,busy:false};
@@ -160,6 +163,11 @@ function liveState(r){
  return selectConditionsValue(r.condition,STATE.conditions,$('unverified').checked,clock(),today());
 }
 
+function remainingLabel(cutoff){
+ const t=time(cutoff);if(!Number.isFinite(t))return '締切時刻を確認できません';
+ const n=Math.ceil((t-clock())/60000);
+ return n<=0?'締切済み':n===1?'締切まで約1分':'締切まで約'+n+'分';
+}
 function probHTML(p){return probability(p)?(p*100).toFixed(1)+'<small>%</small>':'—';}
 function conditionNotice(r){
  const c=r.condition;if(!c)return '風・展示はまだ取得できていません。事前の値だけ表示しています。';
@@ -177,6 +185,7 @@ function cardHTML(r,index,open){
  let table='';
  if(c)table='<div class="table-wrap" tabindex="0" aria-label="6艇の展示データ。横スクロールできます"><table><thead><tr><th>艇</th><th>選手</th><th>全国勝率</th><th>モーター2連率</th><th>通常展示(秒)</th><th>展示ST(秒)</th><th>進入</th>'+kinds.map(k=>'<th>'+ORIGINAL[k]+'(秒)</th>').join('')+'</tr></thead><tbody>'+c.players.map(p=>'<tr><td>'+p.boat+'</td><td>'+escapeText(p.name)+'</td><td>'+fixed(p.win)+'</td><td>'+fixed(p.motor_rate,1)+'</td><td>'+fixed(p.exhibition)+'</td><td>'+fixed(p.exhibition_st)+'</td><td>'+fixed(p.course,0)+'</td>'+kinds.map(k=>'<td>'+fixed(p.original?.[k])+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
  return '<article class="race" data-code="'+r.code+'"><div class="race-main"><div class="race-top"><div><span class="rank">一覧 '+(index+1)+'</span><h2>'+escapeText(r.venue)+' '+r.race+'R</h2></div><div class="deadline">締切予定<strong>'+hhmm(c?.cutoff)+'</strong><span class="chip">'+escapeText(state)+'</span></div></div>'+
+ '<p class="small" style="margin:4px 0 0">'+escapeText(remainingLabel(c?.cutoff))+'</p>'+
  '<div class="names"><span><span class="boat">1</span>'+escapeText(one)+'</span><span><span class="boat">2</span>'+escapeText(two)+'</span></div>'+
  '<div class="prob-grid"><div class="prob-box"><label>事前の推定確率 · v2</label><strong data-p="base">'+probHTML(b.p)+'</strong><div class="reason">'+escapeText(b.label)+'</div></div><div class="prob-box'+(l.unverified?' unverified':l.p!==null?' live':'')+'"><label>風・展示込みの直前推定</label><strong data-p="live">'+probHTML(l.p)+'</strong><div class="reason">'+escapeText(l.label)+'</div></div></div>'+
  '<div class="data-line"><span>風速 <b>'+fixed(w.wind_speed,1)+'</b> m/s</span><span>波高 <b>'+fixed(w.wave_cm,0)+'</b> cm</span><span>風向コード '+escapeText(w.wind_direction_code??'—')+'</span></div><div class="source">気象観測 '+hhmm(w.observed_at)+' ／ 展示の直前記録 '+hhmm(c?.basic_available)+'</div>'+
@@ -215,7 +224,15 @@ function render(){
  const status=$('status');status.className='notice'+(STATE.baseError||STATE.conditionsError||STATE.base?.date!==today()||STATE.conditions?.date!==today()||(!Number.isFinite(age)||age>12*60000||age< -90000)?' warn':'');
  status.innerHTML=messages.map(m=>'<p>'+escapeText(m)+'</p>').join('');
  $('total').textContent=all.length+'件';$('bases').textContent=all.filter(r=>baseState(r).p!==null).length+'件';$('lives').textContent=all.filter(r=>liveState(r).p!==null).length+'件';
- $('sources').innerHTML='対象日 <b>'+today()+'</b> ／ この画面の確認 '+stamp(STATE.checkedAt)+'<br>事前版の対象日 '+escapeText(STATE.base?.date||'未取得')+'（生成時刻は不明）<br>風・展示の最終生成 '+stamp(STATE.conditions?.generated_at)+' ／ 約60秒おきに確認<br>取得経路 '+escapeText(STATE.conditions?._delivery||'未確認')+' ／ 画面版 1.2（API照合は最大3分に1回）';
+ const ageMin=Number.isFinite(age)?Math.max(0,Math.floor(age/60000)):null;
+ const imminent=all.filter(r=>!finished(r)&&Number.isFinite(time(r.condition?.cutoff))&&time(r.condition.cutoff)-clock()<=15*60000);
+ const waiting=imminent.filter(r=>!r.condition?.basic_ready).length;
+ const ready=imminent.filter(r=>liveState(r).p!==null).length;
+ const health=$('live-health');
+ health.className='notice'+(ageMin===null||ageMin>=5?' warn':'');
+ health.innerHTML='<b>直前更新状況：'+(ageMin===null?'生成時刻を確認できません':escapeText(ageMin+'分前の保存データ'))+'</b><p class="small">締切15分以内：'+imminent.length+'件 ／ 直前値表示中：'+ready+'件 ／ 展示データ待ち：'+waiting+'件</p>'+
+ '<p class="small">画面は約20秒ごとに保存データを確認。サーバーでの計算・GitHubへの保存は別で、即時性は保証できません。直前値が「—」なら下の各レースに理由を表示します。締切後の予測は<a href="history.html">予測履歴</a>へ。</p>';
+ $('sources').innerHTML='対象日 <b>'+today()+'</b> ／ この画面の確認 '+stamp(STATE.checkedAt)+'<br>事前版の対象日 '+escapeText(STATE.base?.date||'未取得')+'（生成時刻は不明）<br>風・展示の最終生成 '+stamp(STATE.conditions?.generated_at)+' ／ 約20秒おきに確認<br>取得経路 '+escapeText(STATE.conditions?._delivery||'未確認')+' ／ 画面版 1.3（API照合は最大3分に1回）';
  const v=$('venue').value,sort=$('sort').value,closed=$('closed').checked;
  let rows=all.filter(r=>(!v||r.venue===v)&&(closed||!finished(r)));
  const order=p=>p===null?-1:p;
@@ -234,7 +251,7 @@ function render(){
 }
 async function fetchText(path){
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),20000);
- try{const response=await fetch(ROOT+path+'?minute='+Math.floor(clock()/60000),{cache:'no-store',credentials:'omit',signal:controller.signal});if(!response.ok)throw Error('HTTP '+response.status);const text=await response.text();if(text.length>6000000)throw Error('ファイル容量が想定外です');return text;}finally{clearTimeout(timer);}
+ try{const response=await fetch(ROOT+path+'?tick='+Math.floor(clock()/CHECK_EVERY),{cache:'no-store',credentials:'omit',signal:controller.signal});if(!response.ok)throw Error('HTTP '+response.status);const text=await response.text();if(text.length>6000000)throw Error('ファイル容量が想定外です');return text;}finally{clearTimeout(timer);}
 }
 function errorText(e){return e?.name==='AbortError'?'通信時間切れ。再読み込みしてください。':(e?.message||'取得に失敗しました');}
 
@@ -328,7 +345,7 @@ async function refresh(){
 $('reload').addEventListener('click',refresh);
 for(const id of ['venue','sort','closed'])$(id).addEventListener('change',render);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){render();refresh();}});
-setInterval(()=>{if(!document.hidden)refresh();},60000);
+setInterval(()=>{if(!document.hidden)refresh();},CHECK_EVERY);
 setInterval(()=>{if(!document.hidden&&STATE.checkedAt)render();},15000);
 refresh();
 </script>
