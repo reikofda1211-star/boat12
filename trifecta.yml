@@ -1,0 +1,98 @@
+name: Trifecta Model
+
+'on':
+  workflow_dispatch:
+    inputs:
+      history_days:
+        description: '追加する過去結果の日数。初回30、再学習のみ0、最大60。'
+        required: true
+        type: string
+        default: '30'
+  schedule:
+    # UTC 22:37 = JST 07:37. Best-effort scheduling, not a real-time guarantee.
+    - cron: '37 22 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: boat12-trifecta-model
+  cancel-in-progress: false
+
+jobs:
+  train:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2' 'requests>=2.32,<3'
+          sudo apt-get update -qq
+          sudo apt-get install -y lhasa
+      - name: Offline calculation and safety tests
+        run: python trifecta_train.py --self-test
+      - name: Collect ordered finishes and train
+        env:
+          DAYS: ${{ inputs.history_days || '30' }}
+        run: |
+          python - <<'PY'
+          import os, subprocess, sys
+          text = os.environ.get('DAYS', '30')
+          if not text.isdecimal() or not 0 <= int(text) <= 60:
+              raise SystemExit('history_days must be a whole number from 0 to 60')
+          subprocess.run([sys.executable, '-u', 'trifecta_train.py', '--history-days', str(int(text))], check=True)
+          PY
+      - name: Save only the new model and result cache
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os, subprocess, time
+          from pathlib import Path
+          def run(command):
+              return subprocess.run(command, check=True, timeout=120)
+          # Do not publish an old file when dependency installation/self-tests failed.
+          state = Path('trifecta_model.json')
+          if not state.exists():
+              raise SystemExit(0)
+          changed = subprocess.run(['git', 'status', '--porcelain', '--', 'trifecta_model.json', 'history/trifecta/labels'], capture_output=True, text=True, check=True)
+          if not changed.stdout.strip():
+              raise SystemExit(0)
+          paths = [str(p) for p in (state, Path('history/trifecta/labels')) if p.exists()]
+          run(['git', 'config', 'user.name', 'github-actions[bot]'])
+          run(['git', 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'])
+          run(['git', 'add', '-f', '--', *paths, ':(exclude)**/*.tmp'])
+          diff = subprocess.run(['git', 'diff', '--cached', '--quiet'], timeout=30)
+          if diff.returncode == 0:
+              raise SystemExit(0)
+          if diff.returncode != 1:
+              raise SystemExit('Could not check staged changes')
+          model = json.loads(state.read_text(encoding='utf-8'))
+          run(['git', 'commit', '-m', 'Update separate trifecta research model'])
+          for attempt in range(3):
+              # Never force-push; unrelated concurrent condition updates are rebased.
+              run(['git', 'pull', '--rebase', 'origin', 'main'])
+              push = subprocess.run(['git', 'push', 'origin', 'HEAD:main'], timeout=120)
+              if push.returncode == 0:
+                  break
+              if attempt == 2:
+                  raise SystemExit('Save failed without force push; see logs')
+              time.sleep(5)
+          summary = os.environ.get('GITHUB_STEP_SUMMARY')
+          if summary:
+              with open(summary, 'a', encoding='utf-8') as f:
+                  f.write('# 3連単・実験モデル\n\n')
+                  f.write(f"状態: {model.get('status')}\n\n{model.get('message', '')}\n")
+                  f.write('\n出走情報は既存のConditions Updateを使用します。風・展示はこのモデルには未反映です。\n')
+          PY

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="レースを選び、学習モデルによる3連単の着順候補5通りと推定確率を確認するBOAT12の実験機能。">
+<title>3連単のレース検索｜BOAT12 実験版</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1320;--card:#152132;--sub:#101c2c;--line:#2b394d;--ink:#eef3fb;--muted:#a7b7cc;--accent:#96ded2;--warn:#ead098}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.75 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:880px;margin:auto;padding:28px 18px 64px}a{color:var(--accent);text-underline-offset:4px}nav{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:13px;margin-bottom:32px}.brand{letter-spacing:.2em;font-weight:700;color:var(--accent)}.eyebrow{font-size:12px;letter-spacing:.15em;color:var(--muted)}h1{font-size:clamp(28px,6vw,39px);line-height:1.4;margin:8px 0 14px;letter-spacing:-.025em}h2{font-size:22px;line-height:1.5;margin:0 0 8px}h3{font-size:16px;margin:0 0 8px}.lead,.muted{color:var(--muted)}.lead{margin:0 0 22px}.notice{border:1px solid var(--line);background:var(--sub);padding:13px 16px;border-radius:12px;margin:14px 0}.notice p{margin:0}.warn{color:var(--warn);border-color:#665838}.panel{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:20px;margin:20px 0}label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}input,select,button{font:inherit;color:var(--ink);min-height:46px;border:1px solid var(--line);border-radius:9px;background:var(--sub);padding:9px 11px;min-width:0}input,select{width:100%}button{cursor:pointer;padding:9px 18px}button:disabled{cursor:wait;opacity:.5}button.primary{border-color:var(--accent);color:var(--accent);font-weight:650}:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.grid{display:grid;grid-template-columns:1.35fr 1.35fr .85fr;gap:12px}.searchbar{display:flex;gap:10px;margin-top:14px}.searchbar>div{flex:1}.searchbar button{align-self:flex-end;white-space:nowrap}.hint,.small{font-size:12px;color:var(--muted)}.hint{margin:9px 0 0}.statusrow{display:flex;justify-content:space-between;gap:12px;align-items:center}.statusrow button{font-size:12px;min-height:38px}.empty{border:1px dashed var(--line);border-radius:14px;padding:35px 20px;text-align:center;color:var(--muted);margin-top:20px}.tag{font-size:11px;border:1px solid var(--line);padding:3px 8px;border-radius:5px;color:var(--muted);display:inline-block;margin-bottom:10px}.race-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:17px}.race-head p{margin:0}.deadline{text-align:right;white-space:nowrap;font-size:12px;color:var(--muted)}.deadline strong{display:block;font-size:19px;color:var(--ink)}.list{border:1px solid var(--line);border-radius:12px;overflow:hidden}.prediction{display:grid;grid-template-columns:35px 1fr auto;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}.prediction:last-child{border-bottom:0}.rank{font-size:12px;color:var(--muted)}.order{font-size:24px;font-weight:650;letter-spacing:.13em;font-variant-numeric:tabular-nums}.prob{font-size:27px;font-weight:650;font-variant-numeric:tabular-nums;text-align:right}.prob small{font-size:15px;margin-left:3px}.mass{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.mass>div{background:var(--sub);border-radius:10px;padding:14px}.mass span{display:block;font-size:12px;color:var(--muted)}.mass strong{font-size:24px;font-weight:650;font-variant-numeric:tabular-nums}.players{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:13px;margin:18px 0}.boat{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1px solid #708098;border-radius:4px;font-size:12px;margin-right:8px}.scope{margin:20px 0 0;padding-top:15px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}details{margin:20px 0}summary{cursor:pointer;min-height:32px}.table-wrap{overflow:auto;margin:12px 0}table{border-collapse:collapse;width:100%;font-size:12px;white-space:nowrap}td,th{padding:10px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}th{color:var(--muted);font-weight:500}td:first-child,th:first-child{text-align:left}footer{margin-top:32px;font-size:12px;color:var(--muted)}footer p{margin:12px 0}[hidden]{display:none!important}
+@media(max-width:520px){main{padding:20px 14px 48px}nav{margin-bottom:25px}.panel{padding:15px}.grid{grid-template-columns:1fr 1fr}.grid>div:first-child{grid-column:1/-1}.prediction{padding:12px 11px;gap:7px;grid-template-columns:25px 1fr auto}.order{font-size:23px}.prob{font-size:25px}.mass{gap:9px}.mass>div{padding:11px}.mass strong{font-size:22px}.deadline{font-size:11px}.race-head{gap:7px}.players{gap:8px 10px}.searchbar{gap:8px}.searchbar button{padding:9px 13px}}
+</style>
+</head>
+<body>
+<main>
+<nav><span class="brand">BOAT12</span><a href="dashboard.html">1-2・風と展示の画面へ</a></nav>
+<div class="eyebrow">RACE SEARCH / EXPERIMENTAL</div>
+<h1>レースを選んで、<br>3連単の5候補を確認。</h1>
+<p class="lead">全120通りから、学習モデルの推定確率が高い5通りを表示します。<br>数字は実験的な推定であり、実際の的中率ではありません。</p>
+<div class="notice warn"><p><strong>このモデルは事前成績のみを使用します。</strong><br>風・展示タイム・展示ST・実際の進入・オッズは反映していません。</p></div>
+<form class="panel" id="searchform">
+<div class="grid">
+<div><label for="day">日付</label><input id="day" type="date" required></div>
+<div><label for="venue">競艇場</label><select id="venue" required><option value="">競艇場を選択</option></select></div>
+<div><label for="race">レース番号</label><select id="race" required></select></div>
+</div>
+<div class="searchbar"><div><label for="query">名前から検索（任意）</label><input id="query" placeholder="例：徳山12R" autocomplete="off" enterkeyhint="search"></div><button type="submit" class="primary" id="search">候補を表示</button></div>
+<p class="hint">現在は取得済みの当日データが対象です。過去の日付の予測は作り直しません。</p>
+</form>
+<div class="statusrow"><div class="small" id="freshness">更新状態を確認しています。</div><button id="reload" type="button">再読み込み</button></div>
+<div id="status" class="notice" role="status" aria-live="polite">データを確認しています。</div>
+<section id="result" aria-live="polite"><div class="empty">競艇場とレース番号を選んでください。</div></section>
+<details class="panel"><summary>学習方法と過去データの検証</summary><div id="report" class="small">検証結果を読み込み中です。</div></details>
+<footer>
+<p>6艇が登録され、1〜3着の順序が一意に確定する有効決着を条件とした推定です。同着・中止・不成立などの確率は含みません。欠場判明時、データ不足、データの期限切れ、締切後は表示しません。</p>
+<p>5候補の合計は「その5通りのいずれかになる」というモデル上の推定確率です。的中保証・利益保証・購入推奨ではありません。舟券を買わなくても閲覧・検証できます。</p>
+<p>約60秒ごとに既存の生成済みデータを確認します。再読み込みやレース検索は、データ収集や再学習を開始するボタンではありません。取得遅延・出走変更はあり得ます。必ず公式の最新情報も確認してください。</p>
+<p>この版には本番予測の保存・実運用の的中集計は含まれていません。ここに表示する検証値は、学習に使わなかった過去データでのテスト結果です。</p>
+</footer>
+<noscript><div class="notice warn">この機能にはJavaScriptが必要です。</div></noscript>
+</main>
+<script>
+'use strict';
+const SCHEMA='boat12-trifecta-1.0';
+const DATA_ROOT='https://raw.githubusercontent.com/reikofda1211-star/boat12/main/';
+const VENUES=['桐生','戸田','江戸川','平和島','多摩川','浜名湖','蒲郡','常滑','津','三国','びわこ','住之江','尼崎','鳴門','丸亀','児島','宮島','徳山','下関','若松','芦屋','福岡','唐津','大村'];
+const METRICS=['win','rate','local_win','local_rate','motor_rate','boat_rate'];
+const SCALES=[2,20,2,20,20,20];
+const ORDERS=[];for(let a=0;a<6;a++)for(let b=0;b<6;b++)for(let c=0;c<6;c++)if(a!==b&&a!==c&&b!==c)ORDERS.push([a,b,c]);
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const finite=v=>typeof v==='number'&&Number.isFinite(v);
+const pct=p=>finite(p)?(p*100).toFixed(1)+'%':'未確認';
+const today=()=>new Date(Date.now()+9*3600000).toISOString().slice(0,10);
+const zonedTime=s=>typeof s==='string'&&/(Z|[+-]\d{2}:\d{2})$/.test(s)?Date.parse(s):NaN;
+const formatTime=s=>Number.isFinite(zonedTime(s))?new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(zonedTime(s)):'不明';
+const clock=s=>Number.isFinite(zonedTime(s))?new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit',hour12:false}).format(zonedTime(s)):'不明';
+const lse=a=>{const m=Math.max(...a);return m+Math.log(a.reduce((s,v)=>s+Math.exp(v-m),0));};
+let model=null,conditions=null,busy=false,hasSearched=false;
+function validModel(m){
+ if(!m||m.schema!==SCHEMA||m.ready!==true)return false;
+ if(JSON.stringify(m.metrics)!==JSON.stringify(METRICS)||JSON.stringify(m.scales)!==JSON.stringify(SCALES))return false;
+ if(!Array.isArray(m.weights)||m.weights.length!==3||m.weights.some(w=>!Array.isArray(w)||w.length!==192||w.some(v=>!finite(v)||Math.abs(v)>1000)))return false;
+ if(!finite(m.temperature)||m.temperature<.5||m.temperature>4)return false;
+ if(!Array.isArray(m.allowed_venues)||m.allowed_venues.some(v=>!Number.isInteger(v)||v<1||v>24))return false;
+ if(typeof m.evidence_end!=='string'||!/^\d{8}$/.test(m.evidence_end))return false;
+ if(!m.report||m.report.better_on_two_scores!==true)return false;
+ return true;
+}
+function featureMatrix(players){
+ if(!Array.isArray(players)||players.length!==6)throw Error('6艇分の出走データがそろっていません。');
+ const p=[...players].sort((a,b)=>a.boat-b.boat);
+ if(p.some((x,i)=>x.boat!==i+1||!/^\d{4}$/.test(String(x.registration||''))))throw Error('艇番・選手の情報を確認できません。');
+ if(new Set(p.map(x=>String(x.registration))).size!==6)throw Error('選手情報が重複しています。');
+ const x=p.map(b=>METRICS.map(m=>{const v=b[m],upper=['win','local_win'].includes(m)?10:100;if(!finite(v)||v<0||v>upper)throw Error('成績データに欠損または範囲外の値があります。');return v;}));
+ const means=METRICS.map((_,j)=>x.reduce((s,b)=>s+b[j],0)/6);
+ return {players:p,x:x.map(b=>b.map((v,j)=>(v-means[j])/SCALES[j]))};
+}
+function probabilities(m,players,venue){
+ if(!validModel(m))throw Error('モデルが未検証、または形式が不正です。');
+ const {x}=featureMatrix(players);
+ const score=m.weights.map(w=>x.map((row,b)=>w[b]+w[6+(venue-1)*6+b]+row.reduce((s,v,j)=>s+v*(w[150+j]+w[156+b*6+j]),0)));
+ const logs=ORDERS.map(([a,b,c])=>score[0][a]-lse(score[0])+score[1][b]-lse(score[1].filter((_,i)=>i!==a))+score[2][c]-lse(score[2].filter((_,i)=>i!==a&&i!==b)));
+ const scaled=logs.map(v=>v/m.temperature),norm=lse(scaled);
+ const out=ORDERS.map((order,i)=>({order:order.map(b=>b+1),p:Math.exp(scaled[i]-norm)}));
+ if(out.some(o=>!finite(o.p)||o.p<0||o.p>1)||Math.abs(out.reduce((s,o)=>s+o.p,0)-1)>1e-9)throw Error('確率の整合性を確認できません。');
+ return out;
+}
+function showStatus(text,warn=false){$('status').textContent=text;$('status').className='notice'+(warn?' warn':'');}
+function empty(text){$('result').innerHTML='<div class="empty">'+esc(text)+'</div>';}
+function modelCheck(){
+ if(!model||model.schema!==SCHEMA)throw Error('3連単モデルはまだありません。追加用ワークフローでデータ取得と学習を行ってください。');
+ if(!validModel(model))throw Error(model.message||'3連単モデルの検証が完了していません。数値は表示しません。');
+ const s=model.evidence_end,iso=s.slice(0,4)+'-'+s.slice(4,6)+'-'+s.slice(6,8),t=Date.parse(iso+'T00:00:00+09:00');
+ if(!Number.isFinite(t)||iso>=today())throw Error('学習・検証期間が対象レースより前であることを確認できません。');
+ if((Date.now()-t)/86400000>180)throw Error('検証期間が古いため予測を保留しています。最近の履歴で再学習してください。');
+}
+function dataCheck(){
+ if(!conditions||conditions.version!=='conditions-1.0'||!Array.isArray(conditions.races))throw Error('既存の出走データを読み込めません。');
+ if(conditions.date!==today())throw Error('当日のデータがまだありません。古い日付の予測は表示しません。');
+ const t=zonedTime(conditions.generated_at),age=Date.now()-t;
+ if(!Number.isFinite(t)||age>15*60000||age< -90000)throw Error('出走データの更新時刻を確認できないか、15分以上経過しています。予測を保留します。');
+ if(conditions.sources?.cards?.status!=='ok')throw Error('出走表の取得が完了していません。予測を保留します。');
+}
+function resolveRace(){
+ dataCheck();
+ if($('day').value!==conditions.date)throw Error('この日付の事前予測は保存されていません。当日の取得済みレースを選んでください。');
+ const venue=Number($('venue').value),race=Number($('race').value);
+ if(!Number.isInteger(venue)||venue<1||venue>24||!Number.isInteger(race)||race<1||race>12)throw Error('競艇場とレース番号を選んでください。');
+ const code=conditions.date.replaceAll('-','')+String(venue).padStart(2,'0')+String(race).padStart(2,'0');
+ const found=conditions.races.filter(r=>r.code===code);
+ if(found.length!==1)throw Error('選択したレースのデータがありません。未開催・未取得の可能性があります。');
+ const r=found[0];
+ if(r.date!==conditions.date||r.venue!==VENUES[venue-1]||r.race!==race||Number(r.venue_code)!==venue)throw Error('レース識別情報が一致しません。');
+ if(r.cancelled!==false)throw Error('欠場・中止の可能性があるため、このレースは表示しません。');
+ const cutoff=zonedTime(r.cutoff);
+ if(!Number.isFinite(cutoff)||new Date(cutoff+9*3600000).toISOString().slice(0,10)!==conditions.date)throw Error('締切時刻を確認できません。');
+ if(cutoff<=Date.now())throw Error('このレースは締切済みです。締切後に予測を作り直して表示することはしません。');
+ return {r,venue};
+}
+function renderSelection(){
+ if(!hasSearched)return;
+ try{
+  const {r,venue}=resolveRace();modelCheck();
+  if(!model.allowed_venues.includes(venue))throw Error('この競艇場は学習または検証の件数が不足しています。');
+  const {players}=featureMatrix(r.players),all=probabilities(model,players,venue);
+  const ranked=[...all].sort((a,b)=>b.p-a.p),top=ranked.slice(0,5),mass=top.reduce((s,x)=>s+x.p,0);
+  const rows=top.map((x,i)=>'<div class="prediction"><span class="rank">'+(i+1)+'</span><span class="order">'+x.order.join(' − ')+'</span><span class="prob">'+(x.p*100).toFixed(1)+'<small>%</small></span></div>').join('');
+  $('result').innerHTML='<article class="panel"><span class="tag">AI予測 / 学習モデル・実験版</span><div class="race-head"><div><h2>'+esc(r.venue)+' '+r.race+'R</h2><p class="small">'+esc(r.date)+'・推定確率が高い順</p></div><div class="deadline">締切予定<strong>'+esc(clock(r.cutoff))+'</strong></div></div><div class="list">'+rows+'</div><div class="mass"><div><span>5通りの合計推定確率</span><strong>'+pct(mass)+'</strong></div><div><span>それ以外の115通り</span><strong>'+pct(1-mass)+'</strong></div></div><p class="small">全120通りを合計すると100％です。表示は丸めています。</p><div class="players">'+players.map(p=>'<div><span class="boat">'+p.boat+'</span>'+esc(p.name||'名前未取得')+'</div>').join('')+'</div><div class="scope"><strong>今回使用：</strong>艇番・競艇場・全国／当地の勝率と2連対率・モーター／ボート2連対率。<br><strong>未使用：</strong>風・展示・展示ST・実際の進入・オッズ。<br>モデル '+esc(model.model_id||'不明')+' ／ 出走情報 '+esc(formatTime(conditions.generated_at))+'</div></article>';
+  showStatus('5候補を表示しています。確率は有効決着を条件とした実験的な推定値です。');
+ }catch(e){empty(e.message);showStatus('予測を保留しています。',true);}
+}
+function renderReport(){
+ if(!model){$('report').textContent='モデルファイルは未作成です。';return;}
+ const r=model.report;
+ if(!r){$('report').textContent=model.message||'検証結果はまだありません。';return;}
+ const stages=['train','calibration','test'],labels=['モデル学習','確率の補正','未使用期間でのテスト'];
+ let text='<p>全120通りを、1着→2着→3着の順に残った艇から選ぶ3段階の統計モデルで計算します。係数は過去の実際の着順から学習します。</p><div class="table-wrap"><table><thead><tr><th>用途</th><th>期間</th><th>件数</th></tr></thead><tbody>';
+ stages.forEach((k,i)=>{const s=r[k]||{};text+='<tr><td>'+labels[i]+'</td><td>'+esc(s.from)+'〜'+esc(s.to)+'</td><td>'+esc(s.n)+'</td></tr>';});
+ text+='</tbody></table></div><p>比較対象は、学習期間から計算した競艇場別の過去出現率です。2つの確率誤差指標で基準を上回り、必要件数・期間を満たすと実験値を表示します。統計的な有意差や将来の精度を保証する基準ではありません。</p>';
+ const m=r.model||{},b=r.venue_frequency_baseline||{},num=x=>finite(x)?x.toFixed(4):'未確認';
+ text+='<div class="table-wrap"><table><thead><tr><th>テスト結果</th><th>学習モデル</th><th>過去出現率の基準</th></tr></thead><tbody><tr><td>Log loss（小さい方がよい）</td><td>'+num(m.log_loss)+'</td><td>'+num(b.log_loss)+'</td></tr><tr><td>Brier・120クラス合計</td><td>'+num(m.brier_sum)+'</td><td>'+num(b.brier_sum)+'</td></tr><tr><td>上位5通りに実際の着順が入った割合</td><td>'+pct(m.top5_hit_rate)+'</td><td>'+pct(b.top5_hit_rate)+'</td></tr><tr><td>5通りの合計推定確率の平均</td><td>'+pct(m.top5_mean_estimate)+'</td><td>'+pct(b.top5_mean_estimate)+'</td></tr></tbody></table></div>';
+ text+='<p>これらは過去データのテスト結果で、今日のレースの的中率や実運用の成績ではありません。表示中のモデルはテスト期間の結果で再学習していません。単一の時系列分割による暫定評価です。</p>';
+ $('report').innerHTML=text;
+}
+async function getJSON(path,maxBytes){
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
+ try{const r=await fetch(DATA_ROOT+path+'?v='+Math.floor(Date.now()/60000),{cache:'no-store',credentials:'omit',signal:controller.signal});if(!r.ok)throw Error(path+' の取得に失敗しました（'+r.status+'）。');const s=await r.text();if(s.length>maxBytes)throw Error('データサイズが上限を超えました。');return JSON.parse(s);}finally{clearTimeout(timer);}
+}
+async function refresh(){
+ if(busy)return;busy=true;$('reload').disabled=true;
+ try{
+  const result=await Promise.allSettled([getJSON('trifecta_model.json',2000000),getJSON('conditions.json',10000000)]);
+  model=result[0].status==='fulfilled'?result[0].value:null;conditions=result[1].status==='fulfilled'?result[1].value:null;
+  renderReport();
+  $('freshness').textContent=conditions?'出走データの更新：'+formatTime(conditions.generated_at)+' JST':'出走データを取得できませんでした。';
+  if(hasSearched)renderSelection();else{try{dataCheck();modelCheck();showStatus('当日の競艇場とレース番号を選んでください。');}catch(e){showStatus(e.message,true);}}
+ }catch(e){model=null;conditions=null;empty('データを取得できませんでした。');showStatus('通信エラー。以前の数値は表示しません。',true);}
+ finally{busy=false;$('reload').disabled=false;}
+}
+function parseQuery(){
+ const q=$('query').value.normalize('NFKC').replace(/\s/g,'');if(!q)return;
+ const name=VENUES.find(v=>q.startsWith(v));if(!name)throw Error('競艇場名とR番号で入力してください。例：徳山12R');
+ const tail=q.slice(name.length),m=tail.match(/^(\d{1,2})(?:[Rr]|レース)?$/);
+ if(!m||Number(m[1])<1||Number(m[1])>12)throw Error('レース番号は1〜12で入力してください。');
+ $('venue').value=String(VENUES.indexOf(name)+1);$('race').value=String(Number(m[1]));
+}
+$('day').value=today();
+VENUES.forEach((v,i)=>{const o=document.createElement('option');o.value=String(i+1);o.textContent=v;$('venue').append(o);});
+for(let r=1;r<=12;r++){const o=document.createElement('option');o.value=String(r);o.textContent=r+'R';$('race').append(o);}
+// Handle submit ourselves so the optional free-text search works before selecting a venue.
+$('searchform').noValidate=true;
+$('searchform').addEventListener('submit',e=>{e.preventDefault();hasSearched=true;try{parseQuery();renderSelection();}catch(err){empty(err.message);showStatus('検索条件を確認してください。',true);}});
+for(const id of ['day','venue','race'])$(id).addEventListener('change',()=>{$('query').value='';if(hasSearched)renderSelection();});
+$('reload').addEventListener('click',refresh);
+setInterval(()=>{if(hasSearched)renderSelection();},10000);
+setInterval(()=>{if(!document.hidden)refresh();},60000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
+// Pure calculation functions are exposed for offline cross-language tests, not betting APIs.
+window.BOAT12_TRIFECTA_TEST={probabilities,validModel,featureMatrix,ORDERS};
+refresh();
+</script>
+</body>
+</html>
