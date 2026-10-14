@@ -10,6 +10,7 @@
 :root{color-scheme:dark;--bg:#0b1320;--panel:#152132;--panel2:#101c2c;--line:#2b394d;--ink:#eef3fb;--muted:#a7b7cc;--accent:#96ded2;--warn:#ead098}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:900px;margin:auto;padding:28px 18px 58px}button,select,input{font:inherit}a{color:var(--accent);text-underline-offset:3px}button,select{color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:9px;min-height:44px;padding:8px 12px}button{cursor:pointer}button:disabled{opacity:.5;cursor:wait}button:hover{border-color:var(--accent)}:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--accent);font-weight:650}.title{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}h1{font-size:clamp(26px,5vw,35px);line-height:1.35;margin:8px 0 12px;letter-spacing:-.02em}h2{font-size:21px;line-height:1.4;margin:0}h3{font-size:16px;margin:14px 0 6px}.lead{color:var(--muted);margin:0 0 18px}.tag{font-size:11px;letter-spacing:.04em;border:1px solid var(--line);border-radius:6px;padding:4px 7px;color:var(--muted);white-space:nowrap;margin-top:11px}.notice{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--panel2);margin:12px 0}.warn{border-color:#655637;color:var(--warn)}.notice p{margin:0}.notice p+p{margin-top:6px}.muted,.small{color:var(--muted)}.small{font-size:12px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 12px}.metric{background:var(--panel);border-radius:10px;padding:13px 14px}.metric small{display:block;color:var(--muted);font-size:12px}.metric strong{font-size:23px;font-variant-numeric:tabular-nums}.source{font-size:12px;color:var(--muted);line-height:1.8;overflow-wrap:anywhere}.tools{display:grid;grid-template-columns:1fr 1.55fr auto;gap:9px;margin:19px 0 9px}.tools select{width:100%;min-width:0}.tools-label{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}.subtools{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:10px 0 15px;font-size:13px}.check{display:flex;align-items:center;gap:7px;min-height:36px;color:var(--muted)}.check input{width:17px;height:17px;accent-color:var(--accent)}.race{border:1px solid var(--line);border-radius:16px;margin:14px 0;background:var(--panel);overflow:hidden}.race-main{padding:18px}.race-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}.rank{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}.deadline{text-align:right;font-size:12px;color:var(--muted);white-space:nowrap}.deadline strong{display:block;color:var(--ink);font-size:19px;font-variant-numeric:tabular-nums}.chip{font-size:11px;display:inline-block;padding:3px 7px;border-radius:5px;color:var(--muted);background:#233146;margin-top:5px;max-width:100%;white-space:normal}.names{display:flex;gap:13px;flex-wrap:wrap;margin:13px 0;font-size:14px}.boat{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1px solid #708098;border-radius:4px;font-size:12px;margin-right:6px}.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.prob-box{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px}.prob-box label{display:block;font-size:12px;color:var(--muted)}.prob-box strong{font-size:31px;line-height:1.45;font-variant-numeric:tabular-nums;font-weight:650;letter-spacing:-.03em}.prob-box strong small{font-size:17px;padding-left:2px}.prob-box.live strong{color:var(--accent)}.prob-box .reason{font-size:11px;color:var(--muted);line-height:1.5;min-height:33px}.data-line{display:flex;flex-wrap:wrap;gap:8px 19px;margin-top:15px;padding-top:12px;border-top:1px solid var(--line);font-size:13px}.data-line b{font-size:17px;font-variant-numeric:tabular-nums}.data-notice{font-size:12px;color:var(--warn);margin-top:10px}.race details{border-top:1px solid var(--line);padding:12px 18px}.race summary{font-size:13px;color:var(--muted);cursor:pointer;min-height:26px}.table-wrap{overflow:auto;margin:12px -3px 8px;border-radius:6px}table{border-collapse:collapse;min-width:100%;white-space:nowrap;font-size:12px}th,td{padding:9px 9px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}th{font-weight:500;color:var(--muted);background:var(--panel2)}td:nth-child(2),th:nth-child(2){text-align:left}td:first-child,th:first-child{text-align:center}details summary{cursor:pointer}details pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.7 ui-monospace,monospace;color:var(--muted)}.empty{padding:26px 16px;text-align:center;border:1px dashed var(--line);border-radius:12px;color:var(--muted);margin:18px 0}.empty p{margin:0 0 12px}.footer{font-size:12px;color:var(--muted);margin-top:22px}.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.hide{display:none}.count-text{color:var(--muted);font-size:12px}noscript .notice{color:var(--warn)}
 @media(max-width:520px){main{padding:19px 14px 40px}.title{gap:6px}.tag{font-size:10px}.metrics{gap:6px}.metric{padding:10px}.metric strong{font-size:20px}.tools{grid-template-columns:1fr 1fr}.tools .refresh{grid-column:1/-1}.tools .refresh button{width:100%}.tools-label{font-size:11px}.race-main{padding:14px}.prob-box{padding:10px}.prob-box strong{font-size:29px}.prob-box label{font-size:11px}.race details{padding:11px 14px}.names{gap:7px 12px;font-size:13px}.report-grid{grid-template-columns:1fr}h2{font-size:20px}}
+.prob-box.unverified{border-color:#77633f}.prob-box.unverified strong{color:var(--warn)}#experimental-control .small{color:var(--warn);margin:8px 0 0}
 </style>
 </head>
 <body>
@@ -18,18 +19,19 @@
 <div class="title"><h1>事前予測と、風・展示を<br>ひとつの画面で。</h1><span class="tag">実験版</span></div>
 <p class="lead">同じレースの事前確率・風・6艇の展示をまとめて確認。</p>
 <div class="notice"><p><b>事前確率は風・展示を含みません。</b> 直前確率は別のモデルです。2つの確率を足したり平均したりせず、そのまま区別して表示します。</p></div>
+<div class="notice warn" id="experimental-control"><label class="check"><input type="checkbox" id="unverified">未検証の実験値を表示する</label><p class="small">ONにすると、風・展示を加えたモデルの改善が十分に確認できていない数値も表示します。数値は検証基準未達の参考値で、実際の的中率ではありません。締切後・古いデータ・データ不足はONでも非表示です。</p></div>
 <div id="status" class="notice" role="status" aria-live="polite">データを確認しています。</div>
-<div class="metrics"><div class="metric"><small>今日の掲載レース</small><strong id="total">—</strong></div><div class="metric"><small>表示可能な事前値</small><strong id="bases">—</strong></div><div class="metric"><small>有効な直前値</small><strong id="lives">—</strong></div></div>
+<div class="metrics"><div class="metric"><small>今日の掲載レース</small><strong id="total">—</strong></div><div class="metric"><small>表示可能な事前値</small><strong id="bases">—</strong></div><div class="metric"><small>表示中の直前値</small><strong id="lives">—</strong></div></div>
 <div id="sources" class="source"></div>
 <div class="tools">
  <div><label class="tools-label" for="venue">競艇場</label><select id="venue"><option value="">全国の開催場</option></select></div>
- <div><label class="tools-label" for="sort">並び順</label><select id="sort"><option value="base">事前確率が高い順</option><option value="time">締切予定が近い順</option><option value="live">有効な直前確率順</option></select></div>
+ <div><label class="tools-label" for="sort">並び順</label><select id="sort"><option value="base">事前確率が高い順</option><option value="time">締切予定が近い順</option><option value="live">直前値順（未検証値はON時のみ）</option></select></div>
  <div class="refresh"><span class="tools-label">データ確認</span><button id="reload" type="button">再読み込み</button></div>
 </div>
 <div class="subtools"><label class="check"><input type="checkbox" id="closed">締切済みも表示（確率は非表示）</label><span id="listed" class="count-text"></span></div>
 <div id="races"></div>
 <details class="notice"><summary>検証結果・更新の状態</summary><div id="report" class="report-grid"></div></details>
-<p class="footer">確率は実験的な推定値で、的中率や利益の保証ではありません。直前確率の検証待ち・期限切れ・取得失敗を、事前確率で埋めることはしません。展示の数値が見えることと、その数値が確率に反映されていることは別です。</p>
+<p class="footer">確率は実験的な推定値で、的中率や利益の保証ではありません。未検証値は専用スイッチで区別して表示します。直前値の欠損・期限切れ・取得失敗を事前確率で埋めません。展示の数値が見えることと、その数値が確率に反映されていることは別です。</p>
 <p class="footer">この画面は既存の生成済みデータを約60秒おきに確認します。再読み込みは学習やデータ生成を実行するボタンではありません。配信・生成の遅延や出走変更があり得るため、締切と最新の展示は公式情報で確認してください。時刻は日本時間です。</p>
 <p class="footer"><a href="v2-preview.html">事前版だけ開く</a> ／ <a href="conditions.html">風・展示版だけ開く</a></p>
 <noscript><div class="notice">この統合画面にはJavaScriptが必要です。上のリンクから元のページを開いてください。</div></noscript>
@@ -114,25 +116,50 @@ function baseState(r){
  if(finished(r))return {p:null,label:'締切済み・確率非表示'};
  return {p:r.base.p,label:'風・展示は未反映'+(!Number.isFinite(time(r.condition?.cutoff))?'／締切未確認':'')};
 }
-function liveState(r){
- const c=r.condition,d=STATE.conditions;
- if(!c||!d)return {p:null,label:'風・展示データが未取得'};
- if(finished(r))return {p:null,label:c.cancelled?'中止・順延':'締切済み・確率非表示'};
- if(d.date!==today())return {p:null,label:'別の日付・確率非表示'};
- const age=clock()-time(d.generated_at);
- if(!Number.isFinite(age)||age< -90000||age>12*60000)return {p:null,label:'データ更新が古い・表示保留'};
- if(d.status!=='ok')return {p:null,label:'取得が正常でないため保留'};
- if(!c.basic_ready)return {p:null,label:'風・展示データ待ち'};
- const scope=c.probability_scope;
- const enabled=d.report?.scopes?.[scope]?.probabilities_enabled===true;
- if(!['normal','original'].includes(scope)||!enabled||!probability(c.probability))return {p:null,label:'精度の検証待ち'};
- if(scope==='original'&&!c.original_ready)return {p:null,label:'オリジナル展示の確認待ち'};
- const expiry=time(c.expires_at),cutoff=time(c.cutoff);
- if(!Number.isFinite(expiry)||!Number.isFinite(cutoff)||clock()>=expiry||clock()>=cutoff-30000)return {p:null,label:'有効期限外・確率非表示'};
+function selectConditionsValue(c,d,showUnverified,now,currentDay){
+ const fail=label=>({p:null,base:null,scope:null,unverified:false,label});
+ const parse=t=>typeof t==='string'&&/(?:Z|[+-]\d{2}:\d{2})$/.test(t)?Date.parse(t):NaN;
+ const valid=p=>typeof p==='number'&&Number.isFinite(p)&&p>=0&&p<=1;
+ if(!c||!d)return fail('風・展示データが未取得');
+ if(c.cancelled)return fail('中止・順延');
+ if(d.date!==currentDay||c.date!==currentDay)return fail('別の日付・確率非表示');
+ const cutoff=parse(c.cutoff),age=now-parse(d.generated_at);
+ if(c.state==='締切済み'||(Number.isFinite(cutoff)&&now>=cutoff-30000))return fail('締切済み・締切直前');
+ if(!Number.isFinite(age)||age< -90000||age>12*60000)return fail('データ更新が古い・表示保留');
+ if(d.status!=='ok')return fail('取得が正常でないため保留');
+ if(!c.basic_ready)return fail('風・展示データ待ち');
+ const reports=d.report?.scopes||{};
+ let p=c.probability,pb=c.base_probability,scope=c.probability_scope,expiry=parse(c.expires_at),unverified=false;
+ const strict=['normal','original'].includes(scope)&&reports[scope]?.probabilities_enabled===true&&valid(p);
+ if(!strict){
+   const x=c.experimental_prediction;
+   const candidate=d.display_schema==='conditions-experimental-1'&&x?.schema==='conditions-experimental-1'&&
+     ['normal','original'].includes(x.scope)&&x.release_rule_passed===false&&x.validation_status==='held_back'&&
+     reports[x.scope]?.probabilities_enabled===false&&reports[x.scope]?.status==='held_back'&&valid(x.probability);
+   if(!candidate)return fail(showUnverified?'実験値の生成待ち・モデル未作成':'精度の検証待ち');
+   if(!showUnverified)return fail('未検証の実験値は上のスイッチで表示');
+   p=x.probability;pb=x.base_probability;scope=x.scope;expiry=parse(x.expires_at);unverified=true;
+ }
+ if(scope==='original'&&!c.original_ready)return fail('オリジナル展示の確認待ち');
+ if(!Number.isFinite(expiry)||!Number.isFinite(cutoff)||now>=expiry||now>=cutoff-30000)return fail('有効期限外・確率非表示');
+ const observed=parse(c.weather?.observed_at);
+ if(!Number.isFinite(observed)||observed>now||now-observed>60*60000)return fail('気象観測が古い・表示保留');
  const sources=scope==='original'?['sui','tkz','stt','original']:['sui','tkz','stt'];
- if(sources.some(k=>!Number.isFinite(time(c.source_times[k]))||time(c.source_times[k])>clock()||time(c.source_times[k])>=cutoff))return {p:null,label:'取得時刻の不整合・表示保留'};
- return {p:c.probability,label:scope==='original'?'風・通常展示・オリジナル反映':'風・通常展示反映／オリジナル未反映'};
+ if(sources.some(k=>{const t=parse(c.source_times?.[k]);return !Number.isFinite(t)||t>now||t>=cutoff||now-t>20*60000;}))return fail('取得時刻が古い・不整合');
+ const label=(unverified?'未検証・表示基準未達／':'表示基準通過・実験値／')+
+   (scope==='original'?'風・通常展示・オリジナル反映':'風・通常展示反映（オリジナル未反映）');
+ return {p,base:valid(pb)?pb:null,scope,unverified,label};
 }
+function initExperimentalSwitch(input,redraw){
+ const key='boat12-show-unverified-conditions-v1';
+ try{input.checked=localStorage.getItem(key)==='yes';}catch(_){input.checked=false;}
+ input.addEventListener('change',()=>{try{localStorage.setItem(key,input.checked?'yes':'no');}catch(_){}redraw();});
+}
+function liveState(r){
+ if(!namesAgree(r))return {p:null,label:'選手情報の不一致・表示保留',unverified:false};
+ return selectConditionsValue(r.condition,STATE.conditions,$('unverified').checked,clock(),today());
+}
+
 function probHTML(p){return probability(p)?(p*100).toFixed(1)+'<small>%</small>':'—';}
 function conditionNotice(r){
  const c=r.condition;if(!c)return '風・展示はまだ取得できていません。事前の値だけ表示しています。';
@@ -146,12 +173,12 @@ function cardHTML(r,index,open){
  const c=r.condition,b=baseState(r),l=liveState(r),w=c?.weather||{};
  const one=c?.players[0]?.name||r.base?.one||'未取得',two=c?.players[1]?.name||r.base?.two||'未取得';
  const kinds=Object.keys(ORIGINAL).filter(k=>(c?.original_kinds||[]).includes(k));
- const notice=conditionNotice(r),state=finished(r)?(c.cancelled?'中止・順延':'締切済み'):!c?'締切未取得':l.p!==null?'直前値あり':c.basic_ready?'展示データあり':'展示待ち';
+ const notice=conditionNotice(r),state=finished(r)?(c.cancelled?'中止・順延':'締切済み'):!c?'締切未取得':l.p!==null?(l.unverified?'未検証の実験値':'直前値あり'):c.basic_ready?'展示データあり':'展示待ち';
  let table='';
  if(c)table='<div class="table-wrap" tabindex="0" aria-label="6艇の展示データ。横スクロールできます"><table><thead><tr><th>艇</th><th>選手</th><th>全国勝率</th><th>モーター2連率</th><th>通常展示(秒)</th><th>展示ST(秒)</th><th>進入</th>'+kinds.map(k=>'<th>'+ORIGINAL[k]+'(秒)</th>').join('')+'</tr></thead><tbody>'+c.players.map(p=>'<tr><td>'+p.boat+'</td><td>'+escapeText(p.name)+'</td><td>'+fixed(p.win)+'</td><td>'+fixed(p.motor_rate,1)+'</td><td>'+fixed(p.exhibition)+'</td><td>'+fixed(p.exhibition_st)+'</td><td>'+fixed(p.course,0)+'</td>'+kinds.map(k=>'<td>'+fixed(p.original?.[k])+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
  return '<article class="race" data-code="'+r.code+'"><div class="race-main"><div class="race-top"><div><span class="rank">一覧 '+(index+1)+'</span><h2>'+escapeText(r.venue)+' '+r.race+'R</h2></div><div class="deadline">締切予定<strong>'+hhmm(c?.cutoff)+'</strong><span class="chip">'+escapeText(state)+'</span></div></div>'+
  '<div class="names"><span><span class="boat">1</span>'+escapeText(one)+'</span><span><span class="boat">2</span>'+escapeText(two)+'</span></div>'+
- '<div class="prob-grid"><div class="prob-box"><label>事前の推定確率 · v2</label><strong data-p="base">'+probHTML(b.p)+'</strong><div class="reason">'+escapeText(b.label)+'</div></div><div class="prob-box'+(l.p!==null?' live':'')+'"><label>風・展示込みの直前確率</label><strong data-p="live">'+probHTML(l.p)+'</strong><div class="reason">'+escapeText(l.label)+'</div></div></div>'+
+ '<div class="prob-grid"><div class="prob-box"><label>事前の推定確率 · v2</label><strong data-p="base">'+probHTML(b.p)+'</strong><div class="reason">'+escapeText(b.label)+'</div></div><div class="prob-box'+(l.unverified?' unverified':l.p!==null?' live':'')+'"><label>風・展示込みの直前推定</label><strong data-p="live">'+probHTML(l.p)+'</strong><div class="reason">'+escapeText(l.label)+'</div></div></div>'+
  '<div class="data-line"><span>風速 <b>'+fixed(w.wind_speed,1)+'</b> m/s</span><span>波高 <b>'+fixed(w.wave_cm,0)+'</b> cm</span><span>風向コード '+escapeText(w.wind_direction_code??'—')+'</span></div><div class="source">気象観測 '+hhmm(w.observed_at)+' ／ 展示の直前記録 '+hhmm(c?.basic_available)+'</div>'+
  (notice?'<div class="data-notice">'+escapeText(notice)+'</div>':'')+'</div>'+
  '<details data-key="'+r.code+'"'+(open.has(r.code)?' open':'')+'><summary>6艇の展示・オリジナル展示を見る</summary>'+table+
@@ -167,10 +194,10 @@ function reportHTML(){
  let html='<section><h3>事前版 v2</h3><p class="small">出走表だけの実験モデル。元のページの表示値を使用しています。風・展示込みモデルの比較用モデルとは別物です。</p><p class="small">対象日 '+escapeText(b?.date||'未取得')+'<br>Brier '+escapeText(b?.brier||'未確認')+'／単純な基準 '+escapeText(b?.baseline||'未確認')+'<br>事前版の生成時刻はデータにないため表示できません。</p></section>';
  for(const key of ['normal','original']){
   const s=d?.report?.scopes?.[key]||{};
-  const label=s.probabilities_enabled===true?'実験版の表示基準を通過':s.status==='held_back'?'改善の確証が不足・確率は保留':'未学習・データ確認待ち';
+  const label=s.probabilities_enabled===true?'実験版の表示基準を通過':s.status==='held_back'?'表示基準未達（未検証値はスイッチONで表示）':'未学習・データ確認待ち';
   html+='<section><h3>'+(key==='normal'?'風・通常展示':'風・通常展示＋オリジナル')+'</h3><p class="small">'+escapeText(label)+'<br>'+escapeText(s.days??'—')+'日・'+escapeText(s.rows??'—')+'レース<br>'+escapeText(s.period_start??'—')+'〜'+escapeText(s.period_end??'—')+'</p>'+(number(s.brier_conditions)!==null?'<p class="small">同一検証期間のBrier（小さいほど誤差が小さい）<br>出走表のみ '+fixed(s.brier_base,5)+'<br>風・展示追加 '+fixed(s.brier_conditions,5)+'<br>検証 '+escapeText(s.test_rows??'—')+'件</p>':'')+'</section>';
  }
- html+='<section><h3>表示のルール</h3><p class="small">日付・場・レース番号で照合します。別の日付の予測は混ぜません。直前値は生成時刻・締切・有効期限・公開判定がそろう場合だけ表示します。事前値は出走表ベースの値で、締切情報が未取得の場合もあります。</p></section>';
+ html+='<section><h3>表示のルール</h3><p class="small">日付・場・レース番号で照合します。別の日付の予測は混ぜません。直前値は時刻・データが有効な場合だけ表示します。表示基準未達の数値はスイッチON時のみ未検証として表示します。事前値は出走表ベースの値で、締切情報が未取得の場合もあります。</p></section>';
  return html;
 }
 function render(){
@@ -209,6 +236,7 @@ async function fetchText(path){
  try{const response=await fetch(ROOT+path+'?minute='+Math.floor(clock()/60000),{cache:'no-store',credentials:'omit',signal:controller.signal});if(!response.ok)throw Error('HTTP '+response.status);const text=await response.text();if(text.length>6000000)throw Error('ファイル容量が想定外です');return text;}finally{clearTimeout(timer);}
 }
 function errorText(e){return e?.name==='AbortError'?'通信時間切れ。再読み込みしてください。':(e?.message||'取得に失敗しました');}
+initExperimentalSwitch($('unverified'),render);
 async function refresh(){
  if(STATE.busy)return;STATE.busy=true;$('reload').disabled=true;$('reload').textContent='確認中…';
  const results=await Promise.allSettled([fetchText('v2-preview.html').then(parseBase),fetchText('conditions.json').then(t=>parseConditions(JSON.parse(t)))]);
