@@ -16,7 +16,7 @@
 <body>
 <main>
 <div class="eyebrow">BOAT12 / ALL IN ONE</div>
-<div class="title"><h1>事前予測と、風・展示を<br>ひとつの画面で。</h1><span class="tag">実験版</span></div>
+<div class="title"><h1>事前予測と、風・展示を<br>ひとつの画面で。</h1><span class="tag">実験版 1.2</span></div>
 <p class="lead">同じレースの事前確率・風・6艇の展示をまとめて確認。</p>
 <div class="notice"><p><b>事前確率は風・展示を含みません。</b> 直前確率は別のモデルです。2つの確率を足したり平均したりせず、そのまま区別して表示します。</p></div>
 <div class="notice warn" id="experimental-control"><label class="check"><input type="checkbox" id="unverified">未検証の実験値を表示する</label><p class="small">ONにすると、風・展示を加えたモデルの改善が十分に確認できていない数値も表示します。数値は検証基準未達の参考値で、実際の的中率ではありません。締切後・古いデータ・データ不足はONでも非表示です。</p></div>
@@ -26,7 +26,7 @@
 <div class="tools">
  <div><label class="tools-label" for="venue">競艇場</label><select id="venue"><option value="">全国の開催場</option></select></div>
  <div><label class="tools-label" for="sort">並び順</label><select id="sort"><option value="base">事前確率が高い順</option><option value="time">締切予定が近い順</option><option value="live">直前値順（未検証値はON時のみ）</option></select></div>
- <div class="refresh"><span class="tools-label">データ確認</span><button id="reload" type="button">再読み込み</button></div>
+ <div class="refresh"><span class="tools-label">データ確認</span><button id="reload" type="button">最新の保存データを確認</button></div>
 </div>
 <div class="subtools"><label class="check"><input type="checkbox" id="closed">締切済みも表示（確率は非表示）</label><span id="listed" class="count-text"></span></div>
 <div id="races"></div>
@@ -38,7 +38,7 @@
 </main>
 <script>
 'use strict';
-/* boat12 dashboard 1.0.0
+/* boat12 dashboard freshness fix 1.2.0
  * Display-only addition. No changes to the models, generators, workflows or data.
  * v2's HTML contains rounded probabilities; they are preserved, NOT recalculated.
  * Different model probabilities are never averaged or substituted for each other.
@@ -47,7 +47,7 @@
 const ROOT='https://raw.githubusercontent.com/reikofda1211-star/boat12/main/';
 const VENUES=['桐生','戸田','江戸川','平和島','多摩川','浜名湖','蒲郡','常滑','津','三国','びわこ','住之江','尼崎','鳴門','丸亀','児島','宮島','徳山','下関','若松','芦屋','福岡','唐津','大村'];
 const ORIGINAL={lap:'一周',half_lap:'半周ラップ',turn:'まわり足',straight:'直線'};
-const STATE={base:null,conditions:null,baseError:'',conditionsError:'',checkedAt:null,busy:false};
+const STATE={base:null,conditions:null,deliveryNote:'',baseError:'',conditionsError:'',checkedAt:null,busy:false};
 const $=id=>document.getElementById(id);
 const escapeText=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const normalize=x=>String(x??'').normalize('NFKC').trim();
@@ -205,16 +205,17 @@ function render(){
  const messages=[];
  if(STATE.baseError)messages.push('事前版：'+STATE.baseError);
  if(STATE.conditionsError)messages.push('風・展示：'+STATE.conditionsError);
+ if(STATE.deliveryNote)messages.push(STATE.deliveryNote);
  if(STATE.base&&STATE.base.date!==today())messages.push('事前版は'+STATE.base.date+'のデータのため、今日の確率として表示していません。');
  if(STATE.conditions&&STATE.conditions.date!==today())messages.push('風・展示は'+STATE.conditions.date+'の記録のため、今日のレースとは統合していません。');
  const age=clock()-time(STATE.conditions?.generated_at);
- if(STATE.conditions?.date===today()&&(!Number.isFinite(age)||age>12*60000||age< -90000))messages.push('風・展示の更新時刻を確認してください。直前確率は非表示です。');
+ if(STATE.conditions?.date===today()&&(!Number.isFinite(age)||age>12*60000||age< -90000))messages.push('最後のデータ生成から12分以上経過しています。画面の再読込では計算は実行されません。更新処理待ち、または最新データの到着待ちです。');
  if(STATE.base?.skipped||STATE.conditions?.skipped)messages.push('形式不一致・重複の一部レースを除外しました。');
  if(!messages.length)messages.push('今日のデータを表示しています。事前値と直前値は区別して確認してください。');
  const status=$('status');status.className='notice'+(STATE.baseError||STATE.conditionsError||STATE.base?.date!==today()||STATE.conditions?.date!==today()||(!Number.isFinite(age)||age>12*60000||age< -90000)?' warn':'');
  status.innerHTML=messages.map(m=>'<p>'+escapeText(m)+'</p>').join('');
  $('total').textContent=all.length+'件';$('bases').textContent=all.filter(r=>baseState(r).p!==null).length+'件';$('lives').textContent=all.filter(r=>liveState(r).p!==null).length+'件';
- $('sources').innerHTML='対象日 <b>'+today()+'</b> ／ この画面の確認 '+stamp(STATE.checkedAt)+'<br>事前版の対象日 '+escapeText(STATE.base?.date||'未取得')+'（生成時刻は不明）<br>風・展示の最終生成 '+stamp(STATE.conditions?.generated_at)+' ／ 約60秒おきに読み込み';
+ $('sources').innerHTML='対象日 <b>'+today()+'</b> ／ この画面の確認 '+stamp(STATE.checkedAt)+'<br>事前版の対象日 '+escapeText(STATE.base?.date||'未取得')+'（生成時刻は不明）<br>風・展示の最終生成 '+stamp(STATE.conditions?.generated_at)+' ／ 約60秒おきに確認<br>取得経路 '+escapeText(STATE.conditions?._delivery||'未確認')+' ／ 画面版 1.2（API照合は最大3分に1回）';
  const v=$('venue').value,sort=$('sort').value,closed=$('closed').checked;
  let rows=all.filter(r=>(!v||r.venue===v)&&(closed||!finished(r)));
  const order=p=>p===null?-1:p;
@@ -236,17 +237,93 @@ async function fetchText(path){
  try{const response=await fetch(ROOT+path+'?minute='+Math.floor(clock()/60000),{cache:'no-store',credentials:'omit',signal:controller.signal});if(!response.ok)throw Error('HTTP '+response.status);const text=await response.text();if(text.length>6000000)throw Error('ファイル容量が想定外です');return text;}finally{clearTimeout(timer);}
 }
 function errorText(e){return e?.name==='AbortError'?'通信時間切れ。再読み込みしてください。':(e?.message||'取得に失敗しました');}
+
+// Public read-only API fallback: no tokens, no writes, no client-side model changes.
+// Raw content can lag behind a repository commit. Keep the newest observed
+// generation; never replace it with an older cached generation.
+const CONDITION_API='https://api.github.com/repos/reikofda1211-star/boat12/contents/conditions.json?ref=main';
+const API_INTERVAL=180000;
+const API_BUDGET_KEY='boat12-conditions-api-next-v1';
+const FEED={lastGood:null,nextApi:0};
+function readApiBudget(){
+ let stored=0;try{stored=Number(localStorage.getItem(API_BUDGET_KEY)||0);}catch(_){}
+ // Ignore implausible local-storage timestamps, not valid server backoffs.
+ if(Number.isFinite(stored)&&stored>=0&&stored<clock()+24*3600000)FEED.nextApi=Math.max(FEED.nextApi,stored);
+ return FEED.nextApi;
+}
+function reserveApi(until){
+ FEED.nextApi=Math.max(FEED.nextApi,until);
+ try{localStorage.setItem(API_BUDGET_KEY,String(FEED.nextApi));}catch(_){}
+}
+async function apiConditions(){
+ reserveApi(clock()+API_INTERVAL);
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
+ try{
+  const response=await fetch(CONDITION_API,{cache:'no-store',credentials:'omit',headers:{Accept:'application/vnd.github.raw+json'},signal:controller.signal});
+  if(response.status===403||response.status===429){
+   const ra=response.headers.get('retry-after');
+   const seconds=ra!==null?Number(ra):NaN;
+   const retry=Number.isFinite(seconds)?clock()+seconds*1000:(ra?Date.parse(ra):NaN);
+   const resetRaw=response.headers.get('x-ratelimit-reset');
+   const reset=resetRaw!==null?Number(resetRaw)*1000:NaN;
+   const until=Math.max(clock()+API_INTERVAL,Number.isFinite(retry)?retry:0,Number.isFinite(reset)?reset:0);
+   reserveApi(until>clock()+API_INTERVAL?until:clock()+3600000);
+   throw Error('GitHubの照合が制限されています。制限解除まではAPIへの再試行を停止します。');
+  }
+  if(!response.ok)throw Error('GitHub API HTTP '+response.status);
+  const text=await response.text();if(text.length>6000000)throw Error('データ容量が想定外です');
+  let body=JSON.parse(text);
+  // Compatibility with a contents endpoint returning the standard envelope.
+  if(body?.type==='file'&&body.path==='conditions.json'&&body.encoding==='base64'&&typeof body.content==='string'){
+   body=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(body.content.replace(/\s/g,'')),c=>c.charCodeAt(0))));
+  }
+  const parsed=parseConditions(body);parsed._delivery='GitHubの保存データ（API）';return parsed;
+ }finally{clearTimeout(timer);}
+}
+function usableGeneration(d){
+ const t=time(d?.generated_at);
+ return d&&Number.isFinite(t)&&t<=clock()+90000&&dayOK(d.date);
+}
+async function freshConditions(){
+ const incoming=[];const problems=[];STATE.deliveryNote='';
+ try{
+  const parsed=parseConditions(JSON.parse(await fetchText('conditions.json')));
+  if(!usableGeneration(parsed))throw Error('生成時刻を確認できません');
+  parsed._delivery='公開ファイル（Raw）';incoming.push(parsed);
+ }catch(e){problems.push(errorText(e));}
+ // At most 20 anonymous API checks/hour per browser origin (tabs share budget).
+ // Periodic checks also cover fresh-looking but superseded raw generations.
+ if(clock()>=readApiBudget()){
+  try{
+   const parsed=await apiConditions();
+   if(!usableGeneration(parsed))throw Error('APIの生成時刻が不正です');
+   incoming.push(parsed);
+  }catch(e){STATE.deliveryNote=errorText(e);problems.push(errorText(e));}
+ }
+ if(!incoming.length)throw Error(problems.join('／')||'最新データの取得待ち');
+ const successful=incoming.slice();
+ if(usableGeneration(FEED.lastGood))incoming.push(FEED.lastGood);
+ incoming.sort((a,b)=>time(b.generated_at)-time(a.generated_at));
+ let chosen=incoming[0];
+ // A reported generation failure at the same/newer time wins over old successes.
+ // Do not relabel a failed update as a successful refresh.
+ const latestNew=successful.reduce((a,b)=>time(b.generated_at)>=time(a.generated_at)?b:a);
+ if(time(latestNew.generated_at)>=time(chosen.generated_at))chosen=latestNew;
+ FEED.lastGood=chosen;
+ return chosen;
+}
+
 initExperimentalSwitch($('unverified'),render);
 async function refresh(){
  if(STATE.busy)return;STATE.busy=true;$('reload').disabled=true;$('reload').textContent='確認中…';
- const results=await Promise.allSettled([fetchText('v2-preview.html').then(parseBase),fetchText('conditions.json').then(t=>parseConditions(JSON.parse(t)))]);
+ const results=await Promise.allSettled([fetchText('v2-preview.html').then(parseBase),freshConditions()]);
  if(results[0].status==='fulfilled'){STATE.base=results[0].value;STATE.baseError='';}else{STATE.base=null;STATE.baseError=errorText(results[0].reason);}
  if(results[1].status==='fulfilled'){STATE.conditions=results[1].value;STATE.conditionsError='';}else{STATE.conditions=null;STATE.conditionsError=errorText(results[1].reason);}
  STATE.checkedAt=clock();const chosen=$('venue').value;
  const available=new Set(joinedRows().map(r=>r.venue));
  $('venue').innerHTML='<option value="">全国の開催場</option>'+VENUES.filter(v=>available.has(v)).map(v=>'<option value="'+escapeText(v)+'">'+escapeText(v)+'</option>').join('');
  if(available.has(chosen))$('venue').value=chosen;
- STATE.busy=false;$('reload').disabled=false;$('reload').textContent='再読み込み';render();
+ STATE.busy=false;$('reload').disabled=false;$('reload').textContent='最新の保存データを確認';render();
 }
 $('reload').addEventListener('click',refresh);
 for(const id of ['venue','sort','closed'])$(id).addEventListener('change',render);
