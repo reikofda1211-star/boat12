@@ -1,22 +1,22 @@
-# Save as .github/workflows/conditions.yml, not at repository root.
-# Upload conditions.py and conditions.html to the repository root first.
-# Initial manual run: history_days=90. Display-only refresh: history_days=0.
-# Existing main/model/refresh_v2 workflows and stored data are not modified.
-
+# Replace .github/workflows/conditions.yml with this complete file.
+# Refreshes run for at most 55 minutes and save about every 2 minutes.
+# A yellow/running job is expected; data is saved DURING the run.
+# Existing models, probability rules and other workflows are unchanged.
 name: Conditions Update
 
-on:
+'on':
   workflow_dispatch:
     inputs:
       history_days:
-        description: '初回は90。通常更新だけなら0（日次学習は自動）'
+        description: '更新は0。過去データの追加学習は1〜90。日次学習は自動。'
         type: string
         default: '0'
         required: true
   schedule:
-    # JST 08:02-22:57, about every 5 minutes. Timing is NOT guaranteed.
-    - cron: '2-57/5 0-13,23 * * *'
-    # JST 06:17: collect up to 30 new historical days and train.
+    # Wake-up triggers only. GitHub may delay them; the bounded session
+    # keeps refreshing between triggers after it actually starts.
+    - cron: '2,17,32,47 0-13,23 * * *'
+    # JST 06:17: same daily historical collection/training as before.
     - cron: '17 21 * * *'
 
 permissions:
@@ -29,7 +29,7 @@ concurrency:
 jobs:
   conditions:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 70
     env:
       OMP_NUM_THREADS: '2'
       OPENBLAS_NUM_THREADS: '2'
@@ -51,35 +51,117 @@ jobs:
           scikit-learn==1.8.0 joblib==1.5.3
       - name: Offline safety tests
         run: python conditions.py --self-test
-      - name: Collect, validate and update
+      - name: Refresh and save repeatedly (up to 55 minutes)
         env:
           EVENT_NAME: ${{ github.event_name }}
           EVENT_SCHEDULE: ${{ github.event.schedule }}
           HISTORY_DAYS: ${{ inputs.history_days }}
+        shell: bash
         run: |
-          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
-            if [ "$HISTORY_DAYS" = "0" ]; then
-              python -u conditions.py
-            else
-              python -u conditions.py --history-days "$HISTORY_DAYS" --train
-            fi
-          elif [ "$EVENT_SCHEDULE" = "17 21 * * *" ]; then
-            python -u conditions.py --history-days 30 --train
-          else
-            python -u conditions.py
-          fi
-      - name: Save only conditions data
-        if: ${{ always() && !cancelled() }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [ -d history/conditions ]; then git add -f history/conditions; fi
-          if [ -f conditions.json ]; then git add -f conditions.json; fi
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Update weather and exhibition research data"
-          for attempt in 1 2 3; do
-            git pull --rebase origin main || exit 1
-            if git push origin HEAD:main; then exit 0; fi
-            sleep 5
-          done
-          exit 1
+          python -u - <<'PYTHON'
+          """Bounded refresh session. Run from the checked-out boat12 repository."""
+          import os
+          import subprocess
+          import sys
+          import time
+          from datetime import datetime
+          from decimal import Decimal, InvalidOperation
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          DURATION_SECONDS = 55 * 60
+          INTERVAL_SECONDS = 120
+          JST = ZoneInfo("Asia/Tokyo")
+
+
+          def jst_now():
+              return datetime.now(JST)
+
+
+          def parse_days(raw):
+              try:
+                  value = Decimal(str(raw).strip() or "0")
+              except InvalidOperation as exc:
+                  raise ValueError("history_days must be 0, or a whole number from 1 to 90") from exc
+              if not value.is_finite() or not 0 <= value <= 90 or value != value.to_integral_value():
+                  raise ValueError("history_days must be a whole number between 0 and 90")
+              return int(value)
+
+
+          def checked(args, seconds=90):
+              return subprocess.run(args, check=True, timeout=seconds)
+
+
+          def save_conditions():
+              paths = [p for p in ("conditions.json", "history/conditions") if Path(p).exists()]
+              if not paths:
+                  return False
+              checked(["git", "add", "-f", "--", *paths, ":(exclude)**/*.tmp"])
+              diff = subprocess.run(["git", "diff", "--cached", "--quiet"], timeout=30)
+              if diff.returncode == 0:
+                  return False
+              if diff.returncode != 1:
+                  raise RuntimeError("Could not inspect staged changes")
+              checked(["git", "commit", "-m", "Update weather and exhibition research data"])
+              # Rebase unrelated workflow changes. Never force-push or auto-resolve conflicts.
+              for attempt in range(3):
+                  checked(["git", "pull", "--rebase", "origin", "main"])
+                  result = subprocess.run(["git", "push", "origin", "HEAD:main"], timeout=90)
+                  if result.returncode == 0:
+                      return True
+                  if attempt < 2:
+                      time.sleep(5)
+              raise RuntimeError("Could not save conditions data; stopped without force push")
+
+
+          def run_once(days=0):
+              # Each iteration sees any newly committed model/code, without discarding edits.
+              checked(["git", "pull", "--ff-only", "origin", "main"])
+              command = [sys.executable, "-u", "conditions.py"]
+              if days:
+                  command += ["--history-days", str(days), "--train"]
+              print("REFRESH START", jst_now().isoformat(), "history_days=", days, flush=True)
+              # Do not retry denied sources in a tight loop. Any nonzero process stops this session.
+              result = subprocess.run(command, timeout=1800 if days else 180)
+              saved = save_conditions()
+              if result.returncode:
+                  raise RuntimeError("conditions.py failed; check its log. The session has stopped.")
+              print("REFRESH SAVED" if saved else "REFRESH NO CHANGES", jst_now().isoformat(), flush=True)
+              summary = os.environ.get("GITHUB_STEP_SUMMARY")
+              if summary:
+                  with open(summary, "a", encoding="utf-8") as stream:
+                      stream.write(f"- {jst_now():%Y-%m-%d %H:%M:%S} JST: refresh completed; saved={saved}\n")
+
+
+          def main():
+              event = os.environ.get("EVENT_NAME", "")
+              schedule = os.environ.get("EVENT_SCHEDULE", "")
+              days = parse_days(os.environ.get("HISTORY_DAYS", "0")) if event == "workflow_dispatch" else 0
+              if event == "schedule" and schedule == "17 21 * * *":
+                  days = 30
+              checked(["git", "config", "user.name", "github-actions[bot]"])
+              checked(["git", "config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"])
+              if days:
+                  run_once(days)
+                  return
+              end = time.monotonic() + DURATION_SECONDS
+              cycles = 0
+              while True:
+                  if cycles and not 8 <= jst_now().hour < 23:
+                      break
+                  started = time.monotonic()
+                  run_once(0)
+                  cycles += 1
+                  # Outside the daytime window, a manual run performs one refresh only.
+                  if not 8 <= jst_now().hour < 23:
+                      break
+                  delay = max(1, INTERVAL_SECONDS - (time.monotonic() - started))
+                  if time.monotonic() + delay >= end:
+                      break
+                  time.sleep(delay)
+              print("REFRESH SESSION FINISHED", "cycles=", cycles, flush=True)
+
+
+          if __name__ == "__main__":
+              main()
+          PYTHON
