@@ -93,7 +93,7 @@ jobs:
 
 
           def save_conditions():
-              paths = [p for p in ("conditions.json", "history/conditions") if Path(p).exists()]
+              paths = [p for p in ("conditions.json", "accuracy.json", "history/conditions") if Path(p).exists()]
               if not paths:
                   return False
               checked(["git", "add", "-f", "--", *paths, ":(exclude)**/*.tmp"])
@@ -123,6 +123,9 @@ jobs:
               print("REFRESH START", jst_now().isoformat(), "history_days=", days, flush=True)
               # Do not retry denied sources in a tight loop. Any nonzero process stops this session.
               result = subprocess.run(command, timeout=1800 if days else 180)
+              score_result = subprocess.run([sys.executable, "-u", "score_today.py"], timeout=90)
+              if score_result.returncode:
+                  raise RuntimeError("score_today.py failed; check its log")
               saved = save_conditions()
               if result.returncode:
                   raise RuntimeError("conditions.py failed; check its log. The session has stopped.")
