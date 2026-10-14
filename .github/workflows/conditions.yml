@@ -10,8 +10,8 @@ on:
     inputs:
       history_days:
         description: '初回は90。通常更新だけなら0（日次学習は自動）'
-        type: number
-        default: 90
+                type: string
+        default: '0'
         required: true
   schedule:
     # JST 08:02-22:57, about every 5 minutes. Timing is NOT guaranteed.
