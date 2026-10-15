@@ -1,146 +1,140 @@
 {
   "version": "conditions-1.0",
-  "generated_at": "2026-10-15T06:48:44.378622+09:00",
-  "labelled_records": 22465,
-  "data_sha256": "e8a6ca785d9ed2ea9b411b22e8fad3293af7d1387cb8280758b967fbdeb42a6f",
+  "generated_at": "2026-10-16T06:48:36.850439+09:00",
+  "labelled_records": 24177,
+  "data_sha256": "c29103aa6864f9d24f9fd3c15e111642a3de610991307752b398c2fc749616cd",
   "source": "BoatraceCSV per-source pre-deadline timestamps",
   "scopes": {
     "normal": {
       "status": "held_back",
-      "rows": 18923,
-      "days": 148,
+      "rows": 20412,
+      "days": 161,
       "probabilities_enabled": false,
-      "period_start": "2026-05-19",
-      "period_end": "2026-10-14",
-      "train_rows": 11352,
-      "calibration_rows": 3845,
-      "test_rows": 3726,
-      "train_end": "2026-08-15",
-      "calibration_start": "2026-08-16",
-      "test_start": "2026-09-15",
-      "brier_base": 0.14571979734576226,
-      "brier_conditions": 0.14540026296513828,
-      "brier_constant": 0.15240695608355084,
-      "logloss_base": 0.46071852623083337,
-      "logloss_conditions": 0.4599803244905736,
-      "auc": 0.6568357363603581,
+      "period_start": "2026-05-07",
+      "period_end": "2026-10-15",
+      "train_rows": 12236,
+      "calibration_rows": 4026,
+      "test_rows": 4150,
+      "train_end": "2026-08-11",
+      "calibration_start": "2026-08-12",
+      "test_start": "2026-09-13",
+      "brier_base": 0.1461695250139291,
+      "brier_conditions": 0.14590175811607983,
+      "brier_constant": 0.15352736601354655,
+      "logloss_base": 0.46114715971143555,
+      "logloss_conditions": 0.4601802045109952,
+      "auc": 0.6625057108192416,
       "brier_gain_day_bootstrap_95ci": [
-        -0.0006384941887893288,
-        0.0012928626092526656
+        -0.000526992437272754,
+        0.0010913684394096373
       ],
-      "calibration_ece": 0.00953241506793834,
+      "calibration_ece": 0.005018453298657231,
       "calibration_bins": [
         {
           "lower": 0.0,
-          "n": 740,
-          "predicted": 0.07019970828619877,
-          "observed": 0.08513513513513514
+          "n": 745,
+          "predicted": 0.07146641841316781,
+          "observed": 0.08053691275167785
         },
         {
           "lower": 0.1,
-          "n": 1470,
-          "predicted": 0.14906009721810975,
-          "observed": 0.14965986394557823
+          "n": 1695,
+          "predicted": 0.1487203821194724,
+          "observed": 0.1486725663716814
         },
         {
           "lower": 0.2,
-          "n": 981,
-          "predicted": 0.24525029311899646,
-          "observed": 0.2324159021406728
+          "n": 1132,
+          "predicted": 0.2447598613135394,
+          "observed": 0.23851590106007067
         },
         {
           "lower": 0.3,
-          "n": 402,
-          "predicted": 0.3408758260305629,
-          "observed": 0.3383084577114428
+          "n": 451,
+          "predicted": 0.3389742146920784,
+          "observed": 0.3392461197339246
         },
         {
           "lower": 0.4,
-          "n": 106,
-          "predicted": 0.43911993580046327,
-          "observed": 0.3490566037735849
+          "n": 102,
+          "predicted": 0.4358142432407152,
+          "observed": 0.38235294117647056
         },
         {
           "lower": 0.5,
-          "n": 26,
-          "predicted": 0.5375700950983098,
-          "observed": 0.5384615384615384
-        },
-        {
-          "lower": 0.6,
-          "n": 1,
-          "predicted": 0.6086047507681729,
-          "observed": 1.0
+          "n": 25,
+          "predicted": 0.5337668089351848,
+          "observed": 0.48
         }
       ],
       "gate": "same test races; improvement over base + constant, day-block CI lower>0, ECE<=0.05"
     },
     "original": {
       "status": "held_back",
-      "rows": 17709,
-      "days": 148,
+      "rows": 19178,
+      "days": 161,
       "probabilities_enabled": false,
-      "period_start": "2026-05-19",
-      "period_end": "2026-10-14",
-      "train_rows": 10673,
-      "calibration_rows": 3555,
-      "test_rows": 3481,
-      "train_end": "2026-08-15",
-      "calibration_start": "2026-08-16",
-      "test_start": "2026-09-15",
-      "brier_base": 0.14502402456290603,
-      "brier_conditions": 0.1444707760600281,
-      "brier_constant": 0.15223357091612746,
-      "logloss_base": 0.45845589334714704,
-      "logloss_conditions": 0.456134483983562,
-      "auc": 0.6654386969316479,
+      "period_start": "2026-05-07",
+      "period_end": "2026-10-15",
+      "train_rows": 11607,
+      "calibration_rows": 3671,
+      "test_rows": 3900,
+      "train_end": "2026-08-11",
+      "calibration_start": "2026-08-12",
+      "test_start": "2026-09-13",
+      "brier_base": 0.14552592151016197,
+      "brier_conditions": 0.14531216523032778,
+      "brier_constant": 0.15327527055842954,
+      "logloss_base": 0.4590972750451887,
+      "logloss_conditions": 0.4576116664497931,
+      "auc": 0.6685085479966592,
       "brier_gain_day_bootstrap_95ci": [
-        -0.0007669315775899731,
-        0.0017785253878134304
+        -0.0009598538402251696,
+        0.0013755983135306659
       ],
-      "calibration_ece": 0.011541027223819344,
+      "calibration_ece": 0.008550670275866853,
       "calibration_bins": [
         {
           "lower": 0.0,
-          "n": 666,
-          "predicted": 0.0719603719839994,
-          "observed": 0.07657657657657657
+          "n": 680,
+          "predicted": 0.07210354827094168,
+          "observed": 0.07058823529411765
         },
         {
           "lower": 0.1,
-          "n": 1324,
-          "predicted": 0.1493108622945579,
-          "observed": 0.15030211480362538
+          "n": 1549,
+          "predicted": 0.1500704065654141,
+          "observed": 0.14719173660426083
         },
         {
           "lower": 0.2,
-          "n": 929,
-          "predicted": 0.2440393008193551,
-          "observed": 0.23681377825618946
+          "n": 1047,
+          "predicted": 0.24541507885173633,
+          "observed": 0.2387774594078319
         },
         {
           "lower": 0.3,
-          "n": 407,
-          "predicted": 0.3411732614260126,
-          "observed": 0.29484029484029484
+          "n": 479,
+          "predicted": 0.3426723857806657,
+          "observed": 0.3277661795407098
         },
         {
           "lower": 0.4,
-          "n": 122,
-          "predicted": 0.43906296428354114,
-          "observed": 0.36065573770491804
+          "n": 115,
+          "predicted": 0.4424358541558343,
+          "observed": 0.33043478260869563
         },
         {
           "lower": 0.5,
-          "n": 32,
-          "predicted": 0.539174485498648,
-          "observed": 0.53125
+          "n": 29,
+          "predicted": 0.5421154969987099,
+          "observed": 0.5517241379310345
         },
         {
           "lower": 0.6,
           "n": 1,
-          "predicted": 0.6017878546633637,
-          "observed": 1.0
+          "predicted": 0.6097073201487961,
+          "observed": 0.0
         }
       ],
       "gate": "same test races; improvement over base + constant, day-block CI lower>0, ECE<=0.05"
