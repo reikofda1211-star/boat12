@@ -1,7 +1,13 @@
-BOAT12 3連単: 直前データ追加準備（第一段階）
+BOAT12: 3連単の風・展示モデル用「学習データ準備」第2段階
 
-trifecta_live_features.py は締切前に確認できた風・展示・モーターの値を取り出し、欠損や古い記録を除外する機能です。
+置き場所:
+trifecta_live_dataset.py -> boat12/ (一番上)
+trifecta-live-dataset.yml -> boat12/.github/workflows/
 
-重要：このファイル単体では3連単の推定確率は変わりません。別途、十分な締切前スナップショットと確定着順を組み合わせて直前専用モデルを学習し、時系列データで精度と較正を検証する必要があります。
+GitHub Actions -> Trifecta Live Dataset -> Run workflow
+完了後、GitHubで trifecta_live_report.json を確認。
 
-GitHubルートに追加する想定ですが、現在のサイトの予測は変更しません。テスト：python trifecta_live_features.py
+これは締切前の直前データと3連単確定結果を照合する処理です。
+まだ予測確率を変更しません。学習・較正・精度検証は次段階です。
+不正な時刻、データ欠損、未確認の結果を含むレースは除外します。
+注意: 取得元の時刻が締切前でも、実際のユーザーへの配信時刻を完全には保証しません。
