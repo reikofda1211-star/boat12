@@ -1,0 +1,40 @@
+name: Trifecta Basic Live Research
+'on':
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: boat12-trifecta-basic-research
+  cancel-in-progress: false
+jobs:
+  research:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: Offline feature and model checks
+        run: |
+          python trifecta_train.py --self-test
+          python trifecta_basic_train.py --self-test
+      - name: Fit and evaluate matched baseline versus basic live
+        run: python -u trifecta_basic_train.py
+      - name: Save isolated research outputs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f trifecta_basic_model_report.json
+          if [ -f history/trifecta/basic_model_research.json ]; then
+            git add -f history/trifecta/basic_model_research.json
+          fi
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Evaluate separate basic pre-deadline trifecta model'
+          git pull --rebase origin main
+          git push origin HEAD:main
