@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install dependencies
-        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2' 'requests>=2.32,<3'
       - name: Offline feature and model checks
         run: |
           python trifecta_train.py --self-test
