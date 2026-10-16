@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#09121f">
+<meta name="description" content="BOAT12の保存データが公開サイトに届くまでの遅れを確認する診断ページ。">
+<title>公開反映モニター | BOAT12</title>
+<style>
+:root{color-scheme:dark;--bg:#09121f;--panel:#152337;--sub:#101c2d;--line:#314359;--fg:#f1f5fb;--muted:#b5c6d8;--teal:#97ded3;--warn:#edce96;--danger:#f1aba7}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.7 system-ui,-apple-system,'Hiragino Sans',sans-serif}
+.wrap{width:min(940px,calc(100% - 28px));margin:auto}header{border-bottom:1px solid var(--line);background:#0d1a2a}header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0;flex-wrap:wrap}
+a{color:var(--teal);text-underline-offset:3px}.brand{font-size:20px;letter-spacing:.1em;font-weight:800;color:var(--fg);text-decoration:none}nav{display:flex;gap:12px;flex-wrap:wrap;font-size:13px}
+main{padding:26px 0 65px}h1{font-size:clamp(27px,6vw,38px);margin:4px 0 8px;line-height:1.35}h2{font-size:19px;margin:0 0 10px}.eyebrow{font-weight:700;letter-spacing:.16em;color:var(--teal);font-size:12px}.muted,.lead{color:var(--muted)}.lead{margin:0 0 20px}.panel{border:1px solid var(--line);border-radius:14px;background:var(--sub);padding:17px;margin:13px 0}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.card{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:13px;min-width:0}.card small{display:block;color:var(--muted);font-size:12px}.card b{display:block;font-size:24px;font-variant-numeric:tabular-nums}.card span{display:block;color:var(--muted);font-size:12px;overflow-wrap:anywhere}
+.row{display:flex;justify-content:space-between;gap:9px;align-items:center;flex-wrap:wrap}.line{padding:11px 0;border-top:1px solid var(--line)}.line:first-child{border:0}.state{color:var(--teal)}.warn{color:var(--warn)}.error{color:var(--danger)}.small{font-size:12px}button{background:var(--teal);color:#0a1a22;border:0;border-radius:9px;min-height:44px;padding:8px 17px;font-weight:750;font:inherit;cursor:pointer}button:disabled{opacity:.5;cursor:wait}code{word-break:break-all;color:var(--teal)}ul{padding-left:20px;margin:8px 0}li{margin:7px 0}footer{border-top:1px solid var(--line);padding-top:22px;margin-top:34px;font-size:12px;color:var(--muted)}
+@media(max-width:560px){.cards{grid-template-columns:1fr}.card{display:grid;grid-template-columns:1fr auto;align-items:center}.card span{grid-column:1/-1}.card b{font-size:22px}}
+</style></head>
+<body><header><div class="wrap"><a href="index.html" class="brand">BOAT12</a><nav><a href="dashboard.html">全国の直前分析</a><a href="monitor.html">展示モニター</a><a href="accuracy.html">予測成績</a></nav></div></header>
+<main class="wrap"><div class="eyebrow">DELIVERY DIAGNOSTICS / READ ONLY</div><h1>公開反映モニター</h1>
+<p class="lead">GitHubの保存データと公開サイトのデータを比較して、「計算済みなのに画面に届かない」時間を調べます。予測計算やファイルの書き込みは行いません。</p>
+<div class="panel row"><div><b id="overall" role="status" aria-live="polite">読み込み中…</b><div class="small muted">最後の確認：<span id="checked">—</span>（日本時間）</div></div><button id="reload" type="button">今すぐ比較</button></div>
+<div class="cards">
+ <div class="card"><small>GitHub保存データの生成時刻</small><b id="githubTime">—</b><span id="githubStatus">確認待ち</span></div>
+ <div class="card"><small>公開サイトの生成時刻</small><b id="pageTime">—</b><span id="pageStatus">確認待ち</span></div>
+ <div class="card"><small>公開側の遅れ（生成時刻の差）</small><b id="delay">—</b><span>同じ内容なら0分。実際の公開時刻そのものではありません</span></div>
+</div>
+<section class="panel"><h2>取得元ごとの確認結果</h2><div id="sources"></div></section>
+<section class="panel"><h2>遅れの見方</h2><ul>
+<li>GitHub側のほうが新しい場合は、公開反映・CDNキャッシュの遅れが疑われます。</li>
+<li>GitHub側と公開側が同じ時刻でも、展示データ自体が古い場合は、データ取得や生成間隔に原因が残ります。</li>
+<li>通信エラーが出た場合は断定せず、取得できたデータだけを示します。</li>
+</ul><p class="small muted">このページは約60秒おきに再確認します。GitHub APIは未認証のアクセス制限を避けるため、最短3分間隔でのみ照会し、429や403が返った場合は照会をしばらく控えます。GitHubのコミット・push完了時刻とブラウザーへの初到達時刻を厳密に測るには、別途サーバー側ログと継続監視が必要です。</p></section>
+<footer><a href="index.html">BOAT12ホーム</a> ・ <a href="methodology.html">分析方法</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="contact.html">お問い合わせ</a><p>BOAT12の確率は未検証の実験値を含み、的中や利益を保証しません。</p></footer>
+</main><script>
+'use strict';
+const $=id=>document.getElementById(id);
+const ROOT='https://raw.githubusercontent.com/reikofda1211-star/boat12/main/conditions.json';
+const API='https://api.github.com/repos/reikofda1211-star/boat12/contents/conditions.json?ref=main';
+const LAST={api:0,apiBackoff:0,apiData:null,page:null,raw:null};
+let busy=false;
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+const instant=x=>{const n=Date.parse(x);return Number.isFinite(n)?n:NaN};
+const fmt=x=>{const n=instant(x);return Number.isFinite(n)?new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date(n)):'未確認'};
+const statusStr=x=>x?.status||'不明';
+function check(d){return d&&typeof d==='object'&&/^\d{4}-\d{2}-\d{2}$/.test(d.date)&&Number.isFinite(instant(d.generated_at))&&Array.isArray(d.races)&&d.races.length<=400}
+async function request(url,headers={}){
+ const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),15000);
+ try{
+  const r=await fetch(url,{cache:'no-store',credentials:'omit',headers,signal:controller.signal});
+  if(!r.ok){const e=new Error('HTTP '+r.status);e.status=r.status;e.reset=r.headers.get('x-ratelimit-reset');throw e;}
+  const t=await r.text();if(t.length>6500000)throw Error('ファイル容量が想定を超えています');
+  let d=JSON.parse(t);
+  if(d?.encoding==='base64'&&d.path==='conditions.json'&&typeof d.content==='string'){
+   const bytes=Uint8Array.from(atob(d.content.replace(/\s/g,'')),c=>c.charCodeAt(0));d=JSON.parse(new TextDecoder().decode(bytes));
+  }
+  if(!check(d))throw Error('データ形式が一致しません');
+  return d;
+ }finally{clearTimeout(timeout)}
+}
+async function load(){
+ if(busy)return;busy=true;$('reload').disabled=true;
+ const now=Date.now();const useApi=now>=LAST.apiBackoff&&now-LAST.api>=180000;
+ const requests=[request('conditions.json?check='+now),request(ROOT+'?check='+now)];
+ if(useApi){LAST.api=now;requests.push(request(API,{Accept:'application/vnd.github.raw+json'}));}
+ const settled=await Promise.allSettled(requests);
+ const keys=['page','raw',...(useApi?['apiData']:[])],errors={};
+ for(let i=0;i<keys.length;i++){
+  const key=keys[i],r=settled[i];
+  if(r.status==='fulfilled'){LAST[key]=r.value;errors[key]='';}
+  else{
+   errors[key]=String(r.reason?.message||r.reason).slice(0,130);
+   if(key==='apiData'&&(r.reason?.status===403||r.reason?.status===429)){
+    const reset=Number(r.reason.reset)*1000;
+    LAST.apiBackoff=Math.max(Date.now()+60*60000,Number.isFinite(reset)?reset:0);
+   }
+  }
+ }
+ const all=[LAST.raw,LAST.apiData].filter(check);
+ all.sort((a,b)=>instant(b.generated_at)-instant(a.generated_at));
+ const git=all[0]||null,page=check(LAST.page)?LAST.page:null;
+ $('githubTime').textContent=git?fmt(git.generated_at):'—';
+ $('pageTime').textContent=page?fmt(page.generated_at):'—';
+ $('githubStatus').textContent=git?`${git.date} / ${statusStr(git)} / 生成から${Math.max(0,Math.floor((Date.now()-instant(git.generated_at))/60000))}分`:'データ未確認';
+ $('pageStatus').textContent=page?`${page.date} / ${statusStr(page)} / 生成から${Math.max(0,Math.floor((Date.now()-instant(page.generated_at))/60000))}分`:'データ未確認';
+ const delta=git&&page&&git.date===page.date?instant(git.generated_at)-instant(page.generated_at):NaN;
+ $('delay').textContent=Number.isFinite(delta)?(delta/60000).toFixed(1)+'分':'—';
+ let message='';
+ if(git&&page&&git.date===page.date){
+  if(delta>30000)message='GitHub側に、公開サイトより新しいデータがあります。';
+  else if(delta < -30000)message='公開側のほうが新しく見えます。取得元のキャッシュ差を確認してください。';
+  else message='GitHubと公開サイトは同じ世代のデータを表示しています。';
+ }else if(!git||!page){message='一部の取得に失敗したため、遅延を判定できません。';}
+ else message='保存日付が異なります。公開サイトの反映が遅れている可能性があります。';
+ $('overall').textContent=message;
+ $('checked').textContent=fmt(new Date().toISOString());
+ const sources=[['公開サイト','page'],['GitHub Raw','raw'],['GitHub API（間隔制限あり）','apiData']];
+ $('sources').innerHTML=sources.map(([label,key])=>{
+  const d=LAST[key];const ok=check(d);
+  let note=errors[key]?'今回の取得：'+errors[key]:(key==='apiData'&&!useApi?'前回の照会結果を利用':'今回の取得：成功');
+  return `<div class="line"><div class="row"><b>${esc(label)}</b><span class="${ok?'state':'warn'}">${ok?esc(fmt(d.generated_at))+' JST':'未取得'}</span></div><div class="small muted">${esc(note)}${ok?' / '+esc(d.date):''}</div></div>`;
+ }).join('');
+ busy=false;$('reload').disabled=false;
+}
+$('reload').addEventListener('click',load);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
+setInterval(()=>{if(!document.hidden)load()},60000);
+load();
+</script></body></html>
