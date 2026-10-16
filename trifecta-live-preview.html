@@ -1,0 +1,48 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>3連単 直前AI検証画面 | BOAT12</title><style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,sans-serif;background:#0b1320;color:#eef3fb}*{box-sizing:border-box}main{max-width:850px;margin:auto;padding:22px 15px 80px}h1{font-size:clamp(23px,5vw,32px)}p{line-height:1.7}.muted{color:#b4c3d6}.box{background:#162337;border:1px solid #304059;border-radius:13px;padding:16px;margin:14px 0}.warning{border-color:#806639;color:#f3dbaa}label{display:block;font-size:13px;color:#b4c3d6;margin-bottom:5px}select,button{font:inherit;color:inherit;background:#101c2e;border:1px solid #435571;border-radius:9px;padding:11px;min-height:45px}select{width:100%}button{cursor:pointer}button:disabled{opacity:.5}.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}.grid button{align-self:end}.pick{display:flex;justify-content:space-between;padding:11px 4px;border-bottom:1px solid #35455d;gap:12px}.pick strong{font-size:23px;white-space:nowrap}a{color:#96ded2}.pill{font-size:12px;color:#eed18a}.row{display:flex;justify-content:space-between;gap:12px}.small{font-size:12px}.hide{display:none}@media(max-width:590px){.grid{grid-template-columns:1fr 1fr}.grid button{grid-column:1/-1}}
+</style></head><body><main><a href="trifecta.html">← 既存の3連単事前予測に戻る</a><h1>3連単 直前AI〈研究プレビュー〉</h1><div class="box warning"><strong>未公開の研究モデル</strong><p>風・展示データを使う実験的な計算画面です。公開用モデルではありません。過去テストで改善したことは今後の的中率や利益を保証しません。データが古い・不完全・未検証の場合は確率を非表示にします。</p><p>この研究モデルと現在公開中の事前モデルは学習入力が異なり、数値の単純比較はできません。</p></div><div class="box"><div class="grid"><div><label for="venue">競艇場</label><select id="venue"></select></div><div><label for="race">レース</label><select id="race"></select></div><button id="go">研究予測を確認</button></div><p class="small muted" id="updated">データ取得前</p></div><div id="status" class="box">データを読み込んでいます。</div><section id="output" class="hide"></section><footer class="muted small">出典データを取得できないとき、締切後、取得時刻が不明なときは予測しません。展示情報と気象状況はレース直前にも変わり得ます。</footer></main><script>
+'use strict';
+const ROOT='https://raw.githubusercontent.com/reikofda1211-star/boat12/main/';
+const VENUES=['桐生','戸田','江戸川','平和島','多摩川','浜名湖','蒲郡','常滑','津','三国','びわこ','住之江','尼崎','鳴門','丸亀','児島','宮島','徳山','下関','若松','芦屋','福岡','唐津','大村'];
+const SCALES=[2,20,2,20,20,20], ORDERS=[];for(let a=0;a<6;a++)for(let b=0;b<6;b++)for(let c=0;c<6;c++)if(a!==b&&a!==c&&b!==c)ORDERS.push([a,b,c]);
+const $=id=>document.getElementById(id), finite=x=>typeof x==='number'&&Number.isFinite(x), safe=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const stamp=s=>typeof s==='string'&&/(Z|[+-]\d{2}:\d{2})$/.test(s)?Date.parse(s):NaN;
+const num=(v,lo,hi)=>finite(v)&&v>=lo&&v<=hi;
+function normal(logits){let m=Math.max(...logits);if(!finite(m))throw Error('確率の計算に失敗');let p=logits.map(z=>Math.exp(z-m)),s=p.reduce((a,b)=>a+b,0);return p.map(v=>v/s)}
+let conditions=null, model=null;
+async function json(url,max){const response=await fetch(url+'?t='+Math.floor(Date.now()/60000),{cache:'no-store'});if(!response.ok)throw Error('データ取得に失敗: '+response.status);const text=await response.text();if(text.length>max)throw Error('データが大きすぎます');return JSON.parse(text)}
+function check(r){
+ if(!r||!conditions||!model)return 'モデルまたはレース情報がありません';
+ if(conditions.date!==new Date(Date.now()+32400000).toISOString().slice(0,10)||r.date!==conditions.date)return '今日のデータではありません';
+ if(conditions.status!=='ok'||!Array.isArray(conditions.races))return 'データの更新が不完全です';
+ const at=stamp(conditions.generated_at),cut=stamp(r.cutoff);if(!finite(at)||!finite(cut)||at> Date.now()+60000||Date.now()-at>15*60000)return '出走情報の更新が古いか、更新日時が不明です';
+ if(cut<=Date.now()+30000)return '締切済み・締切直前です';
+ if(r.cancelled!==false||r.basic_ready!==true||r.original_ready!==true)return '検証に必要な直前情報がそろっていません';
+ if(!Array.isArray(r.original_kinds)||!['lap','turn','straight'].every(k=>r.original_kinds.includes(k))||r.original_kinds.includes('half_lap'))return '一周・半周の展示形式が研究モデルの学習条件と異なります';
+ if(!Array.isArray(r.players)||r.players.length!==6)return '6艇のデータが不足しています';
+ const times=r.source_times;if(!times||typeof times!=='object')return '取得元の個別時刻がありません';
+ const sources=['sui','tkz','stt','original'];const sourceMs=[];
+ for(const k of sources){const t=stamp(times[k]);if(!finite(t)||t>at||t>=cut||cut-t>30*60000)return '直前データの取得時刻が不正または古すぎます';sourceMs.push(t)}
+ if(at>=cut||cut-at>30*60000)return 'データ取得から締切までの時間が範囲外です';
+ const available=stamp(r.original_available);if(!finite(available)||available>at||available>=cut||cut-available>30*60000)return '展示情報の利用可能時刻を確認できません';
+ const weather=r.weather;if(!weather||!num(weather.wind_speed,0,40)||!num(weather.wave_cm,0,150)||typeof weather.wind_direction_code!=='string'||!/^(?:[0-9]|1[0-6])$/.test(weather.wind_direction_code))return '風・波・風向データが不足しています';
+ if(!Array.isArray(model.baseline_weights)||model.baseline_weights.length!==3||!Array.isArray(model.live_weights)||model.live_weights.length!==3||model.feature_count!==30||model.schema!=='trifecta-live-research-v1'||model.research_only!==true||model.ready_for_publication!==false)return '研究モデル形式が正しくありません';
+ for(let i=0;i<3;i++){if(model.baseline_weights[i].length!==192||model.live_weights[i].length!==30||![...model.baseline_weights[i],...model.live_weights[i]].every(finite))return '研究モデル係数が不正です'}
+ if(!num(model.live_temperature,.5,4))return '確率補正情報が不正です';
+ let boats=[...r.players].sort((a,b)=>a.boat-b.boat);if(boats.some((p,i)=>p.boat!==i+1))return '艇番号が不正です';
+ const courses=[];for(const p of boats){for(const [k,lo,hi] of [['motor_rate',0,100],['boat_rate',0,100],['exhibition',4,12],['exhibition_st',-1,2],['course',1,6],['tilt',-3,3]])if(!num(p[k],lo,hi))return '展示・モーターの数値が不足しています';if(!Number.isInteger(p.course))return '展示進入が不正です';courses.push(p.course);if(!p.original||!['lap','turn','straight'].every(k=>num(p.original[k],0,120)))return 'オリジナル展示の数値が不足しています'}
+ if(courses.slice().sort((a,b)=>a-b).join(',')!=='1,2,3,4,5,6')return '展示進入が不正です';
+ return null;
+}
+function compute(r){const boats=[...r.players].sort((a,b)=>a.boat-b.boat),n=6,venue=VENUES.indexOf(r.venue);if(venue<0)throw Error('競艇場が不明です');
+ const base=boats.map(p=>[0,0,0,0,p.motor_rate,p.boat_rate]);const means=Array.from({length:6},(_,j)=>base.reduce((s,x)=>s+x[j],0)/6);for(let i=0;i<n;i++)for(let j=0;j<6;j++)base[i][j]=(base[i][j]-means[j])/SCALES[j];
+ const fx=boats.map((p,i)=>{const c=p.course,wind=r.weather.wind_speed/10,wave=r.weather.wave_cm/20,d=Number(r.weather.wind_direction_code);let a=Array(30).fill(0);a[0]=p.exhibition;a[1]=p.exhibition_st;a[2]=(c-i-1)/5;a[3]=(c-3.5)/3;a[4]=p.tilt;a[5]=wind*(i+1-3.5)/3;a[6]=wave*(i+1-3.5)/3;a[7]=wind*(c-3.5)/3;a[8]=wave*(c-3.5)/3;a[9]=1;a[10]=p.original.lap;a[11]=p.original.turn;a[12]=p.original.straight;a[13+d]=(i+1-3.5)/3;return a});
+ for(const [j,scale] of [[0,.35],[1,.15],[4,1],[10,3],[11,1],[12,1]]){let avg=fx.reduce((s,x)=>s+x[j],0)/6;for(const f of fx)f[j]=(f[j]-avg)/scale}
+ const scores=model.baseline_weights.map((w,stage)=>boats.map((p,i)=>w[i]+w[6+venue*6+i]+base[i].reduce((s,v,j)=>s+v*w[150+j]+v*w[156+i*6+j],0)+fx[i].reduce((s,v,j)=>s+v*model.live_weights[stage][j],0)));
+ const fst=normal(scores[0]);const log=[];for(const [a,b,c] of ORDERS){let rem=[0,1,2,3,4,5].filter(x=>x!==a),rem3=rem.filter(x=>x!==b);const second=normal(rem.map(i=>scores[1][i]));const third=normal(rem3.map(i=>scores[2][i]));log.push(Math.log(fst[a])+Math.log(second[rem.indexOf(b)])+Math.log(third[rem3.indexOf(c)]))}
+ const t=model.live_temperature;const probs=normal(log.map(v=>v/t));if(probs.some(v=>!finite(v))||Math.abs(probs.reduce((a,b)=>a+b,0)-1)>1e-8)throw Error('確率の合計が不正です');return ORDERS.map((order,i)=>({order:order.map(x=>x+1).join('-'),p:probs[i]})).sort((a,b)=>b.p-a.p).slice(0,5);
+}
+function show(){ $('output').classList.add('hide');const venue=$('venue').value,race=Number($('race').value),r=conditions?.races?.find(x=>x.venue===venue&&x.race===race);const error=check(r);if(error){$('status').textContent=error;return}try{const list=compute(r),mass=list.reduce((s,x)=>s+x.p,0);$('status').textContent='研究用の参考値です。公開版への反映はしていません。';$('output').innerHTML='<article class="box"><h2>'+safe(venue)+' '+race+'R ｜ 直前モデル参考値</h2>'+list.map((x,i)=>'<div class="pick"><div><span class="muted small">'+(i+1)+'位</span>　<strong>'+x.order+'</strong></div><strong>'+ (100*x.p).toFixed(2)+'%</strong></div>').join('')+'<p>上位5通りの合計：'+(100*mass).toFixed(2)+'% ／ その他115通り：'+(100*(1-mass)).toFixed(2)+'%</p><p class="muted small">このモデルはモーター／ボート2連対率・展示・風・波を使用。全国／当地勝率は研究モデルで未使用。モデル入力は完全一致が確認できる場合のみ表示します。</p></article>';$('output').classList.remove('hide')}catch(e){$('status').textContent='計算保留：'+e.message}}
+async function start(){VENUES.forEach(v=>$('venue').add(new Option(v,v)));for(let i=1;i<=12;i++)$('race').add(new Option(i+'R',i));$('go').addEventListener('click',show);try{[conditions,model]=await Promise.all([json(ROOT+'conditions.json',10000000),json(ROOT+'history/trifecta/live_model_research.json',1500000)]);$('updated').textContent='出走情報更新：'+safe(conditions.generated_at||'不明');let next=conditions.races?.find(r=>r.cutoff&&stamp(r.cutoff)>Date.now()+30000&&r.basic_ready&&r.original_ready);if(next){$('venue').value=next.venue;$('race').value=next.race} $('status').textContent='読み込み完了。競艇場・レースを選んで確認してください。';}catch(e){$('status').textContent='読み込み失敗：'+e.message;$('go').disabled=true}}
+start();
+</script></body></html>
