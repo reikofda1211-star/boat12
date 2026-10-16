@@ -117,7 +117,7 @@ jobs:
           def run_once(days=0):
               # Each iteration sees any newly committed model/code, without discarding edits.
               checked(["git", "pull", "--ff-only", "origin", "main"])
-              command = [sys.executable, "-u", "conditions.py"]
+              command = [sys.executable, "-u", "priority_refresh.py" if not days else "conditions.py"]
               if days:
                   command += ["--history-days", str(days), "--train"]
               print("REFRESH START", jst_now().isoformat(), "history_days=", days, flush=True)
@@ -129,7 +129,9 @@ jobs:
               score_result = subprocess.run([sys.executable, "-u", "score_today.py"], timeout=90)
               if score_result.returncode:
                   raise RuntimeError("score_today.py failed; check its log")
+              save_started = time.monotonic()
               saved = save_conditions()
+              print("GIT SAVE DURATION", round((time.monotonic() - save_started)*1000), "ms", flush=True)
               if result.returncode:
                   raise RuntimeError("conditions.py failed; check its log. The session has stopped.")
               print("REFRESH SAVED" if saved else "REFRESH NO CHANGES", jst_now().isoformat(), flush=True)
