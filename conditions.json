@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-17",
-  "generated_at": "2026-10-17T16:33:42.342741+09:00",
+  "generated_at": "2026-10-17T16:35:42.594880+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -27,20 +27,20 @@
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/10/17.csv",
       "status": "ok",
-      "rows": 129,
-      "sha256": "5c76817278b4c6ff363ab75637824f42597b88f0d192c33272e6b5d3e9b14f26"
+      "rows": 130,
+      "sha256": "72fb68134fa16961c7b7e260b7c0fca1d7f339a84af5b353c5f6ca0881cec4fa"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/17.csv",
       "status": "ok",
-      "rows": 129,
-      "sha256": "c3d6d168d24a961d1fdf88ba22f34dc48d38d98d1713dec9808163b2f66b88dc"
+      "rows": 130,
+      "sha256": "4918441e48a66517cf358b609b68434ec823d5aea55058c7d3af3c0028c60833"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/17.csv",
       "status": "ok",
-      "rows": 117,
-      "sha256": "d86b94c9842414faf0ddfc3320e1f113e43cb3c2faa89106accce18044baae12"
+      "rows": 118,
+      "sha256": "83c66a9b61f9751398d5ff317f8b4622394968c3e64e38a4d88105e2a911eee7"
     }
   },
   "counts": {
@@ -21021,7 +21021,11 @@
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
-      "original_kinds": [],
+      "original_kinds": [
+        "lap",
+        "straight",
+        "turn"
+      ],
       "players": [
         {
           "boat": 1,
@@ -21035,9 +21039,13 @@
           "boat_rate": 30.0,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.11,
+          "course": 1.0,
+          "original": {
+            "lap": 37.03,
+            "turn": 5.68,
+            "straight": 6.08
+          }
         },
         {
           "boat": 2,
@@ -21051,9 +21059,13 @@
           "boat_rate": 31.7,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": -0.03,
+          "course": 2.0,
+          "original": {
+            "lap": 37.42,
+            "turn": 5.98,
+            "straight": 6.01
+          }
         },
         {
           "boat": 3,
@@ -21067,9 +21079,13 @@
           "boat_rate": 39.2,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.01,
+          "course": 3.0,
+          "original": {
+            "lap": 38.14,
+            "turn": 6.18,
+            "straight": 5.98
+          }
         },
         {
           "boat": 4,
@@ -21083,9 +21099,13 @@
           "boat_rate": 23.5,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": -0.04,
+          "course": 4.0,
+          "original": {
+            "lap": 37.88,
+            "turn": 6.0,
+            "straight": 6.12
+          }
         },
         {
           "boat": 5,
@@ -21099,9 +21119,13 @@
           "boat_rate": 26.1,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.07,
+          "course": 5.0,
+          "original": {
+            "lap": 37.85,
+            "turn": 6.36,
+            "straight": 5.95
+          }
         },
         {
           "boat": 6,
@@ -21115,29 +21139,33 @@
           "boat_rate": 43.8,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.14,
+          "course": 6.0,
+          "original": {
+            "lap": 37.75,
+            "turn": 5.88,
+            "straight": 6.07
+          }
         }
       ],
       "weather": {
-        "wind_speed": null,
-        "wind_direction_code": null,
-        "wave_cm": null,
-        "air_c": null,
-        "water_c": null,
-        "weather_code": null,
-        "observed_at": null
+        "wind_speed": 3.0,
+        "wind_direction_code": "4",
+        "wave_cm": 3.0,
+        "air_c": 25.0,
+        "water_c": 23.0,
+        "weather_code": "1",
+        "observed_at": "2026-10-17T16:16:00+09:00"
       },
-      "source_times": {},
+      "source_times": {
+        "sui": "2026-10-17T16:35:22.217405+09:00",
+        "stt": "2026-10-17T16:35:22.217405+09:00",
+        "original": "2026-10-17T16:35:22.217405+09:00"
+      },
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
+        "tkz:not_published"
       ],
       "probability": null,
       "base_probability": null,
@@ -24841,16 +24869,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.20366865638269616,
-        "base_probability": 0.18662055339351893,
-        "scope": "original",
-        "expires_at": "2026-10-17T16:35:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切直前・確率非表示"
     },
     {
       "version": "conditions-1.0",
@@ -26099,5 +26119,5 @@
   },
   "experimental_notice": "未検証の実験値は改善の表示基準に未達です。確率の正確さ・的中・利益を保証せず、利用者の表示選択でのみ表示します。",
   "predicted_races": 0,
-  "experimental_races": 1
+  "experimental_races": 0
 }
