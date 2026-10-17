@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-17",
-  "generated_at": "2026-10-17T14:28:39.547923+09:00",
+  "generated_at": "2026-10-17T14:30:39.430623+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -21,8 +21,8 @@
     "tkz": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/tkz/2026/10/17.csv",
       "status": "ok",
-      "rows": 93,
-      "sha256": "1208bb8db6de439f7d4e92e7693ed51064a09431c07ad051b4df92954da90560"
+      "rows": 94,
+      "sha256": "c5d67b98b78bf486ad8d5568adb4443eaea7beb9895d481be79df209456bebbe"
     },
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/10/17.csv",
@@ -46,8 +46,8 @@
   "counts": {
     "cards": 168,
     "records": 168,
-    "basic_ready": 79,
-    "original_ready": 64,
+    "basic_ready": 80,
+    "original_ready": 65,
     "labelled": 0
   },
   "races": [
@@ -10232,8 +10232,8 @@
       "race": 9,
       "cutoff": "2026-10-17T14:34:00+09:00",
       "cancelled": false,
-      "basic_ready": false,
-      "original_ready": false,
+      "basic_ready": true,
+      "original_ready": true,
       "original_kinds": [
         "lap",
         "straight",
@@ -10250,8 +10250,8 @@
           "local_rate": 32.3,
           "motor_rate": 28.6,
           "boat_rate": 30.9,
-          "exhibition": null,
-          "tilt": null,
+          "exhibition": 6.76,
+          "tilt": 0.0,
           "exhibition_st": 0.04,
           "course": 1.0,
           "original": {
@@ -10270,8 +10270,8 @@
           "local_rate": 40.0,
           "motor_rate": 25.7,
           "boat_rate": 35.4,
-          "exhibition": null,
-          "tilt": null,
+          "exhibition": 6.85,
+          "tilt": -0.5,
           "exhibition_st": 0.11,
           "course": 2.0,
           "original": {
@@ -10290,8 +10290,8 @@
           "local_rate": 15.3,
           "motor_rate": 37.9,
           "boat_rate": 31.3,
-          "exhibition": null,
-          "tilt": null,
+          "exhibition": 6.87,
+          "tilt": -0.5,
           "exhibition_st": 0.12,
           "course": 3.0,
           "original": {
@@ -10310,8 +10310,8 @@
           "local_rate": 50.0,
           "motor_rate": 37.9,
           "boat_rate": 37.2,
-          "exhibition": null,
-          "tilt": null,
+          "exhibition": 6.74,
+          "tilt": 0.0,
           "exhibition_st": 0.16,
           "course": 4.0,
           "original": {
@@ -10330,8 +10330,8 @@
           "local_rate": 36.3,
           "motor_rate": 37.5,
           "boat_rate": 34.6,
-          "exhibition": null,
-          "tilt": null,
+          "exhibition": 6.85,
+          "tilt": 0.0,
           "exhibition_st": 0.25,
           "course": 5.0,
           "original": {
@@ -10350,8 +10350,8 @@
           "local_rate": 35.7,
           "motor_rate": 30.2,
           "boat_rate": 32.6,
-          "exhibition": null,
-          "tilt": null,
+          "exhibition": 6.73,
+          "tilt": 3.0,
           "exhibition_st": 0.24,
           "course": 6.0,
           "original": {
@@ -10372,20 +10372,27 @@
       },
       "source_times": {
         "sui": "2026-10-17T14:25:21.614596+09:00",
+        "tkz": "2026-10-17T14:25:21.614596+09:00",
         "stt": "2026-10-17T14:25:21.614596+09:00",
         "original": "2026-10-17T14:25:21.614596+09:00"
       },
-      "basic_available": null,
-      "original_available": null,
-      "issues": [
-        "tkz:not_published"
-      ],
+      "basic_available": "2026-10-17T14:25:21.614596+09:00",
+      "original_available": "2026-10-17T14:25:21.614596+09:00",
+      "issues": [],
       "probability": null,
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": null,
-      "state": "風・展示データ待ち"
+      "experimental_prediction": {
+        "schema": "conditions-experimental-1",
+        "probability": 0.2516238734254767,
+        "base_probability": 0.20553743999646115,
+        "scope": "original",
+        "expires_at": "2026-10-17T14:33:30+09:00",
+        "validation_status": "held_back",
+        "release_rule_passed": false
+      },
+      "state": "未検証の実験値あり（表示スイッチで確認）"
     },
     {
       "version": "conditions-1.0",
@@ -12748,16 +12755,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.2350082812187746,
-        "base_probability": 0.23625495159573287,
-        "scope": "normal",
-        "expires_at": "2026-10-17T14:29:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
