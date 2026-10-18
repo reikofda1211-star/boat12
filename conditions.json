@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-18",
-  "generated_at": "2026-10-18T17:37:36.131577+09:00",
+  "generated_at": "2026-10-18T17:39:36.172011+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -33,14 +33,14 @@
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/18.csv",
       "status": "ok",
-      "rows": 131,
-      "sha256": "aefd6f7d471ce84d33976a0747d40ef28a32677cc539557a0bbaf6d13cc9373c"
+      "rows": 132,
+      "sha256": "e339685181ad7455f596fc246052231100ab77bb6fb448bd65a31e9ac8fa95b5"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/18.csv",
       "status": "ok",
-      "rows": 119,
-      "sha256": "b1f7fc6ae61deccf6233c307d140b0e036f9a7919c74dfefef0823ea77c7ba29"
+      "rows": 120,
+      "sha256": "f946ab0cbd3ce378c47f95a6bb11ac9767e0a9c80a71394a4f838f8f09454237"
     }
   },
   "counts": {
@@ -16836,7 +16836,11 @@
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
-      "original_kinds": [],
+      "original_kinds": [
+        "lap",
+        "straight",
+        "turn"
+      ],
       "players": [
         {
           "boat": 1,
@@ -16852,7 +16856,11 @@
           "tilt": null,
           "exhibition_st": -0.06,
           "course": 1.0,
-          "original": {}
+          "original": {
+            "lap": 36.5,
+            "turn": 5.35,
+            "straight": 7.38
+          }
         },
         {
           "boat": 2,
@@ -16868,7 +16876,11 @@
           "tilt": null,
           "exhibition_st": -0.05,
           "course": 2.0,
-          "original": {}
+          "original": {
+            "lap": 37.07,
+            "turn": 5.37,
+            "straight": 7.37
+          }
         },
         {
           "boat": 3,
@@ -16884,7 +16896,11 @@
           "tilt": null,
           "exhibition_st": 0.05,
           "course": 3.0,
-          "original": {}
+          "original": {
+            "lap": 37.24,
+            "turn": 5.5,
+            "straight": 7.45
+          }
         },
         {
           "boat": 4,
@@ -16900,7 +16916,11 @@
           "tilt": null,
           "exhibition_st": 0.08,
           "course": 4.0,
-          "original": {}
+          "original": {
+            "lap": 37.15,
+            "turn": 5.71,
+            "straight": 7.36
+          }
         },
         {
           "boat": 5,
@@ -16916,7 +16936,11 @@
           "tilt": null,
           "exhibition_st": 0.16,
           "course": 5.0,
-          "original": {}
+          "original": {
+            "lap": 37.88,
+            "turn": 5.72,
+            "straight": 7.48
+          }
         },
         {
           "boat": 6,
@@ -16932,26 +16956,30 @@
           "tilt": null,
           "exhibition_st": 0.2,
           "course": 6.0,
-          "original": {}
+          "original": {
+            "lap": 37.93,
+            "turn": 5.43,
+            "straight": 7.47
+          }
         }
       ],
       "weather": {
-        "wind_speed": null,
-        "wind_direction_code": null,
-        "wave_cm": null,
-        "air_c": null,
-        "water_c": null,
-        "weather_code": null,
-        "observed_at": null
+        "wind_speed": 3.0,
+        "wind_direction_code": "3",
+        "wave_cm": 3.0,
+        "air_c": 24.0,
+        "water_c": 23.0,
+        "weather_code": "2",
+        "observed_at": "2026-10-18T16:30:00+09:00"
       },
       "source_times": {
-        "stt": "2026-10-18T17:35:26.631336+09:00"
+        "sui": "2026-10-18T17:35:26.631336+09:00",
+        "stt": "2026-10-18T17:35:26.631336+09:00",
+        "original": "2026-10-18T17:35:26.631336+09:00"
       },
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
-        "sui:not_published",
         "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
       ],
