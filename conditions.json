@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-18",
-  "generated_at": "2026-10-18T16:55:07.921785+09:00",
+  "generated_at": "2026-10-18T16:57:08.109378+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -33,14 +33,14 @@
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/18.csv",
       "status": "ok",
-      "rows": 128,
-      "sha256": "b8ba603424808c029f86c38ea9200b56fb551b95ef4c086c3d6ea0ca7da3e462"
+      "rows": 129,
+      "sha256": "15f07aed11cd81bdccfd74713c3e40fec801d11a25345fd850c350dd0799360c"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/18.csv",
       "status": "ok",
-      "rows": 116,
-      "sha256": "1c8916b7b0b3432b2b0c5e2ed7219a34b8a4634318010a1332952d93a86b6d62"
+      "rows": 117,
+      "sha256": "db2e0339ee204c45d02f4be7fd3bdc0bf8940bd05b61600c31f8a629f3161b93"
     }
   },
   "counts": {
@@ -19095,7 +19095,11 @@
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
-      "original_kinds": [],
+      "original_kinds": [
+        "lap",
+        "straight",
+        "turn"
+      ],
       "players": [
         {
           "boat": 1,
@@ -19111,7 +19115,11 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "lap": 37.2,
+            "turn": 5.54,
+            "straight": 6.12
+          }
         },
         {
           "boat": 2,
@@ -19127,7 +19135,11 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "lap": 37.47,
+            "turn": 5.72,
+            "straight": 6.17
+          }
         },
         {
           "boat": 3,
@@ -19143,7 +19155,11 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "lap": 37.95,
+            "turn": 5.93,
+            "straight": 6.22
+          }
         },
         {
           "boat": 4,
@@ -19159,7 +19175,11 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "lap": 38.07,
+            "turn": 5.76,
+            "straight": 6.2
+          }
         },
         {
           "boat": 5,
@@ -19175,7 +19195,11 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "lap": 37.93,
+            "turn": 5.87,
+            "straight": 6.15
+          }
         },
         {
           "boat": 6,
@@ -19191,27 +19215,31 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "lap": 38.34,
+            "turn": 6.21,
+            "straight": 6.21
+          }
         }
       ],
       "weather": {
-        "wind_speed": null,
-        "wind_direction_code": null,
-        "wave_cm": null,
-        "air_c": null,
-        "water_c": null,
-        "weather_code": null,
-        "observed_at": null
+        "wind_speed": 4.0,
+        "wind_direction_code": "3",
+        "wave_cm": 4.0,
+        "air_c": 25.0,
+        "water_c": 23.0,
+        "weather_code": "2",
+        "observed_at": "2026-10-18T16:33:00+09:00"
       },
-      "source_times": {},
+      "source_times": {
+        "sui": "2026-10-18T16:55:22.318275+09:00",
+        "original": "2026-10-18T16:55:22.318275+09:00"
+      },
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
         "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
+        "tkz:not_published"
       ],
       "probability": null,
       "base_probability": null,
