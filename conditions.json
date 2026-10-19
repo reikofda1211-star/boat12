@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-19",
-  "generated_at": "2026-10-19T14:12:46.714847+09:00",
+  "generated_at": "2026-10-19T14:14:46.894838+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -27,8 +27,8 @@
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/10/19.csv",
       "status": "ok",
-      "rows": 69,
-      "sha256": "f9d01d84f44eb65d5fcbb08310d4bcb5951c723bb2ef688f6ac4a112efcef1a1"
+      "rows": 70,
+      "sha256": "8d613036478dee0e7b49e35081c062814ef0212d9f77b2d875060948992ada12"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/19.csv",
@@ -39,8 +39,8 @@
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/19.csv",
       "status": "ok",
-      "rows": 62,
-      "sha256": "25a9f8f2b0a1b029ba18e9f70a08a412df380ab3fb1951299ab60d5bfc8113be"
+      "rows": 63,
+      "sha256": "c488bc619f6f504f683fd97106e228219a53b22d5b200cc5e4f08325e82d6129"
     }
   },
   "counts": {
@@ -2984,16 +2984,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.30043419009384037,
-        "base_probability": 0.26816646373524405,
-        "scope": "original",
-        "expires_at": "2026-10-19T14:14:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切直前・確率非表示"
     },
     {
       "version": "conditions-1.0",
@@ -6463,8 +6455,8 @@
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
-        "stt:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
         "sui:missing_timestamp",
         "tkz:missing_timestamp",
         "weather:observation_unconfirmed_or_old"
@@ -15990,7 +15982,7 @@
       "probability_scope": null,
       "expires_at": null,
       "experimental_prediction": null,
-      "state": "締切直前・確率非表示"
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
@@ -19571,5 +19563,5 @@
   },
   "experimental_notice": "未検証の実験値は改善の表示基準に未達です。確率の正確さ・的中・利益を保証せず、利用者の表示選択でのみ表示します。",
   "predicted_races": 0,
-  "experimental_races": 1
+  "experimental_races": 0
 }
