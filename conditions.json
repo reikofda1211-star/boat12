@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-20",
-  "generated_at": "2026-10-20T15:52:25.923341+09:00",
+  "generated_at": "2026-10-20T15:54:25.738373+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -33,8 +33,8 @@
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/20.csv",
       "status": "ok",
-      "rows": 104,
-      "sha256": "5278d40a1fba6be6dc78592ef963005e61cb926fe8217cd62f863b6e7ba654a0"
+      "rows": 105,
+      "sha256": "b9bd22c46dd4333a92298ca55adcbd5cf3d741606b826f80bffd604bad7dac1d"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/20.csv",
@@ -46,8 +46,8 @@
   "counts": {
     "cards": 144,
     "records": 144,
-    "basic_ready": 74,
-    "original_ready": 63,
+    "basic_ready": 75,
+    "original_ready": 64,
     "labelled": 0
   },
   "races": [
@@ -3238,16 +3238,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.3601092564585614,
-        "base_probability": 0.2708222134040947,
-        "scope": "normal",
-        "expires_at": "2026-10-20T15:52:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
@@ -21429,8 +21421,8 @@
       "race": 11,
       "cutoff": "2026-10-20T15:57:00+09:00",
       "cancelled": false,
-      "basic_ready": false,
-      "original_ready": false,
+      "basic_ready": true,
+      "original_ready": true,
       "original_kinds": [
         "lap",
         "straight",
@@ -21559,31 +21551,37 @@
         }
       ],
       "weather": {
-        "wind_speed": null,
-        "wind_direction_code": null,
-        "wave_cm": null,
-        "air_c": null,
-        "water_c": null,
-        "weather_code": null,
-        "observed_at": null
+        "wind_speed": 6.0,
+        "wind_direction_code": "6",
+        "wave_cm": 6.0,
+        "air_c": 28.0,
+        "water_c": 22.0,
+        "weather_code": "1",
+        "observed_at": "2026-10-20T15:25:00+09:00"
       },
       "source_times": {
+        "sui": "2026-10-20T15:50:22.873513+09:00",
         "tkz": "2026-10-20T15:50:22.873513+09:00",
         "stt": "2026-10-20T15:50:22.873513+09:00",
         "original": "2026-10-20T15:50:22.873513+09:00"
       },
-      "basic_available": null,
-      "original_available": null,
-      "issues": [
-        "sui:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "basic_available": "2026-10-20T15:50:22.873513+09:00",
+      "original_available": "2026-10-20T15:50:22.873513+09:00",
+      "issues": [],
       "probability": null,
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": null,
-      "state": "風・展示データ待ち"
+      "experimental_prediction": {
+        "schema": "conditions-experimental-1",
+        "probability": 0.2586620379207462,
+        "base_probability": 0.23988860845292062,
+        "scope": "original",
+        "expires_at": "2026-10-20T15:56:30+09:00",
+        "validation_status": "held_back",
+        "release_rule_passed": false
+      },
+      "state": "未検証の実験値あり（表示スイッチで確認）"
     },
     {
       "version": "conditions-1.0",
