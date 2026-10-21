@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-21",
-  "generated_at": "2026-10-21T11:44:54.556145+09:00",
+  "generated_at": "2026-10-21T11:46:54.772698+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -27,8 +27,8 @@
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/10/21.csv",
       "status": "ok",
-      "rows": 37,
-      "sha256": "433bd8e3c68f86611209c8b0dbdaf758af1426dd483804008a51371a25f9980c"
+      "rows": 38,
+      "sha256": "d1e33bd82ea6142f0897e502ea2c4935bb6e05ccf952bd5cdc30972a69b0531b"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/21.csv",
@@ -39,8 +39,8 @@
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/21.csv",
       "status": "ok",
-      "rows": 37,
-      "sha256": "f624b4ac8d769c7783d01f3e4b180999d508b9e4069e08a5201aab1377c22bc3"
+      "rows": 38,
+      "sha256": "e1b4d28e81bf2a914a8a2b82a60e1d597f33c0995868fb1a4105072171c78156"
     }
   },
   "counts": {
@@ -5762,16 +5762,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.1319603585612049,
-        "base_probability": 0.10875985741215385,
-        "scope": "original",
-        "expires_at": "2026-10-21T11:46:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切直前・確率非表示"
     },
     {
       "version": "conditions-1.0",
@@ -8948,7 +8940,7 @@
       "venue": "尼崎",
       "venue_code": "13",
       "race": 4,
-      "cutoff": "2026-10-21T11:53:00+09:00",
+      "cutoff": null,
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
@@ -9064,8 +9056,8 @@
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
-        "stt:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
         "sui:not_published",
         "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
@@ -20694,5 +20686,5 @@
   },
   "experimental_notice": "未検証の実験値は改善の表示基準に未達です。確率の正確さ・的中・利益を保証せず、利用者の表示選択でのみ表示します。",
   "predicted_races": 0,
-  "experimental_races": 2
+  "experimental_races": 1
 }
