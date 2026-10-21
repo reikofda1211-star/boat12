@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-21",
-  "generated_at": "2026-10-21T12:47:23.697605+09:00",
+  "generated_at": "2026-10-21T12:49:23.441250+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -33,8 +33,8 @@
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/21.csv",
       "status": "ok",
-      "rows": 55,
-      "sha256": "7f25d3c87bbd20f78ed84827da8a24085b2b7472bfd2cbe681a38c159fac2c75"
+      "rows": 57,
+      "sha256": "30a50acfce355d677a1828054283b80aa61776c0fbe05cc8b6a6059d773a71da"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/21.csv",
@@ -46,8 +46,8 @@
   "counts": {
     "cards": 144,
     "records": 144,
-    "basic_ready": 40,
-    "original_ready": 40,
+    "basic_ready": 41,
+    "original_ready": 41,
     "labelled": 0
   },
   "races": [
@@ -9369,8 +9369,8 @@
       "race": 6,
       "cutoff": "2026-10-21T12:52:00+09:00",
       "cancelled": false,
-      "basic_ready": false,
-      "original_ready": false,
+      "basic_ready": true,
+      "original_ready": true,
       "original_kinds": [
         "lap",
         "turn"
@@ -9492,31 +9492,37 @@
         }
       ],
       "weather": {
-        "wind_speed": null,
-        "wind_direction_code": null,
-        "wave_cm": null,
-        "air_c": null,
-        "water_c": null,
-        "weather_code": null,
-        "observed_at": null
+        "wind_speed": 5.0,
+        "wind_direction_code": "6",
+        "wave_cm": 3.0,
+        "air_c": 29.6,
+        "water_c": 22.7,
+        "weather_code": "1",
+        "observed_at": "2026-10-21T12:26:00+09:00"
       },
       "source_times": {
+        "sui": "2026-10-21T12:45:31.843703+09:00",
         "tkz": "2026-10-21T12:45:31.843703+09:00",
         "stt": "2026-10-21T12:45:31.843703+09:00",
         "original": "2026-10-21T12:45:31.843703+09:00"
       },
-      "basic_available": null,
-      "original_available": null,
-      "issues": [
-        "sui:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "basic_available": "2026-10-21T12:45:31.843703+09:00",
+      "original_available": "2026-10-21T12:45:31.843703+09:00",
+      "issues": [],
       "probability": null,
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": null,
-      "state": "風・展示データ待ち"
+      "experimental_prediction": {
+        "schema": "conditions-experimental-1",
+        "probability": 0.10203927057756727,
+        "base_probability": 0.09654296417292561,
+        "scope": "original",
+        "expires_at": "2026-10-21T12:51:30+09:00",
+        "validation_status": "held_back",
+        "release_rule_passed": false
+      },
+      "state": "未検証の実験値あり（表示スイッチで確認）"
     },
     {
       "version": "conditions-1.0",
@@ -13021,16 +13027,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.1278695671460315,
-        "base_probability": 0.11562519317102696,
-        "scope": "original",
-        "expires_at": "2026-10-21T12:48:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
@@ -15103,25 +15101,23 @@
         }
       ],
       "weather": {
-        "wind_speed": null,
-        "wind_direction_code": null,
-        "wave_cm": null,
-        "air_c": null,
-        "water_c": null,
-        "weather_code": null,
-        "observed_at": null
+        "wind_speed": 5.0,
+        "wind_direction_code": "6",
+        "wave_cm": 5.0,
+        "air_c": 26.0,
+        "water_c": 23.0,
+        "weather_code": "3",
+        "observed_at": "2026-10-21T12:31:00+09:00"
       },
       "source_times": {
+        "sui": "2026-10-21T12:45:31.843703+09:00",
         "tkz": "2026-10-21T12:45:31.843703+09:00",
         "stt": "2026-10-21T12:45:31.843703+09:00",
         "original": "2026-10-21T12:45:31.843703+09:00"
       },
-      "basic_available": null,
-      "original_available": null,
-      "issues": [
-        "sui:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "basic_available": "2026-10-21T12:45:31.843703+09:00",
+      "original_available": "2026-10-21T12:45:31.843703+09:00",
+      "issues": [],
       "probability": null,
       "base_probability": null,
       "probability_scope": null,
