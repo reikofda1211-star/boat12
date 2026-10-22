@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-22",
-  "generated_at": "2026-10-22T10:02:57.796271+09:00",
+  "generated_at": "2026-10-22T10:04:58.075516+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -27,8 +27,8 @@
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/10/22.csv",
       "status": "ok",
-      "rows": 7,
-      "sha256": "aa3294614f26727c2e93b02b179f846ef339b89d44a59bfaee47d3d6234e0465"
+      "rows": 8,
+      "sha256": "7c46f8e4c55992e83ccd94e19a94bfdc5897f57d07ed4341ef79704ddf3cfb43"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/22.csv",
@@ -39,8 +39,8 @@
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/22.csv",
       "status": "ok",
-      "rows": 7,
-      "sha256": "c7dac4a101837ab7f772cc2690fa23dba9c2743912aa45e1029d44e765e50482"
+      "rows": 8,
+      "sha256": "94a792adf13de14d3bb1f121c43c2f1828f7e6b9054b6227f5c7563a37f6a8ce"
     }
   },
   "counts": {
@@ -16933,7 +16933,10 @@
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
-      "original_kinds": [],
+      "original_kinds": [
+        "lap",
+        "turn"
+      ],
       "players": [
         {
           "boat": 1,
@@ -16947,9 +16950,12 @@
           "boat_rate": 30.6,
           "exhibition": null,
           "tilt": -0.5,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.34,
+          "course": 1.0,
+          "original": {
+            "lap": 37.28,
+            "turn": 11.6
+          }
         },
         {
           "boat": 2,
@@ -16963,9 +16969,12 @@
           "boat_rate": 28.6,
           "exhibition": null,
           "tilt": -0.5,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.07,
+          "course": 2.0,
+          "original": {
+            "lap": 37.09,
+            "turn": 11.5
+          }
         },
         {
           "boat": 3,
@@ -16979,9 +16988,12 @@
           "boat_rate": 38.6,
           "exhibition": null,
           "tilt": 0.0,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.08,
+          "course": 3.0,
+          "original": {
+            "lap": 37.48,
+            "turn": 11.42
+          }
         },
         {
           "boat": 4,
@@ -16995,9 +17007,12 @@
           "boat_rate": 33.3,
           "exhibition": null,
           "tilt": -0.5,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": -0.07,
+          "course": 4.0,
+          "original": {
+            "lap": 37.55,
+            "turn": 11.6
+          }
         },
         {
           "boat": 5,
@@ -17011,9 +17026,12 @@
           "boat_rate": 29.0,
           "exhibition": null,
           "tilt": 0.0,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.02,
+          "course": 5.0,
+          "original": {
+            "lap": 38.07,
+            "turn": 11.81
+          }
         },
         {
           "boat": 6,
@@ -17027,9 +17045,12 @@
           "boat_rate": 25.2,
           "exhibition": null,
           "tilt": 0.0,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.02,
+          "course": 6.0,
+          "original": {
+            "lap": 37.85,
+            "turn": 11.9
+          }
         }
       ],
       "weather": {
@@ -17043,20 +17064,19 @@
       },
       "source_times": {
         "sui": "2026-10-22T09:55:35.917447+09:00",
-        "tkz": "2026-10-22T09:55:35.917447+09:00"
+        "tkz": "2026-10-22T09:55:35.917447+09:00",
+        "stt": "2026-10-22T10:00:58.599677+09:00",
+        "original": "2026-10-22T10:00:58.599677+09:00"
       },
-      "basic_available": null,
-      "original_available": null,
-      "issues": [
-        "original:not_published",
-        "stt:not_published"
-      ],
+      "basic_available": "2026-10-22T10:00:58.599677+09:00",
+      "original_available": "2026-10-22T10:00:58.599677+09:00",
+      "issues": [],
       "probability": null,
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
       "experimental_prediction": null,
-      "state": "風・展示データ待ち"
+      "state": "締切直前・確率非表示"
     },
     {
       "version": "conditions-1.0",
