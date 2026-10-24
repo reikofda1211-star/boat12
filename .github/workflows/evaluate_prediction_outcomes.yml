@@ -1,0 +1,88 @@
+name: Evaluate Settled 1-2 Predictions
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 00:30 JST, next day; results must already be committed to history/races.csv.
+    - cron: '30 15 * * *'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Checkout latest results and evaluator
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Find latest archived pre-race forecast
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Evaluate yesterday in Japan, after the day's races have settled.
+          target=$(TZ=Asia/Tokyo date -d 'yesterday' +%F)
+          echo "TARGET_DATE=$target" >> "$GITHUB_ENV"
+          # Find the successful forecast run started on the target date (JST).
+          # Never reconstruct forecasts after outcomes are known.
+          python - <<'PY'
+          import json, os, subprocess
+          from datetime import datetime, timezone, timedelta
+          target = os.environ['TARGET_DATE'] if 'TARGET_DATE' in os.environ else None
+          if not target:
+              # Values written to GITHUB_ENV are only visible in subsequent steps.
+              from subprocess import check_output
+              target = check_output(['date','-d','yesterday','+%F'], env={**os.environ,'TZ':'Asia/Tokyo'}, text=True).strip()
+          runs = json.loads(subprocess.check_output([
+              'gh','api',f'repos/{os.environ["GH_REPO"]}/actions/workflows/evaluate_two_stage.yml/runs',
+              '-f','per_page=100','-f','status=completed','--method','GET'], text=True))['workflow_runs']
+          jst = timezone(timedelta(hours=9))
+          candidates = [r for r in runs if r.get('conclusion')=='success' and
+                        datetime.fromisoformat(r['created_at'].replace('Z','+00:00')).astimezone(jst).date().isoformat()==target]
+          if not candidates:
+              raise SystemExit(f'No successful archived forecast run for {target}; not evaluating retrospectively')
+          # Prefer the earliest completed forecast of that date.
+          chosen = min(candidates, key=lambda r:r['created_at'])
+          with open(os.environ['GITHUB_ENV'],'a') as f:
+              f.write(f'FORECAST_RUN_ID={chosen["id"]}\n')
+          print('Archived forecast run:',chosen['id'],'for',target)
+          PY
+      - name: Download archived prediction CSV
+        run: |
+          gh run download "$FORECAST_RUN_ID" --name boat12-two-stage-evaluation --dir archived
+          test -s archived/two-stage-preview.csv
+      - name: Check archived date and settled results
+        run: |
+          python - <<'PY'
+          import csv, os
+          with open('archived/two-stage-preview.csv', encoding='utf-8-sig', newline='') as f:
+              rows=list(csv.DictReader(f))
+          assert rows and all(r['date']==os.environ['TARGET_DATE'] for r in rows), 'Archive is not for target date'
+          print('Archived pre-race predictions:',len(rows))
+          PY
+      - name: Compare outcomes
+        run: |
+          python evaluate_prediction_outcomes.py --predictions archived/two-stage-preview.csv --results history/races.csv --output prediction_outcomes.json
+          python - <<'PY'
+          import json
+          r=json.load(open('prediction_outcomes.json'))
+          if r['matched']==0:
+              raise SystemExit('No settled results matched; wait for results update')
+          print('Matched:',r['matched'],'Brier direct:',r['brier_direct'],'Brier two-stage:',r['brier_two_stage'])
+          PY
+      - name: Archive outcome report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prediction-outcomes-${{ github.run_id }}
+          path: prediction_outcomes.json
+          if-no-files-found: warn
+          retention-days: 90
