@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0 joblib==1.5.3
+          python -m pip install requests==2.32.5 numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0 joblib==1.5.3
 
       - name: Test analysis
         run: python boat12_feature_audit.py --self-test
