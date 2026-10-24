@@ -28,18 +28,20 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt joblib
+      
 
       - name: Compare direct and two-stage models
         run: python compare_two_stage.py > two_stage_report.json
 
       - name: Compare 3-6 competitor-strength features
         run: python compare_competitor_features.py > competitor_report.json
-
+      - name: Walk-forward validation
+        run: python compare_walk_forward.py > walk_forward_report.json
       - name: Show evaluation results
         run: |
           python -m json.tool two_stage_report.json
           python -m json.tool competitor_report.json
-
+          python -m json.tool walk_forward_report.json
       - name: Save reports to workflow artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -48,5 +50,6 @@ jobs:
           path: |
             two_stage_report.json
             competitor_report.json
+            walk_forward_report.json
           if-no-files-found: warn
           retention-days: 30
