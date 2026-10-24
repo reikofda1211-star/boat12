@@ -123,6 +123,7 @@ jobs:
               print("REFRESH START", jst_now().isoformat(), "history_days=", days, flush=True)
               # Do not retry denied sources in a tight loop. Any nonzero process stops this session.
               result = subprocess.run(command, timeout=1800 if days else 180)
+                            preview_result = subprocess.run([sys.executable, "-u", "predict_v2.py"], timeout=120)
               audit_result = subprocess.run([sys.executable, "-u", "latency_audit.py"], timeout=30)
               if audit_result.returncode:
                   raise RuntimeError("latency_audit.py failed; check its log")
