@@ -1,0 +1,69 @@
+{
+  "baseline_brier": 0.1452445188088084,
+  "baseline_logloss": 0.458665083373523,
+  "rows": 4295,
+  "permutations_per_group": 3,
+  "groups": {
+    "wind": {
+      "shuffled_brier_mean": 0.14485114939629704,
+      "delta_brier": -0.0003933694125113629,
+      "shuffled_brier_each": [
+        0.1450729336328195,
+        0.14463603091458216,
+        0.1448444836414894
+      ]
+    },
+    "waves": {
+      "shuffled_brier_mean": 0.1451937554073455,
+      "delta_brier": -5.0763401462899926e-05,
+      "shuffled_brier_each": [
+        0.1451968910681544,
+        0.14521694658397322,
+        0.14516742856990889
+      ]
+    },
+    "exhibition_time": {
+      "shuffled_brier_mean": 0.14614681687818007,
+      "delta_brier": 0.0009022980693716709,
+      "shuffled_brier_each": [
+        0.14662653744807802,
+        0.1456556125577785,
+        0.1461583006286836
+      ]
+    },
+    "exhibition_st": {
+      "shuffled_brier_mean": 0.14548113149414413,
+      "delta_brier": 0.00023661268533572977,
+      "shuffled_brier_each": [
+        0.1457461263860798,
+        0.1454537812752241,
+        0.14524348682112856
+      ]
+    },
+    "exhibition_course": {
+      "shuffled_brier_mean": 0.14608657029408667,
+      "delta_brier": 0.0008420514852782723,
+      "shuffled_brier_each": [
+        0.14610138851422733,
+        0.14635716430882673,
+        0.145801158059206
+      ]
+    },
+    "tilt": {
+      "shuffled_brier_mean": 0.14529948986735844,
+      "delta_brier": 5.49710585500407e-05,
+      "shuffled_brier_each": [
+        0.14545180112043493,
+        0.14531619568554352,
+        0.14513047279609687
+      ]
+    }
+  },
+  "schema": "boat12-normal-permutation-audit-v1",
+  "created_at": "2026-10-24T05:38:02.214859+00:00",
+  "test_start": "2026-09-20",
+  "test_end": "2026-10-23",
+  "model_report_generated_at": "2026-10-24T06:49:03.214638+09:00",
+  "release_rule_unchanged": true,
+  "note": "Read-only permutation sensitivity on the original held-out set. Positive delta indicates the fitted model used that feature group on these races, NOT a proven accuracy improvement from training with it. This holdout has already influenced model selection; a fresh prospective validation is needed."
+}
