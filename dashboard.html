@@ -324,6 +324,11 @@ async function freshConditions(){
  }
  if(!incoming.length)throw Error(problems.join('／')||'最新データの取得待ち');
  const successful=incoming.slice();
+ const raw=successful.find(x=>x._delivery==='公開ファイル（Raw）');
+ const api=successful.find(x=>x._delivery==='GitHubの保存データ（API）');
+ if(raw&&api){
+  STATE.deliveryNote+=' 配信データの生成時刻差（API−Raw）：'+Math.round((time(api.generated_at)-time(raw.generated_at))/1000)+'秒';
+ }
  if(usableGeneration(FEED.lastGood))incoming.push(FEED.lastGood);
  incoming.sort((a,b)=>time(b.generated_at)-time(a.generated_at));
  let chosen=incoming[0];
