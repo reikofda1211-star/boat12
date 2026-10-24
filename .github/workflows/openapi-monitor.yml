@@ -37,11 +37,15 @@ jobs:
         run: |
           python openapi_adapter.py --self-test
           python openapi_adapter.py
+      - name: Check normal exhibition compatibility
+        run: |
+          python openapi_normal_adapter.py --self-test
+          python openapi_normal_adapter.py
       - name: Save monitoring data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f openapi-status.json openapi-first-seen.json openapi-precutoff.json openapi-adapter-audit.json
+          git add -f openapi-status.json openapi-first-seen.json openapi-precutoff.json openapi-adapter-audit.json openapi-normal-audit.json
           if git diff --cached --quiet; then
             echo "No changes"
             exit 0
