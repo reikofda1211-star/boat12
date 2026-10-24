@@ -1,0 +1,52 @@
+name: Evaluate Two-Stage 1-2 Models
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Daily 13:00 JST, after the existing model-training schedule.
+    - cron: '0 4 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: boat12-two-stage-evaluation
+  cancel-in-progress: false
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout model and history
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt joblib
+
+      - name: Compare direct and two-stage models
+        run: python compare_two_stage.py > two_stage_report.json
+
+      - name: Compare 3-6 competitor-strength features
+        run: python compare_competitor_features.py > competitor_report.json
+
+      - name: Show evaluation results
+        run: |
+          python -m json.tool two_stage_report.json
+          python -m json.tool competitor_report.json
+
+      - name: Save reports to workflow artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: boat12-two-stage-evaluation
+          path: |
+            two_stage_report.json
+            competitor_report.json
+          if-no-files-found: warn
+          retention-days: 30
