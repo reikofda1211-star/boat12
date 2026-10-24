@@ -63,6 +63,15 @@ def run():
         entry['basic_ready']=bool(race.get('basic_ready'))
         entry['original_ready']=bool(race.get('original_ready'))
         entry['experimental_recorded']=bool(race.get('experimental_prediction'))
+        if cutoff and 0 < (cutoff-generated).total_seconds() <= 360:
+            entry['six_minute_check'] = {
+                'checked_at': generated.isoformat(),
+                'seconds_remaining': round((cutoff-generated).total_seconds()),
+                'basic_ready': bool(race.get('basic_ready')),
+                'original_ready': bool(race.get('original_ready')),
+                'state': race.get('state'),
+                'issues': race.get('issues', [])
+            }
         if cutoff and cutoff>generated:
             counts['pending']+=1
         counts['basic_ready']+=bool(race.get('basic_ready'))
