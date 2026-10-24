@@ -1,12 +1,27 @@
 {
   "schema": "boat12-accuracy-v1",
   "date": "2026-10-24",
-  "generated_at": "2026-10-24T13:22:36.279049+09:00",
+  "generated_at": "2026-10-24T13:24:36.629742+09:00",
   "status": "ok",
   "message": null,
   "source": "BoatraceCSV realtime results; immutable pre-deadline forecast logs",
   "definition": "閾値以上の締切前保存予測のうち、結果確定済み候補の1-2決着率。結果待ちは分母から除外。",
   "records": [
+    {
+      "code": "202610242206",
+      "date": "2026-10-24",
+      "venue": "福岡",
+      "race": 6,
+      "generated_at": "2026-10-24T13:24:34.981378+09:00",
+      "cutoff": "2026-10-24T13:28:00+09:00",
+      "probability": 0.123386,
+      "scope": "original",
+      "result_status": "pending",
+      "first": null,
+      "second": null,
+      "hit": null,
+      "result_recorded_at": null
+    },
     {
       "code": "202610242205",
       "date": "2026-10-24",
@@ -136,11 +151,11 @@
       "cutoff": "2026-10-24T13:01:00+09:00",
       "probability": 0.140626,
       "scope": "original",
-      "result_status": "pending",
-      "first": null,
-      "second": null,
-      "hit": null,
-      "result_recorded_at": null
+      "result_status": "confirmed",
+      "first": 1,
+      "second": 2,
+      "hit": true,
+      "result_recorded_at": "2026-10-24T13:20:24.516954+09:00"
     },
     {
       "code": "202610241408",
