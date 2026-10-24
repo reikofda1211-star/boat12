@@ -1,0 +1,34 @@
+{
+  "schema": "boat12-normal-wind-ablation-v1",
+  "created_at": "2026-10-24T05:47:54.297587+00:00",
+  "model_report_generated_at": "2026-10-24T06:49:03.214638+09:00",
+  "split": {
+    "train": 12846,
+    "calibration": 4287,
+    "test": 4295,
+    "calibration_start": "2026-08-17",
+    "test_start": "2026-09-20",
+    "test_end": "2026-10-23"
+  },
+  "removed_features": [
+    "venue_wind_direction",
+    "wind_direction",
+    "wind_speed"
+  ],
+  "full": {
+    "brier": 0.14524451880842318,
+    "logloss": 0.45866508337258566
+  },
+  "without_wind": {
+    "brier": 0.1448081474144353,
+    "logloss": 0.4574429687280717
+  },
+  "brier_gain_without_wind": 0.0004363713939878888,
+  "day_bootstrap_95ci": [
+    -6.087019474644932e-05,
+    0.0009257501950798585
+  ],
+  "conclusion": "not_proven",
+  "production_changed": false,
+  "warning": "This holdout was already used in model development. This experiment is exploratory; future untouched races are needed before release. No win/profit claims."
+}
