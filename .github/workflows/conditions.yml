@@ -132,6 +132,8 @@ jobs:
                   raise RuntimeError("score_today.py failed; check its log")
               save_started = time.monotonic()
               saved = save_conditions()
+                            if preview_result.returncode:
+                  raise RuntimeError("predict_v2.py failed; inspect logs for the daily preview")
               print("GIT SAVE DURATION", round((time.monotonic() - save_started)*1000), "ms", flush=True)
               if result.returncode:
                   raise RuntimeError("conditions.py failed; check its log. The session has stopped.")
