@@ -1,0 +1,141 @@
+{
+  "schema": "boat12-refresh-diagnostic-v1",
+  "created_at": "2026-10-25T10:30:33.892320+00:00",
+  "date": "2026-10-25",
+  "conditions_generated_at": "2026-10-25T19:30:02.144343+09:00",
+  "openapi_checked_at": "2026-10-25T19:30:32+09:00",
+  "counts": {
+    "race_cards": 168,
+    "csv_basic_ready_at_snapshot": 96,
+    "csv_timestamp_at_least_six_minutes": 74,
+    "api_complete_at_snapshot": 154,
+    "csv_first_seen_all_sources_before_cutoff": 139,
+    "api_pre_cutoff_snapshot_recorded": 73,
+    "api_observed_at_least_six_minutes_before_cutoff": 41,
+    "csv_first_seen_at_least_six_minutes": 30,
+    "api_complete_csv_not_ready_at_snapshot": 58
+  },
+  "csv_missing_reasons": {
+    "original:not_published": 14,
+    "stt:not_published": 14,
+    "sui:not_published": 14,
+    "tkz:not_published": 14,
+    "weather:observation_unconfirmed_or_old": 33,
+    "original:missing_timestamp": 12,
+    "stt:missing_timestamp": 12,
+    "sui:missing_timestamp": 12,
+    "tkz:missing_timestamp": 12
+  },
+  "api_ready_csv_not_ready_examples": [
+    {
+      "code": "202610250107",
+      "cutoff": "2026-10-25T18:17:00+09:00",
+      "csv_issues": [],
+      "api_first_seen": "2026-10-25T18:04:12+09:00"
+    },
+    {
+      "code": "202610250108",
+      "cutoff": "2026-10-25T18:45:00+09:00",
+      "csv_issues": [],
+      "api_first_seen": "2026-10-25T18:56:43+09:00"
+    },
+    {
+      "code": "202610250110",
+      "cutoff": "2026-10-25T19:47:00+09:00",
+      "csv_issues": [
+        "original:not_published",
+        "stt:not_published",
+        "sui:not_published",
+        "tkz:not_published",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-25T19:30:32+09:00"
+    },
+    {
+      "code": "202610250411",
+      "cutoff": "2026-10-25T15:44:00+09:00",
+      "csv_issues": [],
+      "api_first_seen": "2026-10-25T15:41:23+09:00"
+    },
+    {
+      "code": "202610250412",
+      "cutoff": "2026-10-25T16:14:00+09:00",
+      "csv_issues": [],
+      "api_first_seen": "2026-10-25T16:52:10+09:00"
+    },
+    {
+      "code": "202610250501",
+      "cutoff": "2026-10-25T10:34:00+09:00",
+      "csv_issues": [
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-25T10:36:09+09:00"
+    },
+    {
+      "code": "202610250502",
+      "cutoff": "2026-10-25T11:00:00+09:00",
+      "csv_issues": [
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-25T11:04:30+09:00"
+    },
+    {
+      "code": "202610250512",
+      "cutoff": "2026-10-25T16:06:00+09:00",
+      "csv_issues": [],
+      "api_first_seen": "2026-10-25T16:52:10+09:00"
+    },
+    {
+      "code": "202610250601",
+      "cutoff": "2026-10-25T10:42:00+09:00",
+      "csv_issues": [
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-25T10:36:09+09:00"
+    },
+    {
+      "code": "202610250801",
+      "cutoff": null,
+      "csv_issues": [
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-25T10:36:09+09:00"
+    },
+    {
+      "code": "202610250802",
+      "cutoff": null,
+      "csv_issues": [
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-25T11:04:30+09:00"
+    },
+    {
+      "code": "202610250803",
+      "cutoff": null,
+      "csv_issues": [
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-25T11:31:08+09:00"
+    }
+  ],
+  "notes": [
+    "Snapshot completeness counts are not live pre-cutoff availability.",
+    "Provider/source availability timestamps do not prove BOAT12 first observed them.",
+    "Six-minute first-seen counts depend on monitor start time and polling schedule.",
+    "Staged Open API data is not inserted into prediction models.",
+    "This report does not alter production conditions, predictions, or safety gates."
+  ],
+  "production_changed": false
+}
