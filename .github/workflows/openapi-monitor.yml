@@ -45,11 +45,13 @@ jobs:
         run: |
           python openapi_weather_crosscheck.py --self-test
           python openapi_weather_crosscheck.py
+      - name: Diagnose data refresh
+        run: python boat12_refresh_diagnostic.py
       - name: Save monitoring data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f openapi-status.json openapi-first-seen.json openapi-precutoff.json openapi-adapter-audit.json openapi-normal-audit.json openapi-weather-audit.json
+          git add -f openapi-status.json openapi-first-seen.json openapi-precutoff.json openapi-adapter-audit.json openapi-normal-audit.json openapi-weather-audit.json history/conditions/refresh_diagnostic.json
           if git diff --cached --quiet; then
             echo "No changes"
             exit 0
