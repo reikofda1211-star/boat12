@@ -3,8 +3,8 @@
   "date": "2026-10-25",
   "mode": "read_only_comparison_no_model_use",
   "counts": {
-    "staged_races": 73,
-    "wind_and_wave_match": 61,
+    "staged_races": 74,
+    "wind_and_wave_match": 62,
     "missing_weather_values": 1,
     "wind_or_wave_mismatch": 11
   },
@@ -2626,6 +2626,42 @@
         "air_c": {
           "openapi": 18.0,
           "boatracecsv": 18.0,
+          "comparison": "match"
+        },
+        "water_c": {
+          "openapi": 19.0,
+          "boatracecsv": 19.0,
+          "comparison": "match"
+        }
+      },
+      "weather_timestamp_equivalence_proven": false,
+      "safe_for_automatic_model_injection": false,
+      "reasons": [
+        "openapi_weather_observation_time_unverified"
+      ]
+    },
+    "202610250111": {
+      "venue": "桐生",
+      "race": 11,
+      "cutoff": "2026-10-25T20:15:00+09:00",
+      "openapi_received_at": "2026-10-25T20:06:37+09:00",
+      "boatracecsv_weather_observed_at": "2026-10-25T19:51:00+09:00",
+      "boatracecsv_source_captured_at": "2026-10-25T20:05:28.230943+09:00",
+      "wind_wave_status": "wind_and_wave_match",
+      "fields": {
+        "wind_speed_mps": {
+          "openapi": 0.0,
+          "boatracecsv": 0.0,
+          "comparison": "match"
+        },
+        "wave_height_cm": {
+          "openapi": 0.0,
+          "boatracecsv": 0.0,
+          "comparison": "match"
+        },
+        "air_c": {
+          "openapi": 17.0,
+          "boatracecsv": 17.0,
           "comparison": "match"
         },
         "water_c": {
