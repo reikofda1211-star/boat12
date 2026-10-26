@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 
 from session_st import compare_session_st
 
-day = datetime.now(ZoneInfo("Asia/Tokyo")).strftime("%Y/%m/%d")
+day = "2026/10/25"
 url = f"https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/programs/race_cards/{day}.csv"
 
 with urlopen(url, timeout=30) as response:
