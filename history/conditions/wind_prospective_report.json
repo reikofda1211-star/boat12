@@ -1,20 +1,24 @@
 {
   "schema": "boat12-prospective-wind-v1",
-  "updated_at": "2026-10-25T23:01:03.877182+00:00",
+  "updated_at": "2026-10-26T23:09:57.539887+00:00",
   "first_eval_day": "2026-10-25",
   "training_end": "2026-10-23",
-  "new_races": 114,
-  "new_days": 1,
+  "new_races": 245,
+  "new_days": 2,
   "status": "collecting",
   "production_changed": false,
   "note": "Frozen models. Prospective observational comparison only; not a release or profit guarantee.",
   "full": {
-    "brier": 0.10675544855123392,
-    "logloss": 0.35742412649339295
+    "brier": 0.11591958544015608,
+    "logloss": 0.3837473758383344
   },
   "without_wind": {
-    "brier": 0.10759243472713358,
-    "logloss": 0.3602016303248336
+    "brier": 0.11612431939009717,
+    "logloss": 0.3839772844282277
   },
-  "brier_gain_without_wind": -0.0008369861758996539
+  "brier_gain_without_wind": -0.00020473394994108274,
+  "day_bootstrap_95ci": [
+    -0.0008369861758996716,
+    0.0003454702772290287
+  ]
 }
