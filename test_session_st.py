@@ -38,5 +38,5 @@ available = sum(
 print(json.dumps({
     "total_races": len(results),
     "both_st_available": available,
-    "examples": results[:10]
+    "examples": [r for r in results if r["st_difference"] is not None][:10]
 }, ensure_ascii=False, indent=2))
