@@ -8,7 +8,7 @@ from zoneinfo import ZoneInfo
 from session_st import compare_session_st
 
 day = datetime.now(ZoneInfo("Asia/Tokyo")).strftime("%Y/%m/%d")
-url = f"https://boatracecsv.github.io/data/programs/race_cards/{day}.csv"
+url = f"https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/programs/race_cards/{day}.csv"
 
 with urlopen(url, timeout=30) as response:
     content = response.read(8_000_001)
