@@ -17,8 +17,10 @@ with urlopen(url, timeout=30) as response:
 
 rows = list(csv.DictReader(io.StringIO(content.decode("utf-8-sig"))))
 
-if not rows:print("CSV_COLUMNS:", json.dumps(list(rows[0].keys()), ensure_ascii=False))
+if not rows:
     raise ValueError("出走表データがありません")
+
+print("CSV_COLUMNS:", json.dumps(list(rows[0].keys()), ensure_ascii=False))
 
 results = []
 for row in rows:
