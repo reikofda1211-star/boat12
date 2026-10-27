@@ -3,10 +3,9 @@
   "date": "2026-10-27",
   "mode": "read_only_comparison_no_model_use",
   "counts": {
-    "staged_races": 59,
-    "wind_and_wave_match": 53,
-    "wind_or_wave_mismatch": 5,
-    "missing_weather_values": 1
+    "staged_races": 60,
+    "wind_and_wave_match": 55,
+    "wind_or_wave_mismatch": 5
   },
   "races": {
     "202610271001": {
@@ -2102,36 +2101,70 @@
       "race": 12,
       "cutoff": "2026-10-27T20:30:00+09:00",
       "openapi_received_at": "2026-10-27T20:12:55+09:00",
-      "boatracecsv_weather_observed_at": null,
-      "boatracecsv_source_captured_at": null,
-      "wind_wave_status": "missing_weather_values",
+      "boatracecsv_weather_observed_at": "2026-10-27T20:00:00+09:00",
+      "boatracecsv_source_captured_at": "2026-10-27T20:20:25.960198+09:00",
+      "wind_wave_status": "wind_and_wave_match",
       "fields": {
         "wind_speed_mps": {
           "openapi": 6.0,
-          "boatracecsv": null,
-          "comparison": "missing"
+          "boatracecsv": 6.0,
+          "comparison": "match"
         },
         "wave_height_cm": {
           "openapi": 6.0,
-          "boatracecsv": null,
-          "comparison": "missing"
+          "boatracecsv": 6.0,
+          "comparison": "match"
         },
         "air_c": {
           "openapi": 20.0,
-          "boatracecsv": null,
-          "comparison": "missing"
+          "boatracecsv": 20.0,
+          "comparison": "match"
         },
         "water_c": {
           "openapi": 24.0,
-          "boatracecsv": null,
-          "comparison": "missing"
+          "boatracecsv": 24.0,
+          "comparison": "match"
         }
       },
       "weather_timestamp_equivalence_proven": false,
       "safe_for_automatic_model_injection": false,
       "reasons": [
-        "boatracecsv_observation_time_missing",
-        "boatracecsv_source_time_missing",
+        "openapi_weather_observation_time_unverified"
+      ]
+    },
+    "202610270112": {
+      "venue": "桐生",
+      "race": 12,
+      "cutoff": "2026-10-27T20:45:00+09:00",
+      "openapi_received_at": "2026-10-27T20:44:09+09:00",
+      "boatracecsv_weather_observed_at": "2026-10-27T20:20:00+09:00",
+      "boatracecsv_source_captured_at": "2026-10-27T20:35:27.781548+09:00",
+      "wind_wave_status": "wind_and_wave_match",
+      "fields": {
+        "wind_speed_mps": {
+          "openapi": 3.0,
+          "boatracecsv": 3.0,
+          "comparison": "match"
+        },
+        "wave_height_cm": {
+          "openapi": 2.0,
+          "boatracecsv": 2.0,
+          "comparison": "match"
+        },
+        "air_c": {
+          "openapi": 15.0,
+          "boatracecsv": 15.0,
+          "comparison": "match"
+        },
+        "water_c": {
+          "openapi": 19.0,
+          "boatracecsv": 19.0,
+          "comparison": "match"
+        }
+      },
+      "weather_timestamp_equivalence_proven": false,
+      "safe_for_automatic_model_injection": false,
+      "reasons": [
         "openapi_weather_observation_time_unverified"
       ]
     }
