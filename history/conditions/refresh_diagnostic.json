@@ -1,24 +1,26 @@
 {
   "schema": "boat12-refresh-diagnostic-v1",
-  "created_at": "2026-10-27T00:08:17.776018+00:00",
+  "created_at": "2026-10-27T00:46:35.726824+00:00",
   "date": "2026-10-27",
-  "conditions_generated_at": "2026-10-27T09:07:18.675725+09:00",
-  "openapi_checked_at": "2026-10-27T09:08:16+09:00",
+  "conditions_generated_at": "2026-10-27T09:45:53.071746+09:00",
+  "openapi_checked_at": "2026-10-27T09:46:35+09:00",
   "counts": {
     "race_cards": 168,
-    "api_complete_at_snapshot": 4,
-    "api_complete_csv_not_ready_at_snapshot": 2,
-    "api_pre_cutoff_snapshot_recorded": 2,
-    "csv_first_seen_all_sources_before_cutoff": 3,
-    "csv_basic_ready_at_snapshot": 2,
-    "csv_timestamp_at_least_six_minutes": 1
+    "api_complete_at_snapshot": 7,
+    "api_complete_csv_not_ready_at_snapshot": 4,
+    "api_pre_cutoff_snapshot_recorded": 3,
+    "csv_first_seen_all_sources_before_cutoff": 6,
+    "csv_first_seen_at_least_six_minutes": 1,
+    "csv_basic_ready_at_snapshot": 3,
+    "csv_timestamp_at_least_six_minutes": 2,
+    "api_observed_at_least_six_minutes_before_cutoff": 1
   },
   "csv_missing_reasons": {
-    "original:not_published": 165,
-    "stt:not_published": 165,
-    "sui:not_published": 165,
-    "tkz:not_published": 165,
-    "weather:observation_unconfirmed_or_old": 165
+    "original:not_published": 161,
+    "stt:not_published": 162,
+    "sui:not_published": 162,
+    "tkz:not_published": 162,
+    "weather:observation_unconfirmed_or_old": 162
   },
   "api_ready_csv_not_ready_examples": [
     {
@@ -30,14 +32,25 @@
     {
       "code": "202610271002",
       "cutoff": "2026-10-27T09:13:00+09:00",
+      "csv_issues": [],
+      "api_first_seen": "2026-10-27T09:08:16+09:00"
+    },
+    {
+      "code": "202610271003",
+      "cutoff": "2026-10-27T09:39:00+09:00",
+      "csv_issues": [],
+      "api_first_seen": "2026-10-27T09:46:35+09:00"
+    },
+    {
+      "code": "202610272304",
+      "cutoff": "2026-10-27T09:53:00+09:00",
       "csv_issues": [
-        "original:not_published",
         "stt:not_published",
         "sui:not_published",
         "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
       ],
-      "api_first_seen": "2026-10-27T09:08:16+09:00"
+      "api_first_seen": "2026-10-27T09:46:35+09:00"
     }
   ],
   "notes": [

@@ -3,8 +3,8 @@
   "date": "2026-10-27",
   "mode": "read_only_comparison_no_model_use",
   "counts": {
-    "staged_races": 2,
-    "wind_and_wave_match": 1,
+    "staged_races": 3,
+    "wind_and_wave_match": 2,
     "missing_weather_values": 1
   },
   "races": {
@@ -49,27 +49,63 @@
       "race": 2,
       "cutoff": "2026-10-27T09:13:00+09:00",
       "openapi_received_at": "2026-10-27T09:08:17+09:00",
+      "boatracecsv_weather_observed_at": "2026-10-27T08:50:00+09:00",
+      "boatracecsv_source_captured_at": "2026-10-27T09:05:25.297226+09:00",
+      "wind_wave_status": "wind_and_wave_match",
+      "fields": {
+        "wind_speed_mps": {
+          "openapi": 0.0,
+          "boatracecsv": 0.0,
+          "comparison": "match"
+        },
+        "wave_height_cm": {
+          "openapi": 0.0,
+          "boatracecsv": 0.0,
+          "comparison": "match"
+        },
+        "air_c": {
+          "openapi": 16.0,
+          "boatracecsv": 17.0,
+          "comparison": "mismatch"
+        },
+        "water_c": {
+          "openapi": 18.0,
+          "boatracecsv": 18.0,
+          "comparison": "match"
+        }
+      },
+      "weather_timestamp_equivalence_proven": false,
+      "safe_for_automatic_model_injection": false,
+      "reasons": [
+        "openapi_weather_observation_time_unverified"
+      ]
+    },
+    "202610272304": {
+      "venue": "唐津",
+      "race": 4,
+      "cutoff": "2026-10-27T09:53:00+09:00",
+      "openapi_received_at": "2026-10-27T09:46:35+09:00",
       "boatracecsv_weather_observed_at": null,
       "boatracecsv_source_captured_at": null,
       "wind_wave_status": "missing_weather_values",
       "fields": {
         "wind_speed_mps": {
-          "openapi": 0.0,
+          "openapi": 3.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
         "wave_height_cm": {
-          "openapi": 0.0,
+          "openapi": 3.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
         "air_c": {
-          "openapi": 16.0,
+          "openapi": 22.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
         "water_c": {
-          "openapi": 18.0,
+          "openapi": 20.0,
           "boatracecsv": null,
           "comparison": "missing"
         }
