@@ -3,9 +3,9 @@
   "date": "2026-10-27",
   "mode": "read_only_comparison_no_model_use",
   "counts": {
-    "staged_races": 55,
-    "wind_and_wave_match": 49,
-    "wind_or_wave_mismatch": 4,
+    "staged_races": 57,
+    "wind_and_wave_match": 50,
+    "wind_or_wave_mismatch": 5,
     "missing_weather_values": 2
   },
   "races": {
@@ -1922,22 +1922,94 @@
       "race": 9,
       "cutoff": "2026-10-27T19:16:00+09:00",
       "openapi_received_at": "2026-10-27T19:02:36+09:00",
+      "boatracecsv_weather_observed_at": "2026-10-27T18:50:00+09:00",
+      "boatracecsv_source_captured_at": "2026-10-27T19:10:23.033932+09:00",
+      "wind_wave_status": "wind_or_wave_mismatch",
+      "fields": {
+        "wind_speed_mps": {
+          "openapi": 0.0,
+          "boatracecsv": 1.0,
+          "comparison": "mismatch"
+        },
+        "wave_height_cm": {
+          "openapi": 0.0,
+          "boatracecsv": 1.0,
+          "comparison": "mismatch"
+        },
+        "air_c": {
+          "openapi": 17.0,
+          "boatracecsv": 16.0,
+          "comparison": "mismatch"
+        },
+        "water_c": {
+          "openapi": 19.0,
+          "boatracecsv": 19.0,
+          "comparison": "match"
+        }
+      },
+      "weather_timestamp_equivalence_proven": false,
+      "safe_for_automatic_model_injection": false,
+      "reasons": [
+        "openapi_weather_observation_time_unverified"
+      ]
+    },
+    "202610272409": {
+      "venue": "大村",
+      "race": 9,
+      "cutoff": "2026-10-27T19:09:00+09:00",
+      "openapi_received_at": "2026-10-27T19:02:36+09:00",
+      "boatracecsv_weather_observed_at": "2026-10-27T18:42:00+09:00",
+      "boatracecsv_source_captured_at": "2026-10-27T19:00:28.616341+09:00",
+      "wind_wave_status": "wind_and_wave_match",
+      "fields": {
+        "wind_speed_mps": {
+          "openapi": 5.0,
+          "boatracecsv": 5.0,
+          "comparison": "match"
+        },
+        "wave_height_cm": {
+          "openapi": 4.0,
+          "boatracecsv": 4.0,
+          "comparison": "match"
+        },
+        "air_c": {
+          "openapi": 19.0,
+          "boatracecsv": 19.0,
+          "comparison": "match"
+        },
+        "water_c": {
+          "openapi": 25.0,
+          "boatracecsv": 25.0,
+          "comparison": "match"
+        }
+      },
+      "weather_timestamp_equivalence_proven": false,
+      "safe_for_automatic_model_injection": false,
+      "reasons": [
+        "openapi_weather_observation_time_unverified"
+      ]
+    },
+    "202610270110": {
+      "venue": "桐生",
+      "race": 10,
+      "cutoff": "2026-10-27T19:48:00+09:00",
+      "openapi_received_at": "2026-10-27T19:35:22+09:00",
       "boatracecsv_weather_observed_at": null,
       "boatracecsv_source_captured_at": null,
       "wind_wave_status": "missing_weather_values",
       "fields": {
         "wind_speed_mps": {
-          "openapi": 0.0,
+          "openapi": 1.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
         "wave_height_cm": {
-          "openapi": 0.0,
+          "openapi": 1.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
         "air_c": {
-          "openapi": 17.0,
+          "openapi": 15.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
@@ -1955,11 +2027,11 @@
         "openapi_weather_observation_time_unverified"
       ]
     },
-    "202610272409": {
+    "202610272410": {
       "venue": "大村",
-      "race": 9,
-      "cutoff": "2026-10-27T19:09:00+09:00",
-      "openapi_received_at": "2026-10-27T19:02:36+09:00",
+      "race": 10,
+      "cutoff": "2026-10-27T19:40:00+09:00",
+      "openapi_received_at": "2026-10-27T19:35:22+09:00",
       "boatracecsv_weather_observed_at": null,
       "boatracecsv_source_captured_at": null,
       "wind_wave_status": "missing_weather_values",
@@ -1975,7 +2047,7 @@
           "comparison": "missing"
         },
         "air_c": {
-          "openapi": 19.0,
+          "openapi": 18.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
