@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-27",
-  "generated_at": "2026-10-27T15:01:06.262085+09:00",
+  "generated_at": "2026-10-27T15:03:06.412772+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -27,8 +27,8 @@
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/10/27.csv",
       "status": "ok",
-      "rows": 99,
-      "sha256": "791fa00a4bc6ac2a652a39782fcd6a0b27cf566238c595f55de0ff3a86694dcf"
+      "rows": 101,
+      "sha256": "c90a8fa0eeefa9cd89866f9d2e069bb2a38f83d3b70dcc7a83737a56aa985107"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/27.csv",
@@ -39,8 +39,8 @@
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/27.csv",
       "status": "ok",
-      "rows": 89,
-      "sha256": "c305df350b891789fcf63453e72cf22a1fef9151e0d4863d921c9bba2e45d82c"
+      "rows": 91,
+      "sha256": "06d3ce828437ff6123e9df8a95b0fbbc12b2e53e2cd8c9714c97f05f2f6508b1"
     }
   },
   "counts": {
@@ -10173,7 +10173,7 @@
       "venue": "常滑",
       "venue_code": "08",
       "race": 10,
-      "cutoff": "2026-10-27T14:50:00+09:00",
+      "cutoff": null,
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
@@ -10289,8 +10289,8 @@
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
-        "stt:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
         "sui:not_published",
         "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
@@ -10300,7 +10300,7 @@
       "probability_scope": null,
       "expires_at": null,
       "experimental_prediction": null,
-      "state": "締切済み"
+      "state": "風・展示データ待ち"
     },
     {
       "version": "conditions-1.0",
@@ -12201,16 +12201,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.23892529843891014,
-        "base_probability": 0.29287058966083535,
-        "scope": "original",
-        "expires_at": "2026-10-27T15:01:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
@@ -15751,7 +15743,7 @@
       "venue": "尼崎",
       "venue_code": "13",
       "race": 10,
-      "cutoff": "2026-10-27T15:08:00+09:00",
+      "cutoff": null,
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
@@ -15867,8 +15859,8 @@
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
-        "stt:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
         "sui:not_published",
         "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
@@ -25140,5 +25132,5 @@
   },
   "experimental_notice": "未検証の実験値は改善の表示基準に未達です。確率の正確さ・的中・利益を保証せず、利用者の表示選択でのみ表示します。",
   "predicted_races": 0,
-  "experimental_races": 1
+  "experimental_races": 0
 }
