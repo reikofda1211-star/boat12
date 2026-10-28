@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-28",
-  "generated_at": "2026-10-28T20:11:17.845403+09:00",
+  "generated_at": "2026-10-28T20:13:18.049124+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -33,14 +33,14 @@
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/28.csv",
       "status": "ok",
-      "rows": 121,
-      "sha256": "07adaa5a29f546c0e10ee5a5fbd663d67cfc22ea8829a266ed5c20e5f508247c"
+      "rows": 122,
+      "sha256": "353b5d2b8029558731933135383b9de8566ed6499c12f242a6fb687407e172c6"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/28.csv",
       "status": "ok",
-      "rows": 116,
-      "sha256": "3db355a52d0c5d228e5bed5d76ae70c293299ad5922622b0690891629aaa590f"
+      "rows": 117,
+      "sha256": "fa9143d5000babad503c3bd628a416031552bf75511ddab2faf11912da74f72b"
     }
   },
   "counts": {
@@ -1692,7 +1692,11 @@
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
-      "original_kinds": [],
+      "original_kinds": [
+        "half_lap",
+        "straight",
+        "turn"
+      ],
       "players": [
         {
           "boat": 1,
@@ -1708,7 +1712,11 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "half_lap": 18.64,
+            "turn": 4.87,
+            "straight": 7.73
+          }
         },
         {
           "boat": 2,
@@ -1724,7 +1732,11 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "half_lap": 18.72,
+            "turn": 4.66,
+            "straight": 7.81
+          }
         },
         {
           "boat": 3,
@@ -1740,7 +1752,11 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "half_lap": 19.06,
+            "turn": 4.97,
+            "straight": 7.71
+          }
         },
         {
           "boat": 4,
@@ -1756,7 +1772,11 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "half_lap": 19.39,
+            "turn": 5.06,
+            "straight": 7.93
+          }
         },
         {
           "boat": 5,
@@ -1772,7 +1792,11 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "half_lap": 18.88,
+            "turn": 4.82,
+            "straight": 7.74
+          }
         },
         {
           "boat": 6,
@@ -1788,27 +1812,31 @@
           "tilt": null,
           "exhibition_st": null,
           "course": null,
-          "original": {}
+          "original": {
+            "half_lap": 19.15,
+            "turn": 5.05,
+            "straight": 7.79
+          }
         }
       ],
       "weather": {
-        "wind_speed": null,
-        "wind_direction_code": null,
-        "wave_cm": null,
-        "air_c": null,
-        "water_c": null,
-        "weather_code": null,
-        "observed_at": null
+        "wind_speed": 9.0,
+        "wind_direction_code": "8",
+        "wave_cm": 8.0,
+        "air_c": 10.0,
+        "water_c": 18.0,
+        "weather_code": "1",
+        "observed_at": "2026-10-28T19:51:00+09:00"
       },
-      "source_times": {},
+      "source_times": {
+        "sui": "2026-10-28T20:10:22.349861+09:00",
+        "original": "2026-10-28T20:10:22.349861+09:00"
+      },
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
         "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
+        "tkz:not_published"
       ],
       "probability": null,
       "base_probability": null,
