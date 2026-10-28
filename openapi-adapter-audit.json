@@ -2,7 +2,25 @@
   "schema": "boat12-openapi-adapter-audit-v1",
   "date": "2026-10-29",
   "mode": "read_only_no_predictions",
-  "counts": {},
-  "records": {},
+  "counts": {
+    "staged": 1,
+    "needs_adapter_or_validation": 1,
+    "basic_fields_crosschecked": 1
+  },
+  "records": {
+    "202610291402": {
+      "venue": "鳴門",
+      "race": 2,
+      "first_observed": "2026-10-29T08:54:24+09:00",
+      "cutoff": "2026-10-29T09:01:00+09:00",
+      "source": "Boatrace Open API (unofficial)",
+      "compatible_basic_fields": true,
+      "eligible_for_existing_model": false,
+      "reasons": [
+        "original_exhibition_not_in_openapi_snapshot",
+        "weather_observation_time_unverified"
+      ]
+    }
+  },
   "note": "First-seen time is BOAT12 observation, NOT source publication time; precise meteorological observation time is unavailable."
 }

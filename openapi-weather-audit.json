@@ -2,7 +2,49 @@
   "schema": "boat12-weather-crosscheck-v1",
   "date": "2026-10-29",
   "mode": "read_only_comparison_no_model_use",
-  "counts": {},
-  "races": {},
+  "counts": {
+    "staged_races": 1,
+    "missing_weather_values": 1
+  },
+  "races": {
+    "202610291402": {
+      "venue": "鳴門",
+      "race": 2,
+      "cutoff": "2026-10-29T09:01:00+09:00",
+      "openapi_received_at": "2026-10-29T08:54:24+09:00",
+      "boatracecsv_weather_observed_at": null,
+      "boatracecsv_source_captured_at": null,
+      "wind_wave_status": "missing_weather_values",
+      "fields": {
+        "wind_speed_mps": {
+          "openapi": 1.0,
+          "boatracecsv": null,
+          "comparison": "missing"
+        },
+        "wave_height_cm": {
+          "openapi": 1.0,
+          "boatracecsv": null,
+          "comparison": "missing"
+        },
+        "air_c": {
+          "openapi": 15.0,
+          "boatracecsv": null,
+          "comparison": "missing"
+        },
+        "water_c": {
+          "openapi": 22.0,
+          "boatracecsv": null,
+          "comparison": "missing"
+        }
+      },
+      "weather_timestamp_equivalence_proven": false,
+      "safe_for_automatic_model_injection": false,
+      "reasons": [
+        "boatracecsv_observation_time_missing",
+        "boatracecsv_source_time_missing",
+        "openapi_weather_observation_time_unverified"
+      ]
+    }
+  },
   "notice": "Wind/wave value matches are not proof of matching weather observation times. OpenAPI has no independently verified meteorological observation timestamp. No predictions or release rules are changed."
 }
