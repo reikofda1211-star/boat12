@@ -1,26 +1,41 @@
 {
   "schema": "boat12-refresh-diagnostic-v1",
-  "created_at": "2026-10-29T00:20:07.256817+00:00",
+  "created_at": "2026-10-29T01:21:15.872192+00:00",
   "date": "2026-10-29",
-  "conditions_generated_at": "2026-10-29T09:18:58.386741+09:00",
-  "openapi_checked_at": "2026-10-29T09:20:06+09:00",
+  "conditions_generated_at": "2026-10-29T10:19:33.409624+09:00",
+  "openapi_checked_at": "2026-10-29T10:21:15+09:00",
   "counts": {
     "race_cards": 120,
-    "csv_basic_ready_at_snapshot": 6,
-    "csv_timestamp_at_least_six_minutes": 4,
-    "api_complete_at_snapshot": 6,
-    "csv_first_seen_all_sources_before_cutoff": 6,
-    "api_pre_cutoff_snapshot_recorded": 1,
-    "api_observed_at_least_six_minutes_before_cutoff": 1
+    "csv_basic_ready_at_snapshot": 13,
+    "api_complete_at_snapshot": 14,
+    "csv_first_seen_all_sources_before_cutoff": 13,
+    "csv_timestamp_at_least_six_minutes": 9,
+    "api_pre_cutoff_snapshot_recorded": 2,
+    "api_observed_at_least_six_minutes_before_cutoff": 1,
+    "api_complete_csv_not_ready_at_snapshot": 1,
+    "csv_first_seen_at_least_six_minutes": 1
   },
   "csv_missing_reasons": {
-    "original:not_published": 114,
-    "stt:not_published": 114,
-    "sui:not_published": 114,
-    "tkz:not_published": 114,
-    "weather:observation_unconfirmed_or_old": 114
+    "original:not_published": 107,
+    "stt:not_published": 107,
+    "sui:not_published": 107,
+    "tkz:not_published": 107,
+    "weather:observation_unconfirmed_or_old": 107
   },
-  "api_ready_csv_not_ready_examples": [],
+  "api_ready_csv_not_ready_examples": [
+    {
+      "code": "202610291405",
+      "cutoff": "2026-10-29T10:27:00+09:00",
+      "csv_issues": [
+        "original:not_published",
+        "stt:not_published",
+        "sui:not_published",
+        "tkz:not_published",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-29T10:21:15+09:00"
+    }
+  ],
   "notes": [
     "Snapshot completeness counts are not live pre-cutoff availability.",
     "Provider/source availability timestamps do not prove BOAT12 first observed them.",
