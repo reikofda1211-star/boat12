@@ -2,7 +2,23 @@
   "schema": "boat12-openapi-normal-audit-v1",
   "date": "2026-10-31",
   "mode": "research_only_no_predictions",
-  "counts": {},
-  "records": {},
+  "counts": {
+    "staged": 1,
+    "normal_basic_fields_valid": 1,
+    "weather_time_unverified": 1
+  },
+  "records": {
+    "202610311402": {
+      "venue": "鳴門",
+      "race": 2,
+      "received_at": "2026-10-31T08:53:27+09:00",
+      "cutoff": "2026-10-31T09:01:00+09:00",
+      "normal_basic_fields_valid": true,
+      "normal_model_release_eligible": false,
+      "reasons": [
+        "weather_observation_time_unverified"
+      ]
+    }
+  },
   "note": "OpenAPI runner first-seen time is NOT weather observation time. This report never makes OpenAPI data eligible for existing model release."
 }
