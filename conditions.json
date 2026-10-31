@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-31",
-  "generated_at": "2026-10-31T13:27:05.407207+09:00",
+  "generated_at": "2026-10-31T13:29:07.172624+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -21,26 +21,26 @@
     "tkz": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/tkz/2026/10/31.csv",
       "status": "ok",
-      "rows": 74,
-      "sha256": "c2370cd99643fb06885dcbe818c27a947cdf4e0393b6096af3a122275ad25830"
+      "rows": 75,
+      "sha256": "08b8fe2083d3d122ee6867b270b42a52393ad24ff407a94a4998c4d34ca8f209"
     },
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/10/31.csv",
       "status": "ok",
-      "rows": 74,
-      "sha256": "18a844746918588fb0de80d90514f156a41577944634cf15b13fcef40533f8a0"
+      "rows": 75,
+      "sha256": "3d1443dd82990d5c94f4777cd88958169588649b5cb7eba8ee668b563db6b3a9"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/31.csv",
       "status": "ok",
-      "rows": 74,
-      "sha256": "91bdb9657d0b09105c4fdc95327814f2b2c232f7a66d5985a4a3c9d2460ab567"
+      "rows": 75,
+      "sha256": "dd273e4fa5a6f2783f8dd6946f64528a5712c1f9b3ae30fcd31676c896a69756"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/31.csv",
       "status": "ok",
-      "rows": 68,
-      "sha256": "13feed988f124730be7a3bf0b270f736091004b40f32f000f765818fd5457d75"
+      "rows": 69,
+      "sha256": "21f8f1d3b939bb7d3bdf16efa8b8e98514a5a00f2295c47a0c75cbe03ed85961"
     }
   },
   "counts": {
@@ -1190,7 +1190,7 @@
       "probability_scope": null,
       "expires_at": null,
       "experimental_prediction": null,
-      "state": "風・展示データ待ち"
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
@@ -11363,7 +11363,7 @@
       "venue": "尼崎",
       "venue_code": "13",
       "race": 7,
-      "cutoff": "2026-10-31T13:30:00+09:00",
+      "cutoff": null,
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
@@ -11479,10 +11479,10 @@
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
         "weather:observation_unconfirmed_or_old"
       ],
       "probability": null,
