@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-31",
-  "generated_at": "2026-10-31T12:50:37.792085+09:00",
+  "generated_at": "2026-10-31T12:52:38.206887+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -21,26 +21,26 @@
     "tkz": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/tkz/2026/10/31.csv",
       "status": "ok",
-      "rows": 63,
-      "sha256": "62c85e51d9ebad88f0d7c25459c2245780ca6159184ab281cbc8b9535e02339f"
+      "rows": 64,
+      "sha256": "c7701db08f06d70c42e91e137911eeae99272c0e780a605db11fc94392488388"
     },
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/10/31.csv",
       "status": "ok",
-      "rows": 63,
-      "sha256": "a04dc0775d819ba76165e18bea3b72ede3718330020fdc248bea16369cfe5e97"
+      "rows": 64,
+      "sha256": "53609ab51f1f4f962afb3f61403b19c112f5dc903db48cff5d491762059831eb"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/31.csv",
       "status": "ok",
-      "rows": 63,
-      "sha256": "51befe9daedd2c146cd94386c11aadcdd46d054f92958cd3b332b26f74ce57cc"
+      "rows": 64,
+      "sha256": "c7e91b4fd800fda4e8ec6e5bf1f54c2dca56b5fe4ea6e8dfc36bfe5fa81d2c40"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/31.csv",
       "status": "ok",
-      "rows": 58,
-      "sha256": "ad90db6b602b55bc132d5ff065c81ec1d9e7515be7638ea9ecb74a09ff0a26fb"
+      "rows": 59,
+      "sha256": "fccff2e468efcabf863bbea2ff62a26bce1e69812f6c9382c5dae88b55807bf1"
     }
   },
   "counts": {
@@ -9593,16 +9593,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.254479041144603,
-        "base_probability": 0.206077876187372,
-        "scope": "original",
-        "expires_at": "2026-10-31T12:52:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切直前・確率非表示"
     },
     {
       "version": "conditions-1.0",
@@ -11127,7 +11119,7 @@
       "venue": "尼崎",
       "venue_code": "13",
       "race": 6,
-      "cutoff": "2026-10-31T12:59:00+09:00",
+      "cutoff": null,
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
@@ -11243,10 +11235,10 @@
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
         "weather:observation_unconfirmed_or_old"
       ],
       "probability": null,
@@ -22747,5 +22739,5 @@
   },
   "experimental_notice": "未検証の実験値は改善の表示基準に未達です。確率の正確さ・的中・利益を保証せず、利用者の表示選択でのみ表示します。",
   "predicted_races": 0,
-  "experimental_races": 1
+  "experimental_races": 0
 }
