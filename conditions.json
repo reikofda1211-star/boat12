@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-31",
-  "generated_at": "2026-10-31T18:33:59.818490+09:00",
+  "generated_at": "2026-10-31T18:36:00.168913+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -27,8 +27,8 @@
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/10/31.csv",
       "status": "ok",
-      "rows": 143,
-      "sha256": "f9783d43f343440440b736c12c3f97ac3c04b72fac3cacb14bb932816e1cccf6"
+      "rows": 144,
+      "sha256": "39b632169470c016dbcc32602545cd8d540c2b0e6020a6a2665f3c4807648302"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/31.csv",
@@ -39,8 +39,8 @@
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/31.csv",
       "status": "ok",
-      "rows": 131,
-      "sha256": "9c960c1a275dfd596a6a725f9e09d537ec5b489177ac0dc0a2d8161fa8eaf0be"
+      "rows": 132,
+      "sha256": "20ea502faf99e592abca33180f765734d9c5318640971d92185a01909b4cefc6"
     }
   },
   "counts": {
@@ -23637,7 +23637,11 @@
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
-      "original_kinds": [],
+      "original_kinds": [
+        "lap",
+        "straight",
+        "turn"
+      ],
       "players": [
         {
           "boat": 1,
@@ -23651,9 +23655,13 @@
           "boat_rate": 31.8,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.05,
+          "course": 1.0,
+          "original": {
+            "lap": 37.13,
+            "turn": 6.14,
+            "straight": 7.25
+          }
         },
         {
           "boat": 2,
@@ -23667,9 +23675,13 @@
           "boat_rate": 21.1,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.04,
+          "course": 2.0,
+          "original": {
+            "lap": 37.43,
+            "turn": 6.37,
+            "straight": 7.27
+          }
         },
         {
           "boat": 3,
@@ -23683,9 +23695,13 @@
           "boat_rate": 37.0,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.2,
+          "course": 3.0,
+          "original": {
+            "lap": 37.8,
+            "turn": 6.33,
+            "straight": 7.26
+          }
         },
         {
           "boat": 4,
@@ -23699,9 +23715,13 @@
           "boat_rate": 34.5,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.05,
+          "course": 4.0,
+          "original": {
+            "lap": 37.64,
+            "turn": 6.23,
+            "straight": 7.41
+          }
         },
         {
           "boat": 5,
@@ -23715,9 +23735,13 @@
           "boat_rate": 31.1,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.35,
+          "course": 5.0,
+          "original": {
+            "lap": 38.03,
+            "turn": 6.53,
+            "straight": 7.47
+          }
         },
         {
           "boat": 6,
@@ -23731,9 +23755,13 @@
           "boat_rate": 30.9,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition_st": 0.09,
+          "course": 6.0,
+          "original": {
+            "lap": 37.93,
+            "turn": 6.73,
+            "straight": 7.37
+          }
         }
       ],
       "weather": {
@@ -23745,12 +23773,13 @@
         "weather_code": null,
         "observed_at": null
       },
-      "source_times": {},
+      "source_times": {
+        "stt": "2026-10-31T18:35:30.679013+09:00",
+        "original": "2026-10-31T18:35:30.679013+09:00"
+      },
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
-        "stt:not_published",
         "sui:not_published",
         "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
