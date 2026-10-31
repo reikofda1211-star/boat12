@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-10-31",
-  "generated_at": "2026-10-31T14:55:38.213660+09:00",
+  "generated_at": "2026-10-31T14:57:38.591671+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -21,20 +21,20 @@
     "tkz": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/tkz/2026/10/31.csv",
       "status": "ok",
-      "rows": 101,
-      "sha256": "414c0538041fd6bb10a0ac33caa4a2c1a90ae87778196eedc8737f216a28d3d2"
+      "rows": 102,
+      "sha256": "a0f1e92f9f074566f49fddd45b665215764e177b75c5840b867104c432db9cc6"
     },
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/10/31.csv",
       "status": "ok",
-      "rows": 101,
-      "sha256": "8dca5cef4f9bb990d60400e5366f5beb5d988ce85b0442281c657e1379c0691a"
+      "rows": 102,
+      "sha256": "e018ace680ada6ad1ceb233df858127feec8fcb761064c10a16347487ae1ccef"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/10/31.csv",
       "status": "ok",
-      "rows": 101,
-      "sha256": "b6020e5ad05acc519a5459e47f2f3d5d12301e9b3ece82ce9e6942aa5730c3d7"
+      "rows": 102,
+      "sha256": "548cc23ee2458a0a3cfe877d0eae46d552eeb3e098cfef958cdd1203275d1ba8"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/10/31.csv",
@@ -3192,7 +3192,7 @@
       "venue": "江戸川",
       "venue_code": "03",
       "race": 10,
-      "cutoff": "2026-10-31T14:59:00+09:00",
+      "cutoff": null,
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
@@ -3309,9 +3309,9 @@
       "original_available": null,
       "issues": [
         "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
         "weather:observation_unconfirmed_or_old"
       ],
       "probability": null,
@@ -10550,16 +10550,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.12916388684719682,
-        "base_probability": 0.1753444602399496,
-        "scope": "original",
-        "expires_at": "2026-10-31T14:56:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
@@ -23490,5 +23482,5 @@
   },
   "experimental_notice": "未検証の実験値は改善の表示基準に未達です。確率の正確さ・的中・利益を保証せず、利用者の表示選択でのみ表示します。",
   "predicted_races": 0,
-  "experimental_races": 2
+  "experimental_races": 1
 }
