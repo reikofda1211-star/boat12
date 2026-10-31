@@ -1,32 +1,64 @@
 {
   "schema": "boat12-refresh-diagnostic-v1",
-  "created_at": "2026-10-31T01:25:11.878280+00:00",
+  "created_at": "2026-10-31T02:12:41.111073+00:00",
   "date": "2026-10-31",
-  "conditions_generated_at": "2026-10-31T10:22:51.197292+09:00",
-  "openapi_checked_at": "2026-10-31T10:25:11+09:00",
+  "conditions_generated_at": "2026-10-31T11:10:20.032776+09:00",
+  "openapi_checked_at": "2026-10-31T11:12:40+09:00",
   "counts": {
     "race_cards": 156,
-    "csv_basic_ready_at_snapshot": 10,
-    "csv_timestamp_at_least_six_minutes": 7,
-    "api_complete_at_snapshot": 15,
-    "api_pre_cutoff_snapshot_recorded": 3,
-    "csv_first_seen_all_sources_before_cutoff": 11,
-    "csv_first_seen_at_least_six_minutes": 6,
-    "api_observed_at_least_six_minutes_before_cutoff": 2,
-    "api_complete_csv_not_ready_at_snapshot": 5
+    "csv_basic_ready_at_snapshot": 21,
+    "csv_timestamp_at_least_six_minutes": 14,
+    "api_complete_at_snapshot": 29,
+    "csv_first_seen_all_sources_before_cutoff": 23,
+    "api_complete_csv_not_ready_at_snapshot": 8,
+    "api_pre_cutoff_snapshot_recorded": 4,
+    "csv_first_seen_at_least_six_minutes": 7,
+    "api_observed_at_least_six_minutes_before_cutoff": 2
   },
   "csv_missing_reasons": {
-    "original:not_published": 142,
-    "stt:not_published": 142,
-    "sui:not_published": 142,
-    "tkz:not_published": 142,
-    "weather:observation_unconfirmed_or_old": 146,
-    "original:missing_timestamp": 3,
-    "stt:missing_timestamp": 3,
-    "sui:missing_timestamp": 3,
-    "tkz:missing_timestamp": 3
+    "original:not_published": 128,
+    "stt:not_published": 127,
+    "sui:not_published": 127,
+    "tkz:not_published": 127,
+    "weather:observation_unconfirmed_or_old": 134,
+    "stt:missing_timestamp": 5,
+    "sui:missing_timestamp": 5,
+    "tkz:missing_timestamp": 5,
+    "original:missing_timestamp": 4
   },
   "api_ready_csv_not_ready_examples": [
+    {
+      "code": "202610310301",
+      "cutoff": null,
+      "csv_issues": [
+        "original:not_published",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-31T11:12:40+09:00"
+    },
+    {
+      "code": "202610310601",
+      "cutoff": "2026-10-31T10:41:00+09:00",
+      "csv_issues": [
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-31T11:12:40+09:00"
+    },
+    {
+      "code": "202610311302",
+      "cutoff": null,
+      "csv_issues": [
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-31T11:12:40+09:00"
+    },
     {
       "code": "202610311403",
       "cutoff": null,
@@ -64,16 +96,8 @@
       "api_first_seen": "2026-10-31T10:25:11+09:00"
     },
     {
-      "code": "202610311802",
-      "cutoff": "2026-10-31T09:17:00+09:00",
-      "csv_issues": [
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "api_first_seen": "2026-10-31T09:22:00+09:00"
-    },
-    {
-      "code": "202610312305",
-      "cutoff": "2026-10-31T10:32:00+09:00",
+      "code": "202610311602",
+      "cutoff": "2026-10-31T11:17:00+09:00",
       "csv_issues": [
         "original:not_published",
         "stt:not_published",
@@ -81,7 +105,15 @@
         "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
       ],
-      "api_first_seen": "2026-10-31T10:25:11+09:00"
+      "api_first_seen": "2026-10-31T11:12:40+09:00"
+    },
+    {
+      "code": "202610311802",
+      "cutoff": "2026-10-31T09:17:00+09:00",
+      "csv_issues": [
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-10-31T09:22:00+09:00"
     }
   ],
   "notes": [
