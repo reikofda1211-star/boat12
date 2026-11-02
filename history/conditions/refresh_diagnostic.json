@@ -1,24 +1,34 @@
 {
   "schema": "boat12-refresh-diagnostic-v1",
-  "created_at": "2026-11-01T23:52:12.866237+00:00",
+  "created_at": "2026-11-02T00:19:53.342730+00:00",
   "date": "2026-11-02",
-  "conditions_generated_at": "2026-11-02T08:50:21.828929+09:00",
-  "openapi_checked_at": "2026-11-02T08:52:12+09:00",
+  "conditions_generated_at": "2026-11-02T09:18:21.831962+09:00",
+  "openapi_checked_at": "2026-11-02T09:19:52+09:00",
   "counts": {
     "race_cards": 156,
-    "csv_basic_ready_at_snapshot": 3,
-    "csv_timestamp_at_least_six_minutes": 2,
-    "api_complete_at_snapshot": 3,
-    "csv_first_seen_all_sources_before_cutoff": 3
+    "csv_basic_ready_at_snapshot": 5,
+    "csv_timestamp_at_least_six_minutes": 3,
+    "api_complete_at_snapshot": 6,
+    "csv_first_seen_all_sources_before_cutoff": 6,
+    "api_complete_csv_not_ready_at_snapshot": 1
   },
   "csv_missing_reasons": {
-    "original:not_published": 153,
-    "stt:not_published": 153,
-    "sui:not_published": 153,
-    "tkz:not_published": 153,
-    "weather:observation_unconfirmed_or_old": 153
+    "original:not_published": 150,
+    "stt:not_published": 150,
+    "sui:not_published": 150,
+    "tkz:not_published": 150,
+    "weather:observation_unconfirmed_or_old": 151
   },
-  "api_ready_csv_not_ready_examples": [],
+  "api_ready_csv_not_ready_examples": [
+    {
+      "code": "202611021802",
+      "cutoff": "2026-11-02T09:09:00+09:00",
+      "csv_issues": [
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-11-02T09:19:52+09:00"
+    }
+  ],
   "notes": [
     "Snapshot completeness counts are not live pre-cutoff availability.",
     "Provider/source availability timestamps do not prove BOAT12 first observed them.",
