@@ -1,12 +1,27 @@
 {
   "schema": "boat12-accuracy-v1",
   "date": "2026-11-02",
-  "generated_at": "2026-11-02T19:30:11.132171+09:00",
+  "generated_at": "2026-11-02T19:41:05.505917+09:00",
   "status": "ok",
   "message": null,
   "source": "BoatraceCSV realtime results; immutable pre-deadline forecast logs",
   "definition": "閾値以上の締切前保存予測のうち、結果確定済み候補の1-2決着率。結果待ちは分母から除外。",
   "records": [
+    {
+      "code": "202611022410",
+      "date": "2026-11-02",
+      "venue": "大村",
+      "race": 10,
+      "generated_at": "2026-11-02T19:41:03.765553+09:00",
+      "cutoff": "2026-11-02T19:47:00+09:00",
+      "probability": 0.263959,
+      "scope": "original",
+      "result_status": "pending",
+      "first": null,
+      "second": null,
+      "hit": null,
+      "result_recorded_at": null
+    },
     {
       "code": "202611022409",
       "date": "2026-11-02",
@@ -16,11 +31,11 @@
       "cutoff": "2026-11-02T19:17:00+09:00",
       "probability": 0.281336,
       "scope": "original",
-      "result_status": "pending",
-      "first": null,
-      "second": null,
-      "hit": null,
-      "result_recorded_at": null
+      "result_status": "confirmed",
+      "first": 1,
+      "second": 2,
+      "hit": true,
+      "result_recorded_at": "2026-11-02T19:35:20.881716+09:00"
     },
     {
       "code": "202611022408",
