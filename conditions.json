@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-11-02",
-  "generated_at": "2026-11-02T12:10:45.158996+09:00",
+  "generated_at": "2026-11-02T12:12:45.901398+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -21,26 +21,26 @@
     "tkz": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/tkz/2026/11/02.csv",
       "status": "ok",
-      "rows": 51,
-      "sha256": "06f4862df899f918b3cec9e8a7dbac9ce41ec4511943059f4cb7ecabdb70ba31"
+      "rows": 52,
+      "sha256": "9b051b805f80cec508a064db86e585a766021c5aaac33dbd347d317c2d74c7c2"
     },
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/11/02.csv",
       "status": "ok",
-      "rows": 51,
-      "sha256": "9472cc8759566f6f673ad3485f0d421134d21ddf8853a613c0a2ec1cfe97b64c"
+      "rows": 52,
+      "sha256": "501f87dc70893f9d3f58374d7f46318934f6e721f9e328c3143fa14dbaaabbfa"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/11/02.csv",
       "status": "ok",
-      "rows": 51,
-      "sha256": "92eb8e8c80b3354ad891dd3d9e3b573723363f67f236182dd046f64a6f24df79"
+      "rows": 52,
+      "sha256": "eb8a8e4f8cd202cfec77d4f1dc6cc108d6a1b9b8a841a58cce88fc3b3d7c8f08"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/11/02.csv",
       "status": "ok",
-      "rows": 48,
-      "sha256": "de1769b469c95ef61ab3e111c2529c05a26e176a716f217dfa7dd5d9aec14762"
+      "rows": 49,
+      "sha256": "149453193fa0a5ce009ff52ba51c68f17f91bc202dcde2e1c1d43b57cbe0f789"
     }
   },
   "counts": {
@@ -3923,7 +3923,11 @@
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
-      "original_kinds": [],
+      "original_kinds": [
+        "lap",
+        "straight",
+        "turn"
+      ],
       "players": [
         {
           "boat": 1,
@@ -3935,11 +3939,15 @@
           "local_rate": 20.0,
           "motor_rate": 40.7,
           "boat_rate": 34.6,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.76,
+          "tilt": -0.5,
+          "exhibition_st": -0.03,
+          "course": 1.0,
+          "original": {
+            "lap": 36.96,
+            "turn": 5.66,
+            "straight": 7.4
+          }
         },
         {
           "boat": 2,
@@ -3951,11 +3959,15 @@
           "local_rate": 11.5,
           "motor_rate": 20.0,
           "boat_rate": 25.9,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.78,
+          "tilt": -0.5,
+          "exhibition_st": -0.01,
+          "course": 2.0,
+          "original": {
+            "lap": 38.06,
+            "turn": 5.87,
+            "straight": 7.43
+          }
         },
         {
           "boat": 3,
@@ -3967,11 +3979,15 @@
           "local_rate": 47.0,
           "motor_rate": 33.3,
           "boat_rate": 42.6,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.91,
+          "tilt": -0.5,
+          "exhibition_st": -0.01,
+          "course": 3.0,
+          "original": {
+            "lap": 38.48,
+            "turn": 5.92,
+            "straight": 7.63
+          }
         },
         {
           "boat": 4,
@@ -3983,11 +3999,15 @@
           "local_rate": 0.0,
           "motor_rate": 27.5,
           "boat_rate": 28.5,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.8,
+          "tilt": 0.0,
+          "exhibition_st": -0.01,
+          "course": 4.0,
+          "original": {
+            "lap": 37.57,
+            "turn": 5.73,
+            "straight": 7.54
+          }
         },
         {
           "boat": 5,
@@ -3999,11 +4019,15 @@
           "local_rate": 42.8,
           "motor_rate": 39.4,
           "boat_rate": 25.9,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.98,
+          "tilt": -0.5,
+          "exhibition_st": 0.09,
+          "course": 5.0,
+          "original": {
+            "lap": 37.57,
+            "turn": 5.78,
+            "straight": 7.44
+          }
         },
         {
           "boat": 6,
@@ -4015,32 +4039,35 @@
           "local_rate": 63.1,
           "motor_rate": 25.5,
           "boat_rate": 31.4,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.83,
+          "tilt": 0.0,
+          "exhibition_st": -0.01,
+          "course": 6.0,
+          "original": {
+            "lap": 37.33,
+            "turn": 5.7,
+            "straight": 7.4
+          }
         }
       ],
       "weather": {
-        "wind_speed": null,
+        "wind_speed": 0.0,
         "wind_direction_code": null,
-        "wave_cm": null,
-        "air_c": null,
-        "water_c": null,
-        "weather_code": null,
-        "observed_at": null
+        "wave_cm": 3.0,
+        "air_c": 18.0,
+        "water_c": 23.0,
+        "weather_code": "3",
+        "observed_at": "2026-11-02T11:51:00+09:00"
       },
-      "source_times": {},
-      "basic_available": null,
-      "original_available": null,
-      "issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "source_times": {
+        "sui": "2026-11-02T12:10:26.266402+09:00",
+        "tkz": "2026-11-02T12:10:26.266402+09:00",
+        "stt": "2026-11-02T12:10:26.266402+09:00",
+        "original": "2026-11-02T12:10:26.266402+09:00"
+      },
+      "basic_available": "2026-11-02T12:10:26.266402+09:00",
+      "original_available": "2026-11-02T12:10:26.266402+09:00",
+      "issues": [],
       "probability": null,
       "base_probability": null,
       "probability_scope": null,
