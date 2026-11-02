@@ -3,8 +3,8 @@
   "date": "2026-11-02",
   "mode": "read_only_comparison_no_model_use",
   "counts": {
-    "staged_races": 20,
-    "wind_and_wave_match": 18,
+    "staged_races": 21,
+    "wind_and_wave_match": 19,
     "wind_or_wave_mismatch": 1,
     "missing_weather_values": 1
   },
@@ -698,22 +698,58 @@
       "race": 7,
       "cutoff": "2026-11-02T17:59:00+09:00",
       "openapi_received_at": "2026-11-02T17:53:16+09:00",
+      "boatracecsv_weather_observed_at": "2026-11-02T17:32:00+09:00",
+      "boatracecsv_source_captured_at": "2026-11-02T17:50:36.819992+09:00",
+      "wind_wave_status": "wind_and_wave_match",
+      "fields": {
+        "wind_speed_mps": {
+          "openapi": 5.0,
+          "boatracecsv": 5.0,
+          "comparison": "match"
+        },
+        "wave_height_cm": {
+          "openapi": 5.0,
+          "boatracecsv": 5.0,
+          "comparison": "match"
+        },
+        "air_c": {
+          "openapi": 21.0,
+          "boatracecsv": 21.0,
+          "comparison": "match"
+        },
+        "water_c": {
+          "openapi": 23.0,
+          "boatracecsv": 23.0,
+          "comparison": "match"
+        }
+      },
+      "weather_timestamp_equivalence_proven": false,
+      "safe_for_automatic_model_injection": false,
+      "reasons": [
+        "openapi_weather_observation_time_unverified"
+      ]
+    },
+    "202611021509": {
+      "venue": "丸亀",
+      "race": 9,
+      "cutoff": "2026-11-02T18:55:00+09:00",
+      "openapi_received_at": "2026-11-02T18:44:39+09:00",
       "boatracecsv_weather_observed_at": null,
       "boatracecsv_source_captured_at": null,
       "wind_wave_status": "missing_weather_values",
       "fields": {
         "wind_speed_mps": {
-          "openapi": 5.0,
+          "openapi": 6.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
         "wave_height_cm": {
-          "openapi": 5.0,
+          "openapi": 6.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
         "air_c": {
-          "openapi": 21.0,
+          "openapi": 20.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
