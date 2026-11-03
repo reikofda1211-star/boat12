@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-11-03",
-  "generated_at": "2026-11-03T17:41:06.775965+09:00",
+  "generated_at": "2026-11-03T17:44:03.252786+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -39,15 +39,15 @@
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/11/03.csv",
       "status": "ok",
-      "rows": 126,
-      "sha256": "c5747c95ac201e724df2e0dcd6ae692584ba6ef171dd7fa76bd66081f0a0600e"
+      "rows": 127,
+      "sha256": "9ba0d461bfad558dabebc2abf5bbbf1c444bca3e490d39c4eda466f73a4f0781"
     }
   },
   "counts": {
     "cards": 156,
     "records": 156,
     "basic_ready": 105,
-    "original_ready": 104,
+    "original_ready": 105,
     "labelled": 0
   },
   "races": [
@@ -23493,8 +23493,12 @@
       "cutoff": "2026-11-03T17:48:00+09:00",
       "cancelled": false,
       "basic_ready": true,
-      "original_ready": false,
-      "original_kinds": [],
+      "original_ready": true,
+      "original_kinds": [
+        "lap",
+        "straight",
+        "turn"
+      ],
       "players": [
         {
           "boat": 1,
@@ -23510,7 +23514,11 @@
           "tilt": 0.0,
           "exhibition_st": 0.1,
           "course": 1.0,
-          "original": {}
+          "original": {
+            "lap": 37.36,
+            "turn": 6.57,
+            "straight": 7.23
+          }
         },
         {
           "boat": 2,
@@ -23526,7 +23534,11 @@
           "tilt": -0.5,
           "exhibition_st": 0.17,
           "course": 2.0,
-          "original": {}
+          "original": {
+            "lap": 38.2,
+            "turn": 6.7,
+            "straight": 7.41
+          }
         },
         {
           "boat": 3,
@@ -23542,7 +23554,11 @@
           "tilt": 0.0,
           "exhibition_st": 0.01,
           "course": 3.0,
-          "original": {}
+          "original": {
+            "lap": 37.7,
+            "turn": 6.27,
+            "straight": 7.23
+          }
         },
         {
           "boat": 4,
@@ -23558,7 +23574,11 @@
           "tilt": 0.0,
           "exhibition_st": 0.13,
           "course": 4.0,
-          "original": {}
+          "original": {
+            "lap": 37.6,
+            "turn": 6.4,
+            "straight": 7.3
+          }
         },
         {
           "boat": 5,
@@ -23574,7 +23594,11 @@
           "tilt": 0.5,
           "exhibition_st": 0.06,
           "course": 5.0,
-          "original": {}
+          "original": {
+            "lap": 37.27,
+            "turn": 6.27,
+            "straight": 7.33
+          }
         },
         {
           "boat": 6,
@@ -23590,7 +23614,11 @@
           "tilt": 0.0,
           "exhibition_st": 0.03,
           "course": 6.0,
-          "original": {}
+          "original": {
+            "lap": 37.53,
+            "turn": 6.13,
+            "straight": 7.23
+          }
         }
       ],
       "weather": {
@@ -23605,22 +23633,21 @@
       "source_times": {
         "sui": "2026-11-03T17:40:27.761856+09:00",
         "tkz": "2026-11-03T17:40:27.761856+09:00",
-        "stt": "2026-11-03T17:40:27.761856+09:00"
+        "stt": "2026-11-03T17:40:27.761856+09:00",
+        "original": "2026-11-03T17:40:27.761856+09:00"
       },
       "basic_available": "2026-11-03T17:40:27.761856+09:00",
-      "original_available": null,
-      "issues": [
-        "original:not_published"
-      ],
+      "original_available": "2026-11-03T17:40:27.761856+09:00",
+      "issues": [],
       "probability": null,
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
       "experimental_prediction": {
         "schema": "conditions-experimental-1",
-        "probability": 0.09547990868883008,
-        "base_probability": 0.08223149495737304,
-        "scope": "normal",
+        "probability": 0.0758844153631352,
+        "base_probability": 0.0832011995646905,
+        "scope": "original",
         "expires_at": "2026-11-03T17:47:30+09:00",
         "validation_status": "held_back",
         "release_rule_passed": false
