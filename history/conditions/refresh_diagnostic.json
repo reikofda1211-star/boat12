@@ -1,30 +1,30 @@
 {
   "schema": "boat12-refresh-diagnostic-v1",
-  "created_at": "2026-11-03T04:44:06.904757+00:00",
+  "created_at": "2026-11-03T05:34:20.197632+00:00",
   "date": "2026-11-03",
-  "conditions_generated_at": "2026-11-03T13:43:03.376454+09:00",
-  "openapi_checked_at": "2026-11-03T13:44:06+09:00",
+  "conditions_generated_at": "2026-11-03T14:33:34.254407+09:00",
+  "openapi_checked_at": "2026-11-03T14:34:19+09:00",
   "counts": {
     "race_cards": 156,
-    "api_complete_at_snapshot": 78,
-    "api_complete_csv_not_ready_at_snapshot": 14,
-    "api_pre_cutoff_snapshot_recorded": 20,
-    "csv_first_seen_all_sources_before_cutoff": 67,
-    "csv_basic_ready_at_snapshot": 64,
-    "csv_timestamp_at_least_six_minutes": 51,
+    "api_complete_at_snapshot": 88,
+    "api_complete_csv_not_ready_at_snapshot": 13,
+    "api_pre_cutoff_snapshot_recorded": 21,
+    "csv_first_seen_all_sources_before_cutoff": 76,
+    "csv_basic_ready_at_snapshot": 75,
+    "csv_timestamp_at_least_six_minutes": 60,
     "api_observed_at_least_six_minutes_before_cutoff": 11,
     "csv_first_seen_at_least_six_minutes": 12
   },
   "csv_missing_reasons": {
-    "original:not_published": 80,
-    "stt:not_published": 80,
-    "sui:not_published": 80,
-    "tkz:not_published": 80,
-    "weather:observation_unconfirmed_or_old": 85,
-    "original:missing_timestamp": 2,
-    "stt:missing_timestamp": 2,
-    "sui:missing_timestamp": 2,
-    "tkz:missing_timestamp": 2
+    "original:not_published": 67,
+    "stt:not_published": 67,
+    "sui:not_published": 67,
+    "tkz:not_published": 67,
+    "weather:observation_unconfirmed_or_old": 74,
+    "original:missing_timestamp": 4,
+    "stt:missing_timestamp": 4,
+    "sui:missing_timestamp": 4,
+    "tkz:missing_timestamp": 4
   },
   "api_ready_csv_not_ready_examples": [
     {
@@ -32,18 +32,6 @@
       "cutoff": "2026-11-03T10:45:00+09:00",
       "csv_issues": [],
       "api_first_seen": "2026-11-03T10:40:12+09:00"
-    },
-    {
-      "code": "202611030208",
-      "cutoff": "2026-11-03T13:58:00+09:00",
-      "csv_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "api_first_seen": "2026-11-03T13:44:06+09:00"
     },
     {
       "code": "202611030402",
@@ -80,30 +68,6 @@
       "api_first_seen": "2026-11-03T12:14:36+09:00"
     },
     {
-      "code": "202611030608",
-      "cutoff": "2026-11-03T14:05:00+09:00",
-      "csv_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "api_first_seen": "2026-11-03T13:44:06+09:00"
-    },
-    {
-      "code": "202611030908",
-      "cutoff": "2026-11-03T13:53:00+09:00",
-      "csv_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "api_first_seen": "2026-11-03T13:44:06+09:00"
-    },
-    {
       "code": "202611031707",
       "cutoff": null,
       "csv_issues": [
@@ -128,12 +92,42 @@
       "api_first_seen": "2026-11-03T13:44:06+09:00"
     },
     {
+      "code": "202611031709",
+      "cutoff": null,
+      "csv_issues": [
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-11-03T14:34:19+09:00"
+    },
+    {
+      "code": "202611031710",
+      "cutoff": null,
+      "csv_issues": [
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-11-03T14:34:19+09:00"
+    },
+    {
       "code": "202611031808",
       "cutoff": "2026-11-03T11:56:00+09:00",
       "csv_issues": [
         "weather:observation_unconfirmed_or_old"
       ],
       "api_first_seen": "2026-11-03T12:14:36+09:00"
+    },
+    {
+      "code": "202611032103",
+      "cutoff": "2026-11-03T09:35:00+09:00",
+      "csv_issues": [],
+      "api_first_seen": "2026-11-03T09:32:54+09:00"
     }
   ],
   "notes": [
