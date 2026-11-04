@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-11-04",
-  "generated_at": "2026-11-04T09:22:54.319911+09:00",
+  "generated_at": "2026-11-04T09:24:54.574778+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -33,14 +33,14 @@
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/11/04.csv",
       "status": "ok",
-      "rows": 4,
-      "sha256": "26fb4ceb1db95142f39e941939bf142743a6b1779b9466503d58dd4c6b7823b0"
+      "rows": 5,
+      "sha256": "83cb67123a7b56f9273189978f917f040a90d828862679b91536d205cacdb3ae"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/11/04.csv",
       "status": "ok",
-      "rows": 4,
-      "sha256": "03a66d4dcab7191bc1aae58b17328313ee4913c9eb7e5607c3ce94d502f8fbf1"
+      "rows": 5,
+      "sha256": "34b72978a26c415358756f2b1cd9a15cc4b3cfe362ba05aeb7227a3bd1ce7f93"
     }
   },
   "counts": {
@@ -15132,7 +15132,11 @@
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
-      "original_kinds": [],
+      "original_kinds": [
+        "lap",
+        "straight",
+        "turn"
+      ],
       "players": [
         {
           "boat": 1,
@@ -15148,7 +15152,11 @@
           "tilt": -0.5,
           "exhibition_st": 0.0,
           "course": 1.0,
-          "original": {}
+          "original": {
+            "lap": 36.3,
+            "turn": 7.87,
+            "straight": 7.59
+          }
         },
         {
           "boat": 2,
@@ -15164,7 +15172,11 @@
           "tilt": -0.5,
           "exhibition_st": 0.06,
           "course": 2.0,
-          "original": {}
+          "original": {
+            "lap": 36.81,
+            "turn": 8.17,
+            "straight": 7.65
+          }
         },
         {
           "boat": 3,
@@ -15180,7 +15192,11 @@
           "tilt": -0.5,
           "exhibition_st": 0.11,
           "course": 3.0,
-          "original": {}
+          "original": {
+            "lap": 36.74,
+            "turn": 7.91,
+            "straight": 7.65
+          }
         },
         {
           "boat": 4,
@@ -15196,7 +15212,11 @@
           "tilt": 0.0,
           "exhibition_st": 0.07,
           "course": 4.0,
-          "original": {}
+          "original": {
+            "lap": 36.91,
+            "turn": 7.83,
+            "straight": 7.72
+          }
         },
         {
           "boat": 5,
@@ -15212,7 +15232,11 @@
           "tilt": 0.0,
           "exhibition_st": 0.06,
           "course": 5.0,
-          "original": {}
+          "original": {
+            "lap": 36.97,
+            "turn": 7.94,
+            "straight": 7.66
+          }
         },
         {
           "boat": 6,
@@ -15228,29 +15252,31 @@
           "tilt": -0.5,
           "exhibition_st": 0.06,
           "course": 6.0,
-          "original": {}
+          "original": {
+            "lap": 37.33,
+            "turn": 7.98,
+            "straight": 7.67
+          }
         }
       ],
       "weather": {
-        "wind_speed": null,
+        "wind_speed": 0.0,
         "wind_direction_code": null,
-        "wave_cm": null,
-        "air_c": null,
-        "water_c": null,
-        "weather_code": null,
-        "observed_at": null
+        "wave_cm": 1.0,
+        "air_c": 14.2,
+        "water_c": 17.9,
+        "weather_code": "2",
+        "observed_at": "2026-11-04T09:04:00+09:00"
       },
       "source_times": {
+        "sui": "2026-11-04T09:20:39.404057+09:00",
         "tkz": "2026-11-04T09:20:39.404057+09:00",
-        "stt": "2026-11-04T09:20:39.404057+09:00"
+        "stt": "2026-11-04T09:20:39.404057+09:00",
+        "original": "2026-11-04T09:20:39.404057+09:00"
       },
-      "basic_available": null,
-      "original_available": null,
-      "issues": [
-        "original:not_published",
-        "sui:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "basic_available": "2026-11-04T09:20:39.404057+09:00",
+      "original_available": "2026-11-04T09:20:39.404057+09:00",
+      "issues": [],
       "probability": null,
       "base_probability": null,
       "probability_scope": null,
