@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-11-04",
-  "generated_at": "2026-11-04T10:51:12.806661+09:00",
+  "generated_at": "2026-11-04T10:53:12.712776+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -39,8 +39,8 @@
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/11/04.csv",
       "status": "ok",
-      "rows": 19,
-      "sha256": "ada99b4eef36f0fa27f57efac0d4c81b125e0359440309ca6a6c9c7256cd33dc"
+      "rows": 20,
+      "sha256": "ddea03442ce8348a2cce3cb740b205caee92155f8f2f36988e51535520a74ff3"
     }
   },
   "counts": {
@@ -1843,16 +1843,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.03841755448726297,
-        "base_probability": 0.053965803415704935,
-        "scope": "original",
-        "expires_at": "2026-11-04T10:51:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
@@ -6871,7 +6863,11 @@
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
-      "original_kinds": [],
+      "original_kinds": [
+        "lap",
+        "straight",
+        "turn"
+      ],
       "players": [
         {
           "boat": 1,
@@ -6887,7 +6883,11 @@
           "tilt": null,
           "exhibition_st": -0.12,
           "course": 1.0,
-          "original": {}
+          "original": {
+            "lap": 37.22,
+            "turn": 5.2,
+            "straight": 8.23
+          }
         },
         {
           "boat": 2,
@@ -6903,7 +6903,11 @@
           "tilt": null,
           "exhibition_st": -0.08,
           "course": 2.0,
-          "original": {}
+          "original": {
+            "lap": 37.66,
+            "turn": 4.91,
+            "straight": 8.3
+          }
         },
         {
           "boat": 3,
@@ -6919,7 +6923,11 @@
           "tilt": null,
           "exhibition_st": 0.09,
           "course": 3.0,
-          "original": {}
+          "original": {
+            "lap": 37.53,
+            "turn": 4.9,
+            "straight": 8.23
+          }
         },
         {
           "boat": 4,
@@ -6935,7 +6943,11 @@
           "tilt": null,
           "exhibition_st": -0.09,
           "course": 4.0,
-          "original": {}
+          "original": {
+            "lap": 37.62,
+            "turn": 4.88,
+            "straight": 8.27
+          }
         },
         {
           "boat": 5,
@@ -6951,7 +6963,11 @@
           "tilt": null,
           "exhibition_st": -0.04,
           "course": 5.0,
-          "original": {}
+          "original": {
+            "lap": 37.1,
+            "turn": 5.03,
+            "straight": 8.43
+          }
         },
         {
           "boat": 6,
@@ -6967,7 +6983,11 @@
           "tilt": null,
           "exhibition_st": -0.01,
           "course": 6.0,
-          "original": {}
+          "original": {
+            "lap": 37.97,
+            "turn": 4.87,
+            "straight": 8.6
+          }
         }
       ],
       "weather": {
@@ -6980,12 +7000,12 @@
         "observed_at": null
       },
       "source_times": {
-        "stt": "2026-11-04T10:50:32.385861+09:00"
+        "stt": "2026-11-04T10:50:32.385861+09:00",
+        "original": "2026-11-04T10:50:32.385861+09:00"
       },
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
         "sui:not_published",
         "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
@@ -20295,5 +20315,5 @@
   },
   "experimental_notice": "未検証の実験値は改善の表示基準に未達です。確率の正確さ・的中・利益を保証せず、利用者の表示選択でのみ表示します。",
   "predicted_races": 0,
-  "experimental_races": 2
+  "experimental_races": 1
 }
