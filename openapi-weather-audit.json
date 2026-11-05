@@ -3,9 +3,9 @@
   "date": "2026-11-05",
   "mode": "read_only_comparison_no_model_use",
   "counts": {
-    "staged_races": 20,
+    "staged_races": 21,
     "wind_and_wave_match": 18,
-    "wind_or_wave_mismatch": 1,
+    "wind_or_wave_mismatch": 2,
     "missing_weather_values": 1
   },
   "races": {
@@ -698,12 +698,48 @@
       "race": 6,
       "cutoff": "2026-11-05T17:46:00+09:00",
       "openapi_received_at": "2026-11-05T17:41:05+09:00",
+      "boatracecsv_weather_observed_at": "2026-11-05T17:22:00+09:00",
+      "boatracecsv_source_captured_at": "2026-11-05T17:40:23.475904+09:00",
+      "wind_wave_status": "wind_or_wave_mismatch",
+      "fields": {
+        "wind_speed_mps": {
+          "openapi": 2.0,
+          "boatracecsv": 1.0,
+          "comparison": "mismatch"
+        },
+        "wave_height_cm": {
+          "openapi": 1.0,
+          "boatracecsv": 1.0,
+          "comparison": "match"
+        },
+        "air_c": {
+          "openapi": 21.0,
+          "boatracecsv": 20.0,
+          "comparison": "mismatch"
+        },
+        "water_c": {
+          "openapi": 19.0,
+          "boatracecsv": 19.0,
+          "comparison": "match"
+        }
+      },
+      "weather_timestamp_equivalence_proven": false,
+      "safe_for_automatic_model_injection": false,
+      "reasons": [
+        "openapi_weather_observation_time_unverified"
+      ]
+    },
+    "202611051208": {
+      "venue": "住之江",
+      "race": 8,
+      "cutoff": "2026-11-05T18:43:00+09:00",
+      "openapi_received_at": "2026-11-05T18:36:57+09:00",
       "boatracecsv_weather_observed_at": null,
       "boatracecsv_source_captured_at": null,
       "wind_wave_status": "missing_weather_values",
       "fields": {
         "wind_speed_mps": {
-          "openapi": 2.0,
+          "openapi": 0.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
@@ -713,7 +749,7 @@
           "comparison": "missing"
         },
         "air_c": {
-          "openapi": 21.0,
+          "openapi": 20.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
