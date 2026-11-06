@@ -3,9 +3,9 @@
   "date": "2026-11-06",
   "mode": "read_only_comparison_no_model_use",
   "counts": {
-    "staged_races": 18,
+    "staged_races": 19,
     "wind_and_wave_match": 16,
-    "wind_or_wave_mismatch": 1,
+    "wind_or_wave_mismatch": 2,
     "missing_weather_values": 1
   },
   "races": {
@@ -626,27 +626,63 @@
       "race": 6,
       "cutoff": "2026-11-06T17:46:00+09:00",
       "openapi_received_at": "2026-11-06T17:36:41+09:00",
+      "boatracecsv_weather_observed_at": "2026-11-06T17:22:00+09:00",
+      "boatracecsv_source_captured_at": "2026-11-06T17:40:26.237111+09:00",
+      "wind_wave_status": "wind_or_wave_mismatch",
+      "fields": {
+        "wind_speed_mps": {
+          "openapi": 1.0,
+          "boatracecsv": 4.0,
+          "comparison": "mismatch"
+        },
+        "wave_height_cm": {
+          "openapi": 1.0,
+          "boatracecsv": 2.0,
+          "comparison": "mismatch"
+        },
+        "air_c": {
+          "openapi": 20.0,
+          "boatracecsv": 20.0,
+          "comparison": "match"
+        },
+        "water_c": {
+          "openapi": 19.0,
+          "boatracecsv": 19.0,
+          "comparison": "match"
+        }
+      },
+      "weather_timestamp_equivalence_proven": false,
+      "safe_for_automatic_model_injection": false,
+      "reasons": [
+        "openapi_weather_observation_time_unverified"
+      ]
+    },
+    "202611061508": {
+      "venue": "丸亀",
+      "race": 8,
+      "cutoff": "2026-11-06T18:33:00+09:00",
+      "openapi_received_at": "2026-11-06T18:29:32+09:00",
       "boatracecsv_weather_observed_at": null,
       "boatracecsv_source_captured_at": null,
       "wind_wave_status": "missing_weather_values",
       "fields": {
         "wind_speed_mps": {
-          "openapi": 1.0,
+          "openapi": 7.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
         "wave_height_cm": {
-          "openapi": 1.0,
+          "openapi": 7.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
         "air_c": {
-          "openapi": 20.0,
+          "openapi": 18.0,
           "boatracecsv": null,
           "comparison": "missing"
         },
         "water_c": {
-          "openapi": 19.0,
+          "openapi": 22.0,
           "boatracecsv": null,
           "comparison": "missing"
         }
