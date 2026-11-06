@@ -1,35 +1,35 @@
 {
   "schema": "boat12-refresh-diagnostic-v1",
-  "created_at": "2026-11-06T02:09:24.733315+00:00",
+  "created_at": "2026-11-06T02:54:36.341053+00:00",
   "date": "2026-11-06",
-  "conditions_generated_at": "2026-11-06T11:08:11.998715+09:00",
-  "openapi_checked_at": "2026-11-06T11:09:24+09:00",
+  "conditions_generated_at": "2026-11-06T11:52:48.157892+09:00",
+  "openapi_checked_at": "2026-11-06T11:54:35+09:00",
   "counts": {
     "race_cards": 156,
-    "csv_basic_ready_at_snapshot": 20,
-    "csv_timestamp_at_least_six_minutes": 17,
-    "api_complete_at_snapshot": 26,
-    "api_complete_csv_not_ready_at_snapshot": 6,
-    "api_pre_cutoff_snapshot_recorded": 4,
-    "csv_first_seen_all_sources_before_cutoff": 19,
-    "csv_first_seen_at_least_six_minutes": 5,
-    "api_observed_at_least_six_minutes_before_cutoff": 1
+    "csv_basic_ready_at_snapshot": 34,
+    "csv_timestamp_at_least_six_minutes": 27,
+    "api_complete_at_snapshot": 43,
+    "api_pre_cutoff_snapshot_recorded": 8,
+    "csv_first_seen_all_sources_before_cutoff": 32,
+    "api_complete_csv_not_ready_at_snapshot": 9,
+    "api_observed_at_least_six_minutes_before_cutoff": 4,
+    "csv_first_seen_at_least_six_minutes": 9
   },
   "csv_missing_reasons": {
-    "original:not_published": 132,
-    "stt:not_published": 132,
-    "sui:not_published": 132,
-    "tkz:not_published": 132,
-    "weather:observation_unconfirmed_or_old": 135,
-    "original:missing_timestamp": 2,
-    "stt:missing_timestamp": 2,
-    "sui:missing_timestamp": 2,
-    "tkz:missing_timestamp": 2
+    "original:not_published": 116,
+    "stt:not_published": 116,
+    "sui:not_published": 116,
+    "tkz:not_published": 116,
+    "weather:observation_unconfirmed_or_old": 121,
+    "original:missing_timestamp": 4,
+    "stt:missing_timestamp": 4,
+    "sui:missing_timestamp": 4,
+    "tkz:missing_timestamp": 4
   },
   "api_ready_csv_not_ready_examples": [
     {
-      "code": "202611060202",
-      "cutoff": "2026-11-06T11:12:00+09:00",
+      "code": "202611060204",
+      "cutoff": "2026-11-06T12:06:00+09:00",
       "csv_issues": [
         "original:not_published",
         "stt:not_published",
@@ -37,7 +37,7 @@
         "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
       ],
-      "api_first_seen": "2026-11-06T11:09:24+09:00"
+      "api_first_seen": "2026-11-06T11:54:35+09:00"
     },
     {
       "code": "202611060501",
@@ -52,6 +52,18 @@
       "cutoff": "2026-11-06T10:57:00+09:00",
       "csv_issues": [],
       "api_first_seen": "2026-11-06T11:09:24+09:00"
+    },
+    {
+      "code": "202611061008",
+      "cutoff": "2026-11-06T12:03:00+09:00",
+      "csv_issues": [
+        "original:not_published",
+        "stt:not_published",
+        "sui:not_published",
+        "tkz:not_published",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-11-06T11:54:35+09:00"
     },
     {
       "code": "202611061702",
@@ -78,8 +90,32 @@
       "api_first_seen": "2026-11-06T11:09:24+09:00"
     },
     {
-      "code": "202611062307",
-      "cutoff": "2026-11-06T11:23:00+09:00",
+      "code": "202611061704",
+      "cutoff": null,
+      "csv_issues": [
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-11-06T11:54:35+09:00"
+    },
+    {
+      "code": "202611061705",
+      "cutoff": null,
+      "csv_issues": [
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-11-06T11:54:35+09:00"
+    },
+    {
+      "code": "202611062204",
+      "cutoff": "2026-11-06T12:09:00+09:00",
       "csv_issues": [
         "original:not_published",
         "stt:not_published",
@@ -87,7 +123,7 @@
         "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
       ],
-      "api_first_seen": "2026-11-06T11:09:24+09:00"
+      "api_first_seen": "2026-11-06T11:54:35+09:00"
     }
   ],
   "notes": [
