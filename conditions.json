@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-11-06",
-  "generated_at": "2026-11-06T11:10:12.501563+09:00",
+  "generated_at": "2026-11-06T11:12:12.085255+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -27,8 +27,8 @@
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/11/06.csv",
       "status": "ok",
-      "rows": 25,
-      "sha256": "d706fe07f2b4f12f34d69fe714b75d662b6b82d8ae2060aa44986cbc54d635f6"
+      "rows": 26,
+      "sha256": "9b804ee0b3152f998796145ed68982cda7a3ad8a4bfd92bc4d89ff2efd8709f0"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/11/06.csv",
@@ -2006,16 +2006,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.3783908106592347,
-        "base_probability": 0.19837794293778432,
-        "scope": "original",
-        "expires_at": "2026-11-06T11:11:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
@@ -13629,8 +13621,8 @@
           "boat_rate": 33.0,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
+          "exhibition_st": 0.08,
+          "course": 1.0,
           "original": {}
         },
         {
@@ -13645,8 +13637,8 @@
           "boat_rate": 43.6,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
+          "exhibition_st": 0.09,
+          "course": 2.0,
           "original": {}
         },
         {
@@ -13661,8 +13653,8 @@
           "boat_rate": 30.9,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
+          "exhibition_st": 0.03,
+          "course": 3.0,
           "original": {}
         },
         {
@@ -13677,8 +13669,8 @@
           "boat_rate": 30.4,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
+          "exhibition_st": -0.11,
+          "course": 4.0,
           "original": {}
         },
         {
@@ -13693,8 +13685,8 @@
           "boat_rate": 37.1,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
+          "exhibition_st": -0.25,
+          "course": 5.0,
           "original": {}
         },
         {
@@ -13709,8 +13701,8 @@
           "boat_rate": 34.7,
           "exhibition": null,
           "tilt": null,
-          "exhibition_st": null,
-          "course": null,
+          "exhibition_st": 0.03,
+          "course": 6.0,
           "original": {}
         }
       ],
@@ -13723,12 +13715,13 @@
         "weather_code": null,
         "observed_at": null
       },
-      "source_times": {},
+      "source_times": {
+        "stt": "2026-11-06T11:10:28.625363+09:00"
+      },
       "basic_available": null,
       "original_available": null,
       "issues": [
         "original:not_published",
-        "stt:not_published",
         "sui:not_published",
         "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
@@ -22024,5 +22017,5 @@
   },
   "experimental_notice": "未検証の実験値は改善の表示基準に未達です。確率の正確さ・的中・利益を保証せず、利用者の表示選択でのみ表示します。",
   "predicted_races": 0,
-  "experimental_races": 1
+  "experimental_races": 0
 }
