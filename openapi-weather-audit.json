@@ -3,8 +3,8 @@
   "date": "2026-11-07",
   "mode": "read_only_comparison_no_model_use",
   "counts": {
-    "staged_races": 23,
-    "wind_and_wave_match": 19,
+    "staged_races": 24,
+    "wind_and_wave_match": 20,
     "wind_or_wave_mismatch": 4
   },
   "races": {
@@ -827,6 +827,42 @@
         "water_c": {
           "openapi": 20.0,
           "boatracecsv": 20.0,
+          "comparison": "match"
+        }
+      },
+      "weather_timestamp_equivalence_proven": false,
+      "safe_for_automatic_model_injection": false,
+      "reasons": [
+        "openapi_weather_observation_time_unverified"
+      ]
+    },
+    "202611071212": {
+      "venue": "住之江",
+      "race": 12,
+      "cutoff": "2026-11-07T20:45:00+09:00",
+      "openapi_received_at": "2026-11-07T20:43:15+09:00",
+      "boatracecsv_weather_observed_at": "2026-11-07T20:19:00+09:00",
+      "boatracecsv_source_captured_at": "2026-11-07T20:35:27.271463+09:00",
+      "wind_wave_status": "wind_and_wave_match",
+      "fields": {
+        "wind_speed_mps": {
+          "openapi": 1.0,
+          "boatracecsv": 1.0,
+          "comparison": "match"
+        },
+        "wave_height_cm": {
+          "openapi": 1.0,
+          "boatracecsv": 1.0,
+          "comparison": "match"
+        },
+        "air_c": {
+          "openapi": 14.0,
+          "boatracecsv": 14.0,
+          "comparison": "match"
+        },
+        "water_c": {
+          "openapi": 17.0,
+          "boatracecsv": 17.0,
           "comparison": "match"
         }
       },
