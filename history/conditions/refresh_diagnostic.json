@@ -1,26 +1,49 @@
 {
   "schema": "boat12-refresh-diagnostic-v1",
-  "created_at": "2026-11-07T00:29:38.185907+00:00",
+  "created_at": "2026-11-07T01:30:32.247309+00:00",
   "date": "2026-11-07",
-  "conditions_generated_at": "2026-11-07T09:28:51.938474+09:00",
-  "openapi_checked_at": "2026-11-07T09:29:37+09:00",
+  "conditions_generated_at": "2026-11-07T10:25:26.153317+09:00",
+  "openapi_checked_at": "2026-11-07T10:30:31+09:00",
   "counts": {
     "race_cards": 132,
-    "csv_basic_ready_at_snapshot": 5,
-    "csv_timestamp_at_least_six_minutes": 4,
-    "api_complete_at_snapshot": 5,
-    "csv_first_seen_all_sources_before_cutoff": 4,
-    "csv_first_seen_at_least_six_minutes": 1,
-    "api_pre_cutoff_snapshot_recorded": 1
+    "api_complete_at_snapshot": 13,
+    "api_complete_csv_not_ready_at_snapshot": 2,
+    "csv_first_seen_all_sources_before_cutoff": 11,
+    "csv_first_seen_at_least_six_minutes": 6,
+    "csv_basic_ready_at_snapshot": 11,
+    "csv_timestamp_at_least_six_minutes": 10,
+    "api_pre_cutoff_snapshot_recorded": 2
   },
   "csv_missing_reasons": {
-    "original:not_published": 127,
-    "stt:not_published": 127,
-    "sui:not_published": 127,
-    "tkz:not_published": 127,
-    "weather:observation_unconfirmed_or_old": 127
+    "original:not_published": 121,
+    "stt:not_published": 120,
+    "sui:not_published": 120,
+    "tkz:not_published": 120,
+    "weather:observation_unconfirmed_or_old": 121
   },
-  "api_ready_csv_not_ready_examples": [],
+  "api_ready_csv_not_ready_examples": [
+    {
+      "code": "202611070501",
+      "cutoff": "2026-11-07T10:30:00+09:00",
+      "csv_issues": [
+        "original:not_published",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-11-07T10:30:31+09:00"
+    },
+    {
+      "code": "202611071005",
+      "cutoff": "2026-11-07T10:33:00+09:00",
+      "csv_issues": [
+        "original:not_published",
+        "stt:not_published",
+        "sui:not_published",
+        "tkz:not_published",
+        "weather:observation_unconfirmed_or_old"
+      ],
+      "api_first_seen": "2026-11-07T10:30:31+09:00"
+    }
+  ],
   "notes": [
     "Snapshot completeness counts are not live pre-cutoff availability.",
     "Provider/source availability timestamps do not prove BOAT12 first observed them.",
