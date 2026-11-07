@@ -1,12 +1,27 @@
 {
   "schema": "boat12-accuracy-v1",
   "date": "2026-11-07",
-  "generated_at": "2026-11-07T11:52:49.928138+09:00",
+  "generated_at": "2026-11-07T11:54:50.329485+09:00",
   "status": "ok",
   "message": null,
   "source": "BoatraceCSV realtime results; immutable pre-deadline forecast logs",
   "definition": "閾値以上の締切前保存予測のうち、結果確定済み候補の1-2決着率。結果待ちは分母から除外。",
   "records": [
+    {
+      "code": "202611072308",
+      "date": "2026-11-07",
+      "venue": "唐津",
+      "race": 8,
+      "generated_at": "2026-11-07T11:54:48.749377+09:00",
+      "cutoff": "2026-11-07T12:00:00+09:00",
+      "probability": 0.224703,
+      "scope": "original",
+      "result_status": "pending",
+      "first": null,
+      "second": null,
+      "hit": null,
+      "result_recorded_at": null
+    },
     {
       "code": "202611072307",
       "date": "2026-11-07",
@@ -181,11 +196,11 @@
       "cutoff": "2026-11-07T11:33:00+09:00",
       "probability": 0.25503,
       "scope": "original",
-      "result_status": "pending",
-      "first": null,
-      "second": null,
-      "hit": null,
-      "result_recorded_at": null
+      "result_status": "confirmed",
+      "first": 1,
+      "second": 2,
+      "hit": true,
+      "result_recorded_at": "2026-11-07T11:50:25.660419+09:00"
     },
     {
       "code": "202611071006",
@@ -286,11 +301,11 @@
       "cutoff": "2026-11-07T11:24:00+09:00",
       "probability": 0.069899,
       "scope": "normal",
-      "result_status": "pending",
-      "first": null,
-      "second": null,
-      "hit": null,
-      "result_recorded_at": null
+      "result_status": "confirmed",
+      "first": 4,
+      "second": 1,
+      "hit": false,
+      "result_recorded_at": "2026-11-07T11:50:25.660419+09:00"
     },
     {
       "code": "202611070802",
