@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-11-08",
-  "generated_at": "2026-11-08T13:21:06.315935+09:00",
+  "generated_at": "2026-11-08T13:23:06.884880+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -21,26 +21,26 @@
     "tkz": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/tkz/2026/11/08.csv",
       "status": "ok",
-      "rows": 59,
-      "sha256": "56e620a41db89d116dc50525b69f39c49430abbc11c3cc2b65d616a2a480ed73"
+      "rows": 60,
+      "sha256": "e7317579c7d1347bb5575b8de097507f234492673f01ce4606d3738d977adff6"
     },
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/11/08.csv",
       "status": "ok",
-      "rows": 59,
-      "sha256": "1ba320e15033c9ce5f902f2b8a1beea734ad5930263e433221016c36b980b9b6"
+      "rows": 60,
+      "sha256": "cff0a3d09279479c4b9e0875858eb168c76c62412f90b6857f3d4def02353186"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/11/08.csv",
       "status": "ok",
-      "rows": 59,
-      "sha256": "c1cd6acb2f37c97446b73eae5605ffb7e3ebe4a06b8356fe07c84edf594ce6a5"
+      "rows": 60,
+      "sha256": "e87605376c1a1cc90918f0fa7bbde8b0ac6972d41a203972c80f6da9f5f499ee"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/11/08.csv",
       "status": "ok",
-      "rows": 52,
-      "sha256": "ac6dabb53de7f9f8126f8484981c14d78ced7b179235c945107f43df4f6ff7cd"
+      "rows": 53,
+      "sha256": "944bfcf0b888790e7810acab712bd03792a7a764ea0d6d0ee597d33b872bf13d"
     }
   },
   "counts": {
@@ -2614,7 +2614,7 @@
       "venue": "戸田",
       "venue_code": "02",
       "race": 7,
-      "cutoff": "2026-11-08T13:28:00+09:00",
+      "cutoff": null,
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
@@ -2730,10 +2730,10 @@
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
         "weather:observation_unconfirmed_or_old"
       ],
       "probability": null,
@@ -6195,16 +6195,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.10904914457659444,
-        "base_probability": 0.0800967415118943,
-        "scope": "original",
-        "expires_at": "2026-11-08T13:21:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
@@ -19414,5 +19406,5 @@
   },
   "experimental_notice": "未検証の実験値は改善の表示基準に未達です。確率の正確さ・的中・利益を保証せず、利用者の表示選択でのみ表示します。",
   "predicted_races": 0,
-  "experimental_races": 1
+  "experimental_races": 0
 }
