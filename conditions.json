@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-11-09",
-  "generated_at": "2026-11-09T13:12:38.345505+09:00",
+  "generated_at": "2026-11-09T13:14:38.811994+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -21,33 +21,33 @@
     "tkz": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/tkz/2026/11/09.csv",
       "status": "ok",
-      "rows": 58,
-      "sha256": "a6d4237a0ea19793cfd03861b2b775977098c986d185164d3d985d6e9b34f455"
+      "rows": 59,
+      "sha256": "f491c38a550c81f1fece5296510ffffd0055afd978768ffaebce2bed5a926ce9"
     },
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/11/09.csv",
       "status": "ok",
-      "rows": 58,
-      "sha256": "3d223a8abc7c19762f7a3e8e877ed7801c9a679ab6d417106aa0d6df1fc606bb"
+      "rows": 59,
+      "sha256": "f1f7372ad349585e4d04165691ab6d73d48599ce51cf8eed7d51ee85400182f6"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/11/09.csv",
       "status": "ok",
-      "rows": 58,
-      "sha256": "a54d9da762f7dd9ff4fc651a08215cf4e4114f3e265061fb666d957ca43b411b"
+      "rows": 59,
+      "sha256": "58ce09a1aa79a2321ff0556da73e87c6cb1ad3af093a679b8ef83b37b23b6acc"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/11/09.csv",
       "status": "ok",
-      "rows": 58,
-      "sha256": "d49464ae8b26628a35e1119cf9879b2bc574c91c2f20db28fe66e56d3d05cd16"
+      "rows": 59,
+      "sha256": "73a86b34a8140c966d41164e11b7d523c1bbbab8ed2aca61d63df305434073b8"
     }
   },
   "counts": {
     "cards": 132,
     "records": 132,
-    "basic_ready": 51,
-    "original_ready": 51,
+    "basic_ready": 52,
+    "original_ready": 52,
     "labelled": 0
   },
   "races": [
@@ -6411,16 +6411,8 @@
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": {
-        "schema": "conditions-experimental-1",
-        "probability": 0.2712485408342155,
-        "base_probability": 0.2204432093677558,
-        "scope": "original",
-        "expires_at": "2026-11-09T13:13:30+09:00",
-        "validation_status": "held_back",
-        "release_rule_passed": false
-      },
-      "state": "未検証の実験値あり（表示スイッチで確認）"
+      "experimental_prediction": null,
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
@@ -8091,9 +8083,13 @@
       "race": 7,
       "cutoff": "2026-11-09T13:16:00+09:00",
       "cancelled": false,
-      "basic_ready": false,
-      "original_ready": false,
-      "original_kinds": [],
+      "basic_ready": true,
+      "original_ready": true,
+      "original_kinds": [
+        "lap",
+        "straight",
+        "turn"
+      ],
       "players": [
         {
           "boat": 1,
@@ -8105,11 +8101,15 @@
           "local_rate": 35.8,
           "motor_rate": 24.8,
           "boat_rate": 19.3,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.75,
+          "tilt": 0.0,
+          "exhibition_st": 0.06,
+          "course": 1.0,
+          "original": {
+            "lap": 37.06,
+            "turn": 5.43,
+            "straight": 7.9
+          }
         },
         {
           "boat": 2,
@@ -8121,11 +8121,15 @@
           "local_rate": 24.0,
           "motor_rate": 30.3,
           "boat_rate": 46.9,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.73,
+          "tilt": 0.0,
+          "exhibition_st": 0.28,
+          "course": 2.0,
+          "original": {
+            "lap": 37.01,
+            "turn": 5.53,
+            "straight": 7.91
+          }
         },
         {
           "boat": 3,
@@ -8137,11 +8141,15 @@
           "local_rate": 5.5,
           "motor_rate": 36.3,
           "boat_rate": 26.9,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.76,
+          "tilt": -0.5,
+          "exhibition_st": 0.14,
+          "course": 3.0,
+          "original": {
+            "lap": 37.4,
+            "turn": 5.8,
+            "straight": 8.17
+          }
         },
         {
           "boat": 4,
@@ -8153,11 +8161,15 @@
           "local_rate": 48.7,
           "motor_rate": 28.1,
           "boat_rate": 30.0,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.87,
+          "tilt": 0.0,
+          "exhibition_st": 0.05,
+          "course": 4.0,
+          "original": {
+            "lap": 37.32,
+            "turn": 5.7,
+            "straight": 7.87
+          }
         },
         {
           "boat": 5,
@@ -8169,11 +8181,15 @@
           "local_rate": 18.3,
           "motor_rate": 26.6,
           "boat_rate": 38.6,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.83,
+          "tilt": -0.5,
+          "exhibition_st": 0.07,
+          "course": 5.0,
+          "original": {
+            "lap": 37.38,
+            "turn": 6.11,
+            "straight": 8.0
+          }
         },
         {
           "boat": 6,
@@ -8185,38 +8201,49 @@
           "local_rate": 56.6,
           "motor_rate": 30.6,
           "boat_rate": 22.3,
-          "exhibition": null,
-          "tilt": null,
-          "exhibition_st": null,
-          "course": null,
-          "original": {}
+          "exhibition": 6.8,
+          "tilt": 0.0,
+          "exhibition_st": 0.04,
+          "course": 6.0,
+          "original": {
+            "lap": 37.16,
+            "turn": 5.93,
+            "straight": 7.8
+          }
         }
       ],
       "weather": {
-        "wind_speed": null,
-        "wind_direction_code": null,
-        "wave_cm": null,
-        "air_c": null,
-        "water_c": null,
-        "weather_code": null,
-        "observed_at": null
+        "wind_speed": 2.0,
+        "wind_direction_code": "6",
+        "wave_cm": 2.0,
+        "air_c": 12.0,
+        "water_c": 16.0,
+        "weather_code": "2",
+        "observed_at": "2026-11-09T12:51:00+09:00"
       },
-      "source_times": {},
-      "basic_available": null,
-      "original_available": null,
-      "issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "source_times": {
+        "sui": "2026-11-09T13:10:30.255062+09:00",
+        "tkz": "2026-11-09T13:10:30.255062+09:00",
+        "stt": "2026-11-09T13:10:30.255062+09:00",
+        "original": "2026-11-09T13:10:30.255062+09:00"
+      },
+      "basic_available": "2026-11-09T13:10:30.255062+09:00",
+      "original_available": "2026-11-09T13:10:30.255062+09:00",
+      "issues": [],
       "probability": null,
       "base_probability": null,
       "probability_scope": null,
       "expires_at": null,
-      "experimental_prediction": null,
-      "state": "風・展示データ待ち"
+      "experimental_prediction": {
+        "schema": "conditions-experimental-1",
+        "probability": 0.20335962519863474,
+        "base_probability": 0.1547933522509403,
+        "scope": "original",
+        "expires_at": "2026-11-09T13:15:30+09:00",
+        "validation_status": "held_back",
+        "release_rule_passed": false
+      },
+      "state": "未検証の実験値あり（表示スイッチで確認）"
     },
     {
       "version": "conditions-1.0",
