@@ -3,7 +3,8 @@
   "date": "2026-11-09",
   "mode": "read_only_comparison_no_model_use",
   "counts": {
-    "staged_races": 1,
+    "staged_races": 2,
+    "wind_and_wave_match": 1,
     "missing_weather_values": 1
   },
   "races": {
@@ -12,6 +13,42 @@
       "race": 2,
       "cutoff": "2026-11-09T09:01:00+09:00",
       "openapi_received_at": "2026-11-09T08:54:10+09:00",
+      "boatracecsv_weather_observed_at": "2026-11-09T08:39:00+09:00",
+      "boatracecsv_source_captured_at": "2026-11-09T08:55:24.112239+09:00",
+      "wind_wave_status": "wind_and_wave_match",
+      "fields": {
+        "wind_speed_mps": {
+          "openapi": 2.0,
+          "boatracecsv": 2.0,
+          "comparison": "match"
+        },
+        "wave_height_cm": {
+          "openapi": 2.0,
+          "boatracecsv": 2.0,
+          "comparison": "match"
+        },
+        "air_c": {
+          "openapi": 12.0,
+          "boatracecsv": 12.0,
+          "comparison": "match"
+        },
+        "water_c": {
+          "openapi": 16.0,
+          "boatracecsv": 16.0,
+          "comparison": "match"
+        }
+      },
+      "weather_timestamp_equivalence_proven": false,
+      "safe_for_automatic_model_injection": false,
+      "reasons": [
+        "openapi_weather_observation_time_unverified"
+      ]
+    },
+    "202611092303": {
+      "venue": "唐津",
+      "race": 3,
+      "cutoff": "2026-11-09T09:27:00+09:00",
+      "openapi_received_at": "2026-11-09T09:24:15+09:00",
       "boatracecsv_weather_observed_at": null,
       "boatracecsv_source_captured_at": null,
       "wind_wave_status": "missing_weather_values",
