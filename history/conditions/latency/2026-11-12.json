@@ -1,12 +1,12 @@
 {
   "schema": "boat12-latency-audit-v1",
   "date": "2026-11-12",
-  "checked_at": "2026-11-12T13:38:56.117312+09:00",
-  "conditions_generated_at": "2026-11-12T13:38:54.618413+09:00",
+  "checked_at": "2026-11-12T20:55:07.683246+09:00",
+  "conditions_generated_at": "2026-11-12T20:55:06.540160+09:00",
   "counts": {
-    "pending": 76,
-    "basic_ready": 59,
-    "original_ready": 59,
+    "pending": 0,
+    "basic_ready": 117,
+    "original_ready": 117,
     "experimental": 0
   },
   "races": {
@@ -41,7 +41,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -79,7 +79,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -117,7 +117,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -155,7 +155,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -193,7 +193,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -231,7 +231,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -277,7 +277,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -296,16 +296,36 @@
       "venue": "戸田",
       "race": 8,
       "cutoff": "2026-11-12T13:55:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:45:23.826607+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:45:23.826607+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:45:23.826607+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:45:23.826607+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:30:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
       "basic_ready": false,
       "original_ready": false,
       "experimental_recorded": false
@@ -314,34 +334,74 @@
       "venue": "戸田",
       "race": 9,
       "cutoff": "2026-11-12T14:23:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:15:30.467834+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:15:30.467834+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:15:30.467834+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:15:30.467834+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:58:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120210": {
       "venue": "戸田",
       "race": 10,
       "cutoff": "2026-11-12T14:52:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:45:21.067827+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:45:21.067827+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:45:21.067827+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:45:21.067827+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:26:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
       "basic_ready": false,
       "original_ready": false,
       "experimental_recorded": false
@@ -350,34 +410,74 @@
       "venue": "戸田",
       "race": 11,
       "cutoff": "2026-11-12T15:23:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:15:40.244222+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:15:40.244222+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:15:40.244222+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:15:40.244222+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:55:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120212": {
       "venue": "戸田",
       "race": 12,
       "cutoff": "2026-11-12T15:55:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:45:22.542244+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:45:22.542244+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:45:22.542244+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:45:22.542244+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:26:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
       "basic_ready": false,
       "original_ready": false,
       "experimental_recorded": false
@@ -413,7 +513,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -451,7 +551,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -489,7 +589,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -527,7 +627,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -565,7 +665,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -603,7 +703,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -649,7 +749,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -668,104 +768,226 @@
       "venue": "平和島",
       "race": 8,
       "cutoff": "2026-11-12T14:04:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:55:27.206448+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:55:27.206448+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:55:27.206448+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:55:27.206448+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:40:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120409": {
       "venue": "平和島",
       "race": 9,
       "cutoff": "2026-11-12T14:34:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:25:27.644428+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:25:27.644428+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:25:27.644428+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:25:27.644428+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:07:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120410": {
       "venue": "平和島",
       "race": 10,
       "cutoff": "2026-11-12T15:03:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:55:25.782059+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:55:25.782059+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:55:25.782059+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:55:25.782059+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:37:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120411": {
       "venue": "平和島",
       "race": 11,
       "cutoff": "2026-11-12T15:36:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:30:30.734503+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:30:30.734503+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:30:30.734503+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:30:30.734503+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:06:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120412": {
       "venue": "平和島",
       "race": 12,
       "cutoff": "2026-11-12T16:06:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:39:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120701": {
       "venue": "蒲郡",
       "race": 1,
       "cutoff": "2026-11-12T15:20:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:10:24.800074+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:10:24.800074+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:10:24.800074+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:10:24.800074+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:10:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
       "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
       ],
       "basic_ready": false,
@@ -776,14 +998,36 @@
       "venue": "蒲郡",
       "race": 2,
       "cutoff": "2026-11-12T15:44:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:35:23.415619+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:35:23.415619+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:35:23.415619+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:35:23.415619+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:10:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
       "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
       ],
       "basic_ready": false,
@@ -794,52 +1038,112 @@
       "venue": "蒲郡",
       "race": 3,
       "cutoff": "2026-11-12T16:09:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:48:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120704": {
       "venue": "蒲郡",
       "race": 4,
       "cutoff": "2026-11-12T16:35:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:25:22.101953+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:25:22.101953+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:25:22.101953+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:25:22.101953+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:48:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120705": {
       "venue": "蒲郡",
       "race": 5,
       "cutoff": "2026-11-12T17:01:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:55:21.202061+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:55:21.202061+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:55:21.202061+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:55:21.202061+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:39:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
       "basic_ready": false,
       "original_ready": false,
       "experimental_recorded": false
@@ -848,52 +1152,112 @@
       "venue": "蒲郡",
       "race": 6,
       "cutoff": "2026-11-12T17:28:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:20:34.434655+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:20:34.434655+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:20:34.434655+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:20:34.434655+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:05:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120707": {
       "venue": "蒲郡",
       "race": 7,
       "cutoff": "2026-11-12T17:55:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:45:37.467007+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:45:37.467007+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:45:37.467007+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:45:37.467007+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:32:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120708": {
       "venue": "蒲郡",
       "race": 8,
       "cutoff": "2026-11-12T18:23:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:15:16.353629+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:15:16.353629+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:15:16.353629+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:15:16.353629+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:59:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
       "basic_ready": false,
       "original_ready": false,
       "experimental_recorded": false
@@ -902,34 +1266,74 @@
       "venue": "蒲郡",
       "race": 9,
       "cutoff": "2026-11-12T18:54:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:45:26.979554+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:45:26.979554+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:45:26.979554+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:45:26.979554+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:27:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120710": {
       "venue": "蒲郡",
       "race": 10,
       "cutoff": "2026-11-12T19:25:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:15:20.118502+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:15:20.118502+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:15:20.118502+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:15:20.118502+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:58:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
       "basic_ready": false,
       "original_ready": false,
       "experimental_recorded": false
@@ -938,34 +1342,74 @@
       "venue": "蒲郡",
       "race": 11,
       "cutoff": "2026-11-12T19:58:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:50:24.557625+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:50:24.557625+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:50:24.557625+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:50:24.557625+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:29:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120712": {
       "venue": "蒲郡",
       "race": 12,
       "cutoff": "2026-11-12T20:30:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:20:27.230088+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:20:27.230088+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:20:27.230088+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:20:27.230088+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:02:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
       "basic_ready": false,
       "original_ready": false,
       "experimental_recorded": false
@@ -1001,7 +1445,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1039,7 +1483,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1077,7 +1521,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -1126,7 +1570,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1164,7 +1608,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1202,7 +1646,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1248,7 +1692,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1267,88 +1711,188 @@
       "venue": "津",
       "race": 8,
       "cutoff": "2026-11-12T13:56:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:50:32.755078+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:50:32.755078+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:50:32.755078+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:50:32.755078+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:29:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120909": {
       "venue": "津",
       "race": 9,
       "cutoff": "2026-11-12T14:26:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:00:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120910": {
       "venue": "津",
       "race": 10,
       "cutoff": "2026-11-12T14:59:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:50:37.773026+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:50:37.773026+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:50:37.773026+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:50:37.773026+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:30:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120911": {
       "venue": "津",
       "race": 11,
       "cutoff": "2026-11-12T15:34:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:25:26.282816+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:25:26.282816+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:25:26.282816+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:25:26.282816+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:03:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611120912": {
       "venue": "津",
       "race": 12,
       "cutoff": "2026-11-12T16:09:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:00:37.461650+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:38:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
       "basic_ready": false,
       "original_ready": false,
       "experimental_recorded": false
@@ -1384,7 +1928,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1422,7 +1966,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1460,7 +2004,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1498,7 +2042,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1536,7 +2080,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1574,7 +2118,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1612,7 +2156,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1650,7 +2194,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1688,7 +2232,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1726,7 +2270,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1745,36 +2289,76 @@
       "venue": "三国",
       "race": 11,
       "cutoff": "2026-11-12T13:46:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:40:32.740237+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:40:32.740237+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:40:32.740237+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:40:32.740237+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:13:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121012": {
       "venue": "三国",
       "race": 12,
       "cutoff": "2026-11-12T14:20:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:10:41.354740+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:10:41.354740+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:10:41.354740+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:10:41.354740+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:49:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121301": {
@@ -1808,7 +2392,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -1846,7 +2430,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -1884,7 +2468,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -1922,7 +2506,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -1960,7 +2544,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -1998,7 +2582,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -2044,7 +2628,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -2063,90 +2647,190 @@
       "venue": "尼崎",
       "race": 8,
       "cutoff": "2026-11-12T14:02:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:55:27.206448+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:55:27.206448+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:55:27.206448+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:55:27.206448+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:48:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121309": {
       "venue": "尼崎",
       "race": 9,
       "cutoff": "2026-11-12T14:39:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:30:35.865712+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:30:35.865712+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:30:35.865712+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:30:35.865712+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:25:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121310": {
       "venue": "尼崎",
       "race": 10,
       "cutoff": "2026-11-12T15:09:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:00:39.976890+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:00:39.976890+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:00:39.976890+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:00:39.976890+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:42:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121311": {
       "venue": "尼崎",
       "race": 11,
       "cutoff": "2026-11-12T15:41:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:35:23.415619+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:35:23.415619+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:35:23.415619+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:35:23.415619+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:12:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121312": {
       "venue": "尼崎",
       "race": 12,
       "cutoff": "2026-11-12T16:04:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:55:25.109022+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:55:25.109022+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:55:25.109022+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:55:25.109022+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:12:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121601": {
@@ -2180,7 +2864,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [
         "weather:observation_unconfirmed_or_old"
@@ -2220,7 +2904,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -2240,7 +2924,7 @@
       "race": 3,
       "cutoff": "2026-11-12T11:48:00+09:00",
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
         "original:missing_timestamp",
@@ -2258,7 +2942,7 @@
       "race": 4,
       "cutoff": "2026-11-12T12:19:00+09:00",
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
         "original:missing_timestamp",
@@ -2276,7 +2960,7 @@
       "race": 5,
       "cutoff": "2026-11-12T12:46:00+09:00",
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
         "original:missing_timestamp",
@@ -2294,7 +2978,7 @@
       "race": 6,
       "cutoff": "2026-11-12T13:13:00+09:00",
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
         "original:missing_timestamp",
@@ -2312,7 +2996,7 @@
       "race": 7,
       "cutoff": "2026-11-12T13:42:00+09:00",
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
         "original:missing_timestamp",
@@ -2344,13 +3028,13 @@
       "race": 8,
       "cutoff": "2026-11-12T14:09:00+09:00",
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
         "weather:observation_unconfirmed_or_old"
       ],
       "basic_ready": false,
@@ -2362,13 +3046,13 @@
       "race": 9,
       "cutoff": "2026-11-12T14:44:00+09:00",
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
         "weather:observation_unconfirmed_or_old"
       ],
       "basic_ready": false,
@@ -2380,13 +3064,13 @@
       "race": 10,
       "cutoff": "2026-11-12T15:15:00+09:00",
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
         "weather:observation_unconfirmed_or_old"
       ],
       "basic_ready": false,
@@ -2398,13 +3082,13 @@
       "race": 11,
       "cutoff": "2026-11-12T15:50:00+09:00",
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
         "weather:observation_unconfirmed_or_old"
       ],
       "basic_ready": false,
@@ -2415,18 +3099,38 @@
       "venue": "児島",
       "race": 12,
       "cutoff": "2026-11-12T16:24:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:15:26.571167+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:15:26.571167+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:15:26.571167+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:15:26.571167+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:55:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121701": {
@@ -2460,7 +3164,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -2498,7 +3202,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -2536,7 +3240,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -2574,7 +3278,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -2612,7 +3316,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -2650,7 +3354,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -2688,7 +3392,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -2734,7 +3438,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -2753,34 +3457,74 @@
       "venue": "宮島",
       "race": 9,
       "cutoff": "2026-11-12T13:59:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:50:32.755078+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:50:32.755078+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:50:32.755078+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:50:32.755078+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:34:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121710": {
       "venue": "宮島",
       "race": 10,
       "cutoff": "2026-11-12T14:28:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:02:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
       "basic_ready": false,
       "original_ready": false,
       "experimental_recorded": false
@@ -2789,50 +3533,112 @@
       "venue": "宮島",
       "race": 11,
       "cutoff": "2026-11-12T14:57:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:50:37.773026+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:50:37.773026+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:50:37.773026+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:50:37.773026+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:31:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121712": {
       "venue": "宮島",
       "race": 12,
       "cutoff": "2026-11-12T15:33:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:25:26.282816+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:25:26.282816+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:25:26.282816+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:25:26.282816+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:00:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121901": {
       "venue": "下関",
       "race": 1,
       "cutoff": "2026-11-12T15:22:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:15:40.244222+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:15:40.244222+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:15:40.244222+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:15:40.244222+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:00:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
       "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
       ],
       "basic_ready": false,
@@ -2843,178 +3649,378 @@
       "venue": "下関",
       "race": 2,
       "cutoff": "2026-11-12T15:46:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:40:28.003447+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:40:28.003447+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:40:28.003447+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:40:28.003447+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:25:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121903": {
       "venue": "下関",
       "race": 3,
       "cutoff": "2026-11-12T16:15:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:05:22.162733+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:05:22.162733+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:05:22.162733+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:05:22.162733+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:49:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121904": {
       "venue": "下関",
       "race": 4,
       "cutoff": "2026-11-12T16:43:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:35:26.511539+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:35:26.511539+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:35:26.511539+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:35:26.511539+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:18:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121905": {
       "venue": "下関",
       "race": 5,
       "cutoff": "2026-11-12T17:10:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:00:39.204853+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:00:39.204853+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:00:39.204853+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:00:39.204853+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:46:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121906": {
       "venue": "下関",
       "race": 6,
       "cutoff": "2026-11-12T17:37:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:30:27.977978+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:30:27.977978+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:30:27.977978+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:30:27.977978+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:13:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121907": {
       "venue": "下関",
       "race": 7,
       "cutoff": "2026-11-12T18:04:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:55:19.888966+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:55:19.888966+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:55:19.888966+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:55:19.888966+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:40:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121908": {
       "venue": "下関",
       "race": 8,
       "cutoff": "2026-11-12T18:33:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:25:22.587243+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:25:22.587243+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:25:22.587243+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:25:22.587243+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:07:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121909": {
       "venue": "下関",
       "race": 9,
       "cutoff": "2026-11-12T19:04:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:55:21.372156+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:55:21.372156+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:55:21.372156+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:55:21.372156+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:36:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121910": {
       "venue": "下関",
       "race": 10,
       "cutoff": "2026-11-12T19:36:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:30:26.264928+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:30:26.264928+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:30:26.264928+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:30:26.264928+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:07:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611121911": {
       "venue": "下関",
       "race": 11,
       "cutoff": "2026-11-12T20:07:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:00:57.612228+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:00:57.612228+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:00:57.612228+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:00:57.612228+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:39:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
       "basic_ready": false,
       "original_ready": false,
       "experimental_recorded": false
@@ -3023,18 +4029,38 @@
       "venue": "下関",
       "race": 12,
       "cutoff": "2026-11-12T20:38:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:30:25.182802+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:30:25.182802+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:30:25.182802+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:30:25.182802+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:10:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122101": {
@@ -3068,7 +4094,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": false,
@@ -3106,7 +4132,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3144,7 +4170,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3182,7 +4208,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3220,7 +4246,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3258,7 +4284,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3296,7 +4322,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3342,7 +4368,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3380,7 +4406,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3418,7 +4444,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3464,7 +4490,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3483,18 +4509,38 @@
       "venue": "芦屋",
       "race": 12,
       "cutoff": "2026-11-12T14:11:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:05:20.966437+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:05:20.966437+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:05:20.966437+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:05:20.966437+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:36:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122201": {
@@ -3528,7 +4574,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3566,7 +4612,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3604,7 +4650,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3642,7 +4688,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3680,7 +4726,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3718,7 +4764,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3737,108 +4783,228 @@
       "venue": "福岡",
       "race": 7,
       "cutoff": "2026-11-12T13:49:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:40:32.740237+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:40:32.740237+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:40:32.740237+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:40:32.740237+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:24:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122208": {
       "venue": "福岡",
       "race": 8,
       "cutoff": "2026-11-12T14:16:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:10:41.354740+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:10:41.354740+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:10:41.354740+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:10:41.354740+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:52:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122209": {
       "venue": "福岡",
       "race": 9,
       "cutoff": "2026-11-12T14:49:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:40:23.706963+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:40:23.706963+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:40:23.706963+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:40:23.706963+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:19:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122210": {
       "venue": "福岡",
       "race": 10,
       "cutoff": "2026-11-12T15:18:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:10:24.800074+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:10:24.800074+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:10:24.800074+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:10:24.800074+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:52:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122211": {
       "venue": "福岡",
       "race": 11,
       "cutoff": "2026-11-12T15:53:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:45:22.542244+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:45:22.542244+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:45:22.542244+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:45:22.542244+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:21:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122212": {
       "venue": "福岡",
       "race": 12,
       "cutoff": "2026-11-12T16:30:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:20:25.339952+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:20:25.339952+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:20:25.339952+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:20:25.339952+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:56:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122301": {
@@ -3872,7 +5038,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3910,7 +5076,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -3922,7 +5088,7 @@
       "race": 3,
       "cutoff": null,
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
         "original:missing_timestamp",
@@ -3940,7 +5106,7 @@
       "race": 4,
       "cutoff": null,
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
         "original:missing_timestamp",
@@ -3958,7 +5124,7 @@
       "race": 5,
       "cutoff": null,
       "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "風・展示データ待ち",
       "last_issues": [
         "original:missing_timestamp",
@@ -4002,7 +5168,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -4040,7 +5206,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -4078,7 +5244,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -4116,7 +5282,7 @@
           "before_cutoff": false
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -4154,7 +5320,7 @@
           "before_cutoff": true
         }
       },
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
       "last_state": "締切済み",
       "last_issues": [],
       "basic_ready": true,
@@ -4173,50 +5339,112 @@
       "venue": "唐津",
       "race": 11,
       "cutoff": "2026-11-12T13:52:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:45:23.826607+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:45:23.826607+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:45:23.826607+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:45:23.826607+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:21:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122312": {
       "venue": "唐津",
       "race": 12,
       "cutoff": "2026-11-12T14:30:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:20:29.715179+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T13:56:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122401": {
       "venue": "大村",
       "race": 1,
       "cutoff": "2026-11-12T15:29:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:20:27.856816+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:20:27.856816+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:20:27.856816+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:20:27.856816+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T14:10:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
       "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
         "weather:observation_unconfirmed_or_old"
       ],
       "basic_ready": false,
@@ -4227,198 +5455,418 @@
       "venue": "大村",
       "race": 2,
       "cutoff": "2026-11-12T15:59:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:50:21.108462+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:50:21.108462+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:50:21.108462+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:50:21.108462+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T15:32:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122403": {
       "venue": "大村",
       "race": 3,
       "cutoff": "2026-11-12T16:22:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:15:26.571167+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:15:26.571167+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:15:26.571167+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:15:26.571167+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:02:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122404": {
       "venue": "大村",
       "race": 4,
       "cutoff": "2026-11-12T16:52:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:45:19.777564+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:45:19.777564+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:45:19.777564+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:45:19.777564+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:25:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122405": {
       "venue": "大村",
       "race": 5,
       "cutoff": "2026-11-12T17:19:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:10:26.750358+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:10:26.750358+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:10:26.750358+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:10:26.750358+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T16:55:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122406": {
       "venue": "大村",
       "race": 6,
       "cutoff": "2026-11-12T17:46:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:40:21.937017+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:40:21.937017+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:40:21.937017+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:40:21.937017+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:22:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122407": {
       "venue": "大村",
       "race": 7,
       "cutoff": "2026-11-12T18:13:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:05:23.795687+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:05:23.795687+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:05:23.795687+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:05:23.795687+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T17:49:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122408": {
       "venue": "大村",
       "race": 8,
       "cutoff": "2026-11-12T18:43:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:35:28.224638+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:35:28.224638+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:35:28.224638+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:35:28.224638+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:16:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122409": {
       "venue": "大村",
       "race": 9,
       "cutoff": "2026-11-12T19:14:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:05:34.718830+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:05:34.718830+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:05:34.718830+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:05:34.718830+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T18:46:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122410": {
       "venue": "大村",
       "race": 10,
       "cutoff": "2026-11-12T19:47:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:40:20.539925+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:40:20.539925+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:40:20.539925+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:40:20.539925+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:17:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122411": {
       "venue": "大村",
       "race": 11,
       "cutoff": "2026-11-12T20:16:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:10:26.665751+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:10:26.665751+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:10:26.665751+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:10:26.665751+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T19:50:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     },
     "202611122412": {
       "venue": "大村",
       "race": 12,
       "cutoff": "2026-11-12T20:45:00+09:00",
-      "first_detected": {},
-      "last_seen_at": "2026-11-12T13:38:54.618413+09:00",
-      "last_state": "風・展示データ待ち",
-      "last_issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
-        "weather:observation_unconfirmed_or_old"
-      ],
-      "basic_ready": false,
-      "original_ready": false,
+      "first_detected": {
+        "tkz": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:35:26.283459+09:00",
+          "before_cutoff": false
+        },
+        "stt": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:35:26.283459+09:00",
+          "before_cutoff": false
+        },
+        "sui": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:35:26.283459+09:00",
+          "before_cutoff": false
+        },
+        "original": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:35:26.283459+09:00",
+          "before_cutoff": false
+        },
+        "weather_observation": {
+          "at": "2026-11-12T20:55:06.540160+09:00",
+          "provider_recorded_at": "2026-11-12T20:19:00+09:00",
+          "before_cutoff": false
+        }
+      },
+      "last_seen_at": "2026-11-12T20:55:06.540160+09:00",
+      "last_state": "締切済み",
+      "last_issues": [],
+      "basic_ready": true,
+      "original_ready": true,
       "experimental_recorded": false
     }
   },
