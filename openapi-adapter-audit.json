@@ -2,8 +2,64 @@
   "schema": "boat12-openapi-adapter-audit-v1",
   "date": "2026-11-12",
   "mode": "read_only_no_predictions",
-  "counts": {},
-  "records": {},
-  "note": "First-seen time is BOAT12 observation, NOT source publication time; precise meteorological observation time is unavailable.",
-  "error": "schema_or_date_mismatch"
+  "counts": {
+    "staged": 4,
+    "needs_adapter_or_validation": 4,
+    "basic_fields_crosschecked": 4
+  },
+  "records": {
+    "202611120205": {
+      "venue": "戸田",
+      "race": 5,
+      "first_observed": "2026-11-12T12:28:44+09:00",
+      "cutoff": "2026-11-12T12:33:00+09:00",
+      "source": "Boatrace Open API (unofficial)",
+      "compatible_basic_fields": true,
+      "eligible_for_existing_model": false,
+      "reasons": [
+        "original_exhibition_not_in_openapi_snapshot",
+        "weather_observation_time_unverified"
+      ]
+    },
+    "202611121009": {
+      "venue": "三国",
+      "race": 9,
+      "first_observed": "2026-11-12T12:28:44+09:00",
+      "cutoff": "2026-11-12T12:36:00+09:00",
+      "source": "Boatrace Open API (unofficial)",
+      "compatible_basic_fields": true,
+      "eligible_for_existing_model": false,
+      "reasons": [
+        "original_exhibition_not_in_openapi_snapshot",
+        "weather_observation_time_unverified"
+      ]
+    },
+    "202611121706": {
+      "venue": "宮島",
+      "race": 6,
+      "first_observed": "2026-11-12T12:28:44+09:00",
+      "cutoff": "2026-11-12T12:32:00+09:00",
+      "source": "Boatrace Open API (unofficial)",
+      "compatible_basic_fields": true,
+      "eligible_for_existing_model": false,
+      "reasons": [
+        "original_exhibition_not_in_openapi_snapshot",
+        "weather_observation_time_unverified"
+      ]
+    },
+    "202611122309": {
+      "venue": "唐津",
+      "race": 9,
+      "first_observed": "2026-11-12T12:28:44+09:00",
+      "cutoff": "2026-11-12T12:42:00+09:00",
+      "source": "Boatrace Open API (unofficial)",
+      "compatible_basic_fields": true,
+      "eligible_for_existing_model": false,
+      "reasons": [
+        "original_exhibition_not_in_openapi_snapshot",
+        "weather_observation_time_unverified"
+      ]
+    }
+  },
+  "note": "First-seen time is BOAT12 observation, NOT source publication time; precise meteorological observation time is unavailable."
 }
