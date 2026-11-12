@@ -2,7 +2,7 @@
   "version": "conditions-1.0",
   "display_schema": "conditions-experimental-1",
   "date": "2026-11-12",
-  "generated_at": "2026-11-12T13:06:54.128966+09:00",
+  "generated_at": "2026-11-12T13:08:54.465431+09:00",
   "status": "ok",
   "message": null,
   "sources": {
@@ -21,26 +21,26 @@
     "tkz": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/tkz/2026/11/12.csv",
       "status": "ok",
-      "rows": 70,
-      "sha256": "ddd768a0058e5b9d360b83807a75d4985c9202563730dc129f67e843daec4c7d"
+      "rows": 71,
+      "sha256": "3d7a5f82d88b6c551c9735d23db20ee67e6e4ff7ac28bfc04337e8a715b47534"
     },
     "stt": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/stt/2026/11/12.csv",
       "status": "ok",
-      "rows": 70,
-      "sha256": "99a44708c277f25f05d484b2a189f1c69c7c47d98e5976e7c1597ea572d2f72a"
+      "rows": 71,
+      "sha256": "99ece51b57dfbeba7bb43fbcf2a919d2a8a26c2faafe6d2fda14c79d447e1a97"
     },
     "sui": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/sui/2026/11/12.csv",
       "status": "ok",
-      "rows": 70,
-      "sha256": "1c0a97e402e8fcf01e4cfcaed1a35d0c9a021f721c95c02a10f57fe3e2b90655"
+      "rows": 71,
+      "sha256": "581eaf21b290c6648f96db8daa5aa340193a9ca2f728b6f0fe3f256c24f0ee11"
     },
     "original": {
       "url": "https://raw.githubusercontent.com/BoatraceCSV/boatracecsv.github.io/main/data/previews/original_exhibition/2026/11/12.csv",
       "status": "ok",
-      "rows": 70,
-      "sha256": "2963ed63cf30be68bb67543c116f45e574994c7b23258a8cc1b84b39562b9eff"
+      "rows": 71,
+      "sha256": "d4b13ad605acb1023eec5bf00c03dd129e8d8fceb098b29f5d65b1c7080efdcf"
     }
   },
   "counts": {
@@ -2821,7 +2821,7 @@
       "probability_scope": null,
       "expires_at": null,
       "experimental_prediction": null,
-      "state": "締切直前・確率非表示"
+      "state": "締切済み"
     },
     {
       "version": "conditions-1.0",
@@ -11470,7 +11470,7 @@
       "venue": "児島",
       "venue_code": "16",
       "race": 6,
-      "cutoff": "2026-11-12T13:13:00+09:00",
+      "cutoff": null,
       "cancelled": false,
       "basic_ready": false,
       "original_ready": false,
@@ -11586,10 +11586,10 @@
       "basic_available": null,
       "original_available": null,
       "issues": [
-        "original:not_published",
-        "stt:not_published",
-        "sui:not_published",
-        "tkz:not_published",
+        "original:missing_timestamp",
+        "stt:missing_timestamp",
+        "sui:missing_timestamp",
+        "tkz:missing_timestamp",
         "weather:observation_unconfirmed_or_old"
       ],
       "probability": null,
